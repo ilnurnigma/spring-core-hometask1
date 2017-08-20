@@ -35,17 +35,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void remove(@Nonnull User object) {
-
+        Users.getUsers().remove(object);
     }
 
     @Override
     public User getById(@Nonnull Long id) {
+        for (User user : Users.getUsers()) {
+            if (id.equals(user.getId())) {
+                return user;
+            }
+        }
+
         return null;
     }
 
     @Nonnull
     @Override
     public Collection<User> getAll() {
-        return null;
+        return Users.getUsers();
     }
 }
