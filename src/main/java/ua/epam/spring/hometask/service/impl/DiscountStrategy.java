@@ -9,6 +9,10 @@ import java.time.LocalDateTime;
 
 public class DiscountStrategy {
     public byte getDiscount(@Nullable User user, @Nonnull Event event, @Nonnull LocalDateTime airDateTime, long numberOfTickets) {
+        if (numberOfTickets % 10 == 0) {
+            return 50;
+        }
+
         return 0;
     }
 }
