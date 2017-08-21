@@ -7,7 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.time.LocalDateTime;
 
-public class DiscountStrategy {
+public class Every10thTicketDiscountStrategy {
     public byte getDiscount(@Nullable User user, @Nonnull Event event, @Nonnull LocalDateTime airDateTime, long numberOfTickets) {
         if (numberOfTickets % 10 == 0) {
             return 50;

@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiscountServiceImpl implements DiscountService {
-    private List<DiscountStrategy> discountStrategies = new ArrayList<>();
+    private List<Every10thTicketDiscountStrategy> discountStrategies = new ArrayList<>();
 
     @Override
     public byte getDiscount(@Nullable User user, @Nonnull Event event, @Nonnull LocalDateTime airDateTime, long numberOfTickets) {
         byte maxDiscount = 0;
 
-        for (DiscountStrategy strategy : discountStrategies) {
+        for (Every10thTicketDiscountStrategy strategy : discountStrategies) {
             byte discount = strategy.getDiscount(user, event, airDateTime, numberOfTickets);
             if (maxDiscount > discount) {
                 maxDiscount = discount;
