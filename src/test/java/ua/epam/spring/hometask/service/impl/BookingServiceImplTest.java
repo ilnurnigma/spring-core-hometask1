@@ -2,6 +2,11 @@ package ua.epam.spring.hometask.service.impl;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.epam.spring.hometask.domain.Auditorium;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.EventRating;
@@ -17,7 +22,12 @@ import static org.junit.Assert.*;
 /**
  * Created on 8/21/2017.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:spring.xml"})
 public class BookingServiceImplTest {
+
+    @Autowired
+    private ApplicationContext ctx;
 
     private Event event;
     private LocalDateTime dateTime;
@@ -25,7 +35,7 @@ public class BookingServiceImplTest {
 
     @Before
     public void setUp() throws Exception {
-        bookingService = new BookingServiceImpl();
+        bookingService = ctx.getBean("bookingServiceImpl", BookingServiceImpl.class);
 
         event = new Event();
         event.setBasePrice(100);
