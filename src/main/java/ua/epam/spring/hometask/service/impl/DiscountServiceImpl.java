@@ -3,13 +3,11 @@ package ua.epam.spring.hometask.service.impl;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.User;
 import ua.epam.spring.hometask.service.DiscountService;
-import ua.epam.spring.hometask.utils.DiscountStrategy;
-import ua.epam.spring.hometask.utils.Every10thTicketDiscountStrategy;
+import ua.epam.spring.hometask.service.strategies.DiscountStrategy;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DiscountServiceImpl implements DiscountService {
@@ -25,7 +23,7 @@ public class DiscountServiceImpl implements DiscountService {
 
         for (DiscountStrategy strategy : discountStrategies) {
             byte discount = strategy.getDiscount(user, event, airDateTime, numberOfTickets);
-            if (maxDiscount > discount) {
+            if (maxDiscount < discount) {
                 maxDiscount = discount;
             }
         }

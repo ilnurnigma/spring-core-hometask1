@@ -1,5 +1,6 @@
 package ua.epam.spring.hometask.domain;
 
+import java.time.LocalDate;
 import java.util.NavigableSet;
 import java.util.Objects;
 import java.util.TreeSet;
@@ -14,6 +15,8 @@ public class User extends DomainObject {
     private String lastName;
 
     private String email;
+
+    private LocalDate dateOfBirth;
 
     private NavigableSet<Ticket> tickets = new TreeSet<>();
 
@@ -98,5 +101,17 @@ public class User extends DomainObject {
                 ", email='" + email + '\'' +
                 ", tickets=" + tickets +
                 '}';
+    }
+
+    public boolean isBirthday() {
+        return LocalDate.now().isEqual(dateOfBirth);
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
     }
 }

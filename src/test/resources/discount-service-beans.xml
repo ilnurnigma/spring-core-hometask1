@@ -9,10 +9,12 @@
         <constructor-arg>
             <list>
                 <ref bean="every10thDiscountStrategy"/>
+                <ref bean="birthdayDiscountStrategy"/>
             </list>
         </constructor-arg>
     </bean>
 
-    <bean id="every10thDiscountStrategy" class="ua.epam.spring.hometask.utils.Every10thTicketDiscountStrategy"/>
+    <bean id="every10thDiscountStrategy" class="ua.epam.spring.hometask.service.strategies.Every10thTicketDiscountStrategy"/>
+    <bean id="birthdayDiscountStrategy" class="ua.epam.spring.hometask.service.strategies.BirthdayDiscountStrategy"/>
 
 </beans>

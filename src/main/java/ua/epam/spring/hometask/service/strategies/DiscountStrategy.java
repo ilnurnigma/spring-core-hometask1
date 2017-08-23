@@ -1,4 +1,4 @@
-package ua.epam.spring.hometask.utils;
+package ua.epam.spring.hometask.service.strategies;
 
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.User;

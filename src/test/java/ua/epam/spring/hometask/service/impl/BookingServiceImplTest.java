@@ -12,6 +12,7 @@ import ua.epam.spring.hometask.domain.Auditorium;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.EventRating;
 import ua.epam.spring.hometask.domain.Ticket;
+import ua.epam.spring.hometask.service.AuditoriumService;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -42,14 +43,12 @@ public class BookingServiceImplTest {
         event = new Event();
         event.setBasePrice(100);
 
-        TreeMap<LocalDateTime, Auditorium> auditoriums = new TreeMap<>();
         dateTime = LocalDateTime.now();
         Auditorium auditorium = new Auditorium();
         HashSet<Long> vipSeats = new HashSet<>();
         vipSeats.add(5L);
         auditorium.setVipSeats(vipSeats);
-        auditoriums.put(dateTime, auditorium);
-        event.setAuditoriums(auditoriums);
+        event.addAirDateTime(dateTime, auditorium);
     }
 
     @Test
@@ -62,7 +61,7 @@ public class BookingServiceImplTest {
         HashSet<Long> seats = new HashSet<>();
         seats.add(1L);
 
-        double actualPrice = service.getTicketsPrice(event, LocalDateTime.now(), null, seats);
+        double actualPrice = service.getTicketsPrice(event, dateTime, null, seats);
 
         assertEquals(100, actualPrice, 0);
     }
