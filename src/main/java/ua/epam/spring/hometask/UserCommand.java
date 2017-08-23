@@ -1,11 +1,14 @@
 package ua.epam.spring.hometask;
 
 import ua.epam.spring.hometask.domain.Event;
+import ua.epam.spring.hometask.domain.Ticket;
 import ua.epam.spring.hometask.domain.User;
+import ua.epam.spring.hometask.service.BookingService;
 import ua.epam.spring.hometask.service.EventService;
 import ua.epam.spring.hometask.service.UserService;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -16,10 +19,12 @@ import java.util.Set;
 public class UserCommand {
     private UserService userService;
     private EventService eventService;
+    private BookingService bookingService;
 
-    public UserCommand(UserService userService, EventService eventService) {
+    public UserCommand(UserService userService, EventService eventService, BookingService bookingService) {
         this.userService = userService;
         this.eventService = eventService;
+        this.bookingService = bookingService;
     }
 
     public User register(String firstName, String lastName, String email) {
@@ -35,8 +40,17 @@ public class UserCommand {
         return eventService.getForDateRange(from, to);
     }
 
-    public @Nonnull
-    Set<Event> getNextEvents(@Nonnull LocalDateTime to) {
+    @Nonnull
+    public Set<Event> getNextEvents(@Nonnull LocalDateTime to) {
         return eventService.getNextEvents(to);
+    }
+
+    public double getTicketsPrice(@Nonnull Event event, @Nonnull LocalDateTime dateTime, @Nullable User user,
+                                  @Nonnull Set<Long> seats) {
+        return bookingService.getTicketsPrice(event, dateTime, user, seats);
+    }
+
+    public void buyTickets(@Nonnull Set<Ticket> tickets) {
+        bookingService.bookTickets(tickets);
     }
 }

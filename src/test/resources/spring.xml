@@ -17,6 +17,11 @@
     <bean id="userCommand" class="ua.epam.spring.hometask.UserCommand">
         <constructor-arg ref="userServiceImpl"/>
         <constructor-arg ref="eventServiceImpl"/>
+        <constructor-arg ref="bookingServiceImpl"/>
+    </bean>
+
+    <bean id="adminCommand" class="ua.epam.spring.hometask.AdminCommand">
+        <constructor-arg ref="eventServiceImpl"/>
     </bean>
 
     <bean id="userServiceImpl" class="ua.epam.spring.hometask.service.impl.UserServiceImpl">
@@ -29,5 +34,22 @@
 
     <bean id="eventServiceImpl" class="ua.epam.spring.hometask.service.impl.EventServiceImpl">
 
+    </bean>
+
+    <bean id="auditoriumServiceImpl" class="ua.epam.spring.hometask.service.impl.AuditoriumServiceImpl">
+
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:auditorium1.properties</value>
+            </list>
+        </property>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="systemPropertiesMode">
+            <util:constant
+                    static-field="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer.SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        </property>
     </bean>
 </beans>

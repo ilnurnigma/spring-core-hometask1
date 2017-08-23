@@ -7,21 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import ua.epam.spring.hometask.domain.Auditorium;
-import ua.epam.spring.hometask.domain.Event;
-import ua.epam.spring.hometask.domain.EventRating;
-import ua.epam.spring.hometask.domain.User;
+import ua.epam.spring.hometask.domain.*;
 import ua.epam.spring.hometask.service.EventService;
-import ua.epam.spring.hometask.service.UserService;
-import ua.epam.spring.hometask.service.impl.EventServiceImpl;
-import ua.epam.spring.hometask.service.impl.UserServiceImpl;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created on 8/23/2017.
@@ -59,9 +55,19 @@ public class AppTest {
 
         assertEquals(event, event1);
 
-        userCommand.register("John", "Snow", "john_snow@epam.com");
-        userCommand.viewEvents(LocalDate.now(), LocalDate.now().plusDays(10));
+        User user = userCommand.register("John", "Snow", "john_snow@epam.com");
+        Set<Event> events = userCommand.viewEvents(LocalDate.now(), LocalDate.now().plusDays(10));
         userCommand.getNextEvents(LocalDateTime.now().plusDays(10));
+
+        Event next = events.iterator().next();
+        HashSet<Long> seats = new HashSet<>();
+        seats.add(1L);
+        LocalDateTime dateTime = next.getAirDates().pollFirst();
+        double ticketsPrice = userCommand.getTicketsPrice(next, dateTime, user, seats);
+
+        HashSet<Ticket> tickets = new HashSet<>();
+        tickets.add(new Ticket(user, event, dateTime, 1L));
+        userCommand.buyTickets(tickets);
     }
 
 }
