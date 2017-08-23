@@ -31,11 +31,11 @@ public class BookingServiceImplTest {
 
     private Event event;
     private LocalDateTime dateTime;
-    private BookingServiceImpl bookingService;
+    private BookingServiceImpl service;
 
     @Before
     public void setUp() throws Exception {
-        bookingService = ctx.getBean("bookingServiceImpl", BookingServiceImpl.class);
+        service = ctx.getBean("bookingServiceImpl", BookingServiceImpl.class);
 
         event = new Event();
         event.setBasePrice(100);
@@ -60,7 +60,7 @@ public class BookingServiceImplTest {
         HashSet<Long> seats = new HashSet<>();
         seats.add(1L);
 
-        double actualPrice = bookingService.getTicketsPrice(event, LocalDateTime.now(), null, seats);
+        double actualPrice = service.getTicketsPrice(event, LocalDateTime.now(), null, seats);
 
         assertEquals(100, actualPrice, 0);
     }
@@ -71,7 +71,7 @@ public class BookingServiceImplTest {
         seats.add(1L);
         seats.add(2L);
 
-        double actualPrice = bookingService.getTicketsPrice(event, LocalDateTime.now(), null, seats);
+        double actualPrice = service.getTicketsPrice(event, LocalDateTime.now(), null, seats);
 
         assertEquals(200, actualPrice, 0);
     }
@@ -81,7 +81,7 @@ public class BookingServiceImplTest {
         HashSet<Long> seats = new HashSet<>();
         seats.add(5L);
 
-        double actualPrice = bookingService.getTicketsPrice(event, dateTime, null, seats);
+        double actualPrice = service.getTicketsPrice(event, dateTime, null, seats);
 
         assertEquals(200, actualPrice, 0);
     }
@@ -92,7 +92,7 @@ public class BookingServiceImplTest {
         HashSet<Long> seats = new HashSet<>();
         seats.add(1L);
 
-        double actualPrice = bookingService.getTicketsPrice(event, dateTime, null, seats);
+        double actualPrice = service.getTicketsPrice(event, dateTime, null, seats);
 
         assertEquals(120, actualPrice, 0);
     }
@@ -101,7 +101,7 @@ public class BookingServiceImplTest {
     public void bookTickets() throws Exception {
         HashSet<Ticket> tickets = new HashSet<>();
         tickets.add(new Ticket(null, event, dateTime, 1L));
-        bookingService.bookTickets(tickets);
+        service.bookTickets(tickets);
     }
 
     @Test
@@ -109,9 +109,10 @@ public class BookingServiceImplTest {
         HashSet<Ticket> tickets = new HashSet<>();
         Ticket ticket = new Ticket(null, event, dateTime, 1L);
         tickets.add(ticket);
-        bookingService.bookTickets(tickets);
 
-        Set<Ticket> purchasedTickets = bookingService.getPurchasedTicketsForEvent(event, dateTime);
+        service.bookTickets(tickets);
+
+        Set<Ticket> purchasedTickets = service.getPurchasedTicketsForEvent(event, dateTime);
 
         assertTrue(purchasedTickets.contains(ticket));
     }

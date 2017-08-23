@@ -1,5 +1,6 @@
 package ua.epam.spring.hometask.service.impl;
 
+import ua.epam.spring.hometask.dao.TicketDAO;
 import ua.epam.spring.hometask.domain.*;
 import ua.epam.spring.hometask.service.BookingService;
 
@@ -11,9 +12,7 @@ import java.util.NavigableMap;
 import java.util.Set;
 
 public class BookingServiceImpl implements BookingService {
-
-
-    private HashSet<Ticket> bookedTickets = new HashSet<>();
+    private TicketDAO ticketDAO;
 
     @Override
     public double getTicketsPrice(@Nonnull Event event, @Nonnull LocalDateTime dateTime, @Nullable User user, @Nonnull Set<Long> seats) {
@@ -58,12 +57,16 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void bookTickets(@Nonnull Set<Ticket> tickets) {
-        bookedTickets.addAll(tickets);
+        ticketDAO.addAll(tickets);
     }
 
     @Nonnull
     @Override
     public Set<Ticket> getPurchasedTicketsForEvent(@Nonnull Event event, @Nonnull LocalDateTime dateTime) {
-        return bookedTickets;
+        return ticketDAO.getPurchasedTicketsForEvent(event, dateTime);
+    }
+
+    public void setTicketDAO(TicketDAO ticketDAO) {
+        this.ticketDAO = ticketDAO;
     }
 }

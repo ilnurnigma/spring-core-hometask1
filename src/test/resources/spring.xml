@@ -11,12 +11,23 @@
         http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
     <bean id="userDAO" class="ua.epam.spring.hometask.dao.UserDAO"/>
+    <bean id="ticketDAO" class="ua.epam.spring.hometask.dao.TicketDAO"/>
+    <bean id="eventDAO" class="ua.epam.spring.hometask.dao.EventDAO"/>
+
+    <bean id="userCommand" class="ua.epam.spring.hometask.UserCommand">
+        <constructor-arg ref="userServiceImpl"/>
+        <constructor-arg ref="eventServiceImpl"/>
+    </bean>
 
     <bean id="userServiceImpl" class="ua.epam.spring.hometask.service.impl.UserServiceImpl">
         <property name="userDAO" ref="userDAO"/>
     </bean>
 
     <bean id="bookingServiceImpl" class="ua.epam.spring.hometask.service.impl.BookingServiceImpl">
+        <property name="ticketDAO" ref="ticketDAO"/>
+    </bean>
+
+    <bean id="eventServiceImpl" class="ua.epam.spring.hometask.service.impl.EventServiceImpl">
 
     </bean>
 </beans>
