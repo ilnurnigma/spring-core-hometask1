@@ -9,6 +9,7 @@
         http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
     <import resource="service-beans.xml"/>
+    <import resource="discount-service-beans.xml"/>
 
     <bean id="userDAO" class="ua.epam.spring.hometask.dao.UserDAO"/>
     <bean id="ticketDAO" class="ua.epam.spring.hometask.dao.TicketDAO"/>

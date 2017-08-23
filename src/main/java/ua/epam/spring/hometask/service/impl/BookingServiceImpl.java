@@ -3,6 +3,7 @@ package ua.epam.spring.hometask.service.impl;
 import ua.epam.spring.hometask.dao.TicketDAO;
 import ua.epam.spring.hometask.domain.*;
 import ua.epam.spring.hometask.service.BookingService;
+import ua.epam.spring.hometask.service.DiscountService;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 public class BookingServiceImpl implements BookingService {
     private TicketDAO ticketDAO;
+    private DiscountService discountService;
 
     @Override
     public double getTicketsPrice(@Nonnull Event event, @Nonnull LocalDateTime dateTime, @Nullable User user, @Nonnull Set<Long> seats) {
@@ -30,8 +32,6 @@ public class BookingServiceImpl implements BookingService {
 
             totalPrice += ticketPrice;
         }
-
-        DiscountServiceImpl discountService = new DiscountServiceImpl();
 
         return totalPrice - totalPrice * discountService.getDiscount(user, event, dateTime, seats.size()) / 100;
     }
@@ -72,5 +72,9 @@ public class BookingServiceImpl implements BookingService {
 
     public void setTicketDAO(TicketDAO ticketDAO) {
         this.ticketDAO = ticketDAO;
+    }
+
+    public void setDiscountService(DiscountService discountService) {
+        this.discountService = discountService;
     }
 }

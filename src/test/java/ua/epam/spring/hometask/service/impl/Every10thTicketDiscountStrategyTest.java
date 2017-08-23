@@ -3,6 +3,7 @@ package ua.epam.spring.hometask.service.impl;
 import org.junit.Before;
 import org.junit.Test;
 import ua.epam.spring.hometask.domain.Event;
+import ua.epam.spring.hometask.utils.Every10thTicketDiscountStrategy;
 
 import java.time.LocalDateTime;
 

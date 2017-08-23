@@ -37,8 +37,7 @@ public class UserCommand {
     }
 
     public Set<Event> viewEvents(@Nonnull LocalDate from, @Nonnull LocalDate to) {
-//        return eventService.getForDateRange(from, to);
-        return (Set<Event>) eventService.getAll();
+        return eventService.getForDateRange(from, to);
     }
 
     @Nonnull
