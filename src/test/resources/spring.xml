@@ -6,9 +6,9 @@
        xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="
  		http://www.springframework.org/schema/beans
- 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+ 		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
         http://www.springframework.org/schema/util
-        http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+        http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
     <bean id="userDAO" class="ua.epam.spring.hometask.dao.UserDAO"/>
     <bean id="ticketDAO" class="ua.epam.spring.hometask.dao.TicketDAO"/>
@@ -37,13 +37,31 @@
     </bean>
 
     <bean id="auditoriumServiceImpl" class="ua.epam.spring.hometask.service.impl.AuditoriumServiceImpl">
-
+        <constructor-arg>
+            <set>
+                <bean class="ua.epam.spring.hometask.domain.Auditorium">
+                    <property name="name" value="${a1.name}"/>
+                    <property name="numberOfSeats" value="${a1.numberOfSeats}"/>
+                    <property name="vipSeats" value="#{'${a1.vipSeats}'.split(',')}"/>
+                </bean>
+                <bean class="ua.epam.spring.hometask.domain.Auditorium">
+                    <property name="name" value="${a2.name}"/>
+                    <property name="numberOfSeats" value="${a2.numberOfSeats}"/>
+                    <property name="vipSeats" value="#{'${a2.vipSeats}'.split(',')}"/>
+                </bean>
+                <bean class="ua.epam.spring.hometask.domain.Auditorium">
+                    <property name="name" value="${a3.name}"/>
+                    <property name="numberOfSeats" value="${a3.numberOfSeats}"/>
+                    <property name="vipSeats" value="#{'${a3.vipSeats}'.split(',')}"/>
+                </bean>
+            </set>
+        </constructor-arg>
     </bean>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath:auditorium1.properties</value>
+                <value>classpath:auditorium.properties</value>
             </list>
         </property>
         <property name="ignoreResourceNotFound" value="true"/>
@@ -52,4 +70,5 @@
                     static-field="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer.SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
         </property>
     </bean>
+
 </beans>

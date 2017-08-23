@@ -9,10 +9,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class AuditoriumServiceImpl implements AuditoriumService {
+
+    private Set<Auditorium> auditoriums;
+
+    public AuditoriumServiceImpl(Set<Auditorium> auditoriums) {
+        this.auditoriums = auditoriums;
+    }
+
     @Nonnull
     @Override
     public Set<Auditorium> getAll() {
-        return new HashSet<>();
+        return auditoriums;
     }
 
     @Nullable
