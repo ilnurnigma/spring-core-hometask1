@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <bean id="userServiceImpl" class="ua.epam.spring.hometask.service.impl.UserServiceImpl">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+
+    <bean id="bookingServiceImpl" class="ua.epam.spring.hometask.service.impl.BookingServiceImpl">
+        <property name="ticketDAO" ref="ticketDAO"/>
+        <property name="discountService" ref="discountServiceImpl"/>
+    </bean>
+
+    <bean id="eventServiceImpl" class="ua.epam.spring.hometask.service.impl.EventServiceImpl">
+        <property name="eventDAO" ref="eventDAO"/>
+    </bean>
+
+    <bean id="auditoriumServiceImpl" class="ua.epam.spring.hometask.service.impl.AuditoriumServiceImpl">
+        <constructor-arg>
+            <set>
+                <bean class="ua.epam.spring.hometask.domain.Auditorium">
+                    <property name="name" value="${a1.name}"/>
+                    <property name="numberOfSeats" value="${a1.numberOfSeats}"/>
+                    <property name="vipSeats" value="#{'${a1.vipSeats}'.split(',')}"/>
+                </bean>
+                <bean class="ua.epam.spring.hometask.domain.Auditorium">
+                    <property name="name" value="${a2.name}"/>
+                    <property name="numberOfSeats" value="${a2.numberOfSeats}"/>
+                    <property name="vipSeats" value="#{'${a2.vipSeats}'.split(',')}"/>
+                </bean>
+                <bean class="ua.epam.spring.hometask.domain.Auditorium">
+                    <property name="name" value="${a3.name}"/>
+                    <property name="numberOfSeats" value="${a3.numberOfSeats}"/>
+                    <property name="vipSeats" value="#{'${a3.vipSeats}'.split(',')}"/>
+                </bean>
+            </set>
+        </constructor-arg>
+    </bean>
+
+</beans>

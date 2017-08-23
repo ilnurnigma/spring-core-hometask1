@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <bean id="discountServiceImpl" class="ua.epam.spring.hometask.service.impl.DiscountServiceImpl">
+        <constructor-arg>
+            <list>
+                <ref bean="every10thDiscountStrategy"/>
+                <ref bean="birthdayDiscountStrategy"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="every10thDiscountStrategy" class="ua.epam.spring.hometask.service.strategies.Every10thTicketDiscountStrategy"/>
+    <bean id="birthdayDiscountStrategy" class="ua.epam.spring.hometask.service.strategies.BirthdayDiscountStrategy"/>
+
+</beans>
