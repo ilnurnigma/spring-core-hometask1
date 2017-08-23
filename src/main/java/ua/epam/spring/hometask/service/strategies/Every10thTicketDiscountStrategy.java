@@ -18,9 +18,7 @@ public class Every10thTicketDiscountStrategy implements DiscountStrategy{
         long numberOfTicketsWithoutDiscount = numberOfTickets - numberOfDiscountTickets;
 
         double valueOfOneTicket = 100.0 / numberOfTickets;
-
         double valueOfTicketsWithoutDiscount = numberOfTicketsWithoutDiscount * valueOfOneTicket;
-
         double valueOfDiscountedTickets = valueOfOneTicket * numberOfDiscountTickets/2;
 
         double totalDiscount = 100 - (valueOfTicketsWithoutDiscount + valueOfDiscountedTickets);

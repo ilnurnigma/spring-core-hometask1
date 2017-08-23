@@ -103,10 +103,6 @@ public class User extends DomainObject {
                 '}';
     }
 
-    public boolean isBirthday() {
-        return LocalDate.now().isEqual(dateOfBirth);
-    }
-
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
