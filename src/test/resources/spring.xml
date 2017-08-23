@@ -2,13 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="
  		http://www.springframework.org/schema/beans
  		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
         http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+    <import resource="service-beans.xml"/>
 
     <bean id="userDAO" class="ua.epam.spring.hometask.dao.UserDAO"/>
     <bean id="ticketDAO" class="ua.epam.spring.hometask.dao.TicketDAO"/>
@@ -22,40 +22,8 @@
 
     <bean id="adminCommand" class="ua.epam.spring.hometask.AdminCommand">
         <constructor-arg ref="eventServiceImpl"/>
-    </bean>
-
-    <bean id="userServiceImpl" class="ua.epam.spring.hometask.service.impl.UserServiceImpl">
-        <property name="userDAO" ref="userDAO"/>
-    </bean>
-
-    <bean id="bookingServiceImpl" class="ua.epam.spring.hometask.service.impl.BookingServiceImpl">
-        <property name="ticketDAO" ref="ticketDAO"/>
-    </bean>
-
-    <bean id="eventServiceImpl" class="ua.epam.spring.hometask.service.impl.EventServiceImpl">
-
-    </bean>
-
-    <bean id="auditoriumServiceImpl" class="ua.epam.spring.hometask.service.impl.AuditoriumServiceImpl">
-        <constructor-arg>
-            <set>
-                <bean class="ua.epam.spring.hometask.domain.Auditorium">
-                    <property name="name" value="${a1.name}"/>
-                    <property name="numberOfSeats" value="${a1.numberOfSeats}"/>
-                    <property name="vipSeats" value="#{'${a1.vipSeats}'.split(',')}"/>
-                </bean>
-                <bean class="ua.epam.spring.hometask.domain.Auditorium">
-                    <property name="name" value="${a2.name}"/>
-                    <property name="numberOfSeats" value="${a2.numberOfSeats}"/>
-                    <property name="vipSeats" value="#{'${a2.vipSeats}'.split(',')}"/>
-                </bean>
-                <bean class="ua.epam.spring.hometask.domain.Auditorium">
-                    <property name="name" value="${a3.name}"/>
-                    <property name="numberOfSeats" value="${a3.numberOfSeats}"/>
-                    <property name="vipSeats" value="#{'${a3.vipSeats}'.split(',')}"/>
-                </bean>
-            </set>
-        </constructor-arg>
+        <constructor-arg ref="bookingServiceImpl"/>
+        <constructor-arg ref="auditoriumServiceImpl"/>
     </bean>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

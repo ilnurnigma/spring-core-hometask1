@@ -55,7 +55,7 @@ public class Event extends DomainObject {
     /**
      * Add date and time of event air
      *
-     * @param dateTime Date and time to add
+     * @param dateTime Date and time to save
      * @return <code>true</code> if successful, <code>false</code> if already
      * there
      */
@@ -66,8 +66,8 @@ public class Event extends DomainObject {
     /**
      * Adding date and time of event air and assigning auditorium to that
      *
-     * @param dateTime   Date and time to add
-     * @param auditorium Auditorium to add if success in date time add
+     * @param dateTime   Date and time to save
+     * @param auditorium Auditorium to save if success in date time save
      * @return <code>true</code> if successful, <code>false</code> if already
      * there
      */

@@ -7,7 +7,6 @@ import ua.epam.spring.hometask.service.BookingService;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.NavigableMap;
 import java.util.Set;
 
@@ -58,6 +57,11 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void bookTickets(@Nonnull Set<Ticket> tickets) {
         ticketDAO.addAll(tickets);
+    }
+
+    @Override
+    public boolean bookTicket(@Nonnull Ticket ticket) {
+        return ticketDAO.save(ticket);
     }
 
     @Nonnull

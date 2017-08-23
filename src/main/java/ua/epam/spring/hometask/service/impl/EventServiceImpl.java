@@ -9,21 +9,16 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Set;
 
-public class EventServiceImpl extends DomainObjectServiceImpl<Event> implements EventService {
+public class EventServiceImpl implements EventService {
     private EventDAO eventDAO;
 
     @Nullable
     @Override
     public Event getByName(@Nonnull String name) {
-        for (DomainObject event : domainObjects) {
-            if (name.equals(((Event) event).getName())) {
-                return (Event) event;
-            }
-        }
-
-        return null;
+        return eventDAO.getByName(name);
     }
 
     @Nonnull
@@ -36,5 +31,34 @@ public class EventServiceImpl extends DomainObjectServiceImpl<Event> implements 
     @Override
     public Set<Event> getNextEvents(@Nonnull LocalDateTime to) {
         return eventDAO.getNextEvents(to);
+    }
+
+    public void setEventDAO(EventDAO eventDAO) {
+        this.eventDAO = eventDAO;
+    }
+
+    @Override
+    public Event save(@Nonnull Event object) {
+        if (eventDAO.save(object)) {
+            return object;
+        }
+
+        return null;
+    }
+
+    @Override
+    public void remove(@Nonnull Event object) {
+        eventDAO.remove(object);
+    }
+
+    @Override
+    public Event getById(@Nonnull Long id) {
+        return eventDAO.getById(id);
+    }
+
+    @Nonnull
+    @Override
+    public Collection<Event> getAll() {
+        return eventDAO.getAll();
     }
 }

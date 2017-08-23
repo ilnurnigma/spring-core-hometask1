@@ -42,6 +42,8 @@ public interface BookingService {
      */
     public void bookTickets(@Nonnull Set<Ticket> tickets);
 
+    boolean bookTicket(@Nonnull Ticket ticket);
+
     /**
      * Getting all purchased tickets for event on specific air date and time
      * 

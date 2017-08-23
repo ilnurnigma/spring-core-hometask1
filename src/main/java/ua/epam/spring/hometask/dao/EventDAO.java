@@ -11,15 +11,12 @@ import java.util.Set;
 /**
  * Created on 8/23/2017.
  */
-public class EventDAO {
-    private Set<Event> events = new HashSet<>();
-
-
+public class EventDAO extends DomainObjectDAO<Event> {
     public @Nonnull
     Set<Event> getForDateRange(@Nonnull LocalDate from,
                                @Nonnull LocalDate to) {
         Set<Event> result = new HashSet<>();
-        for (Event event : events) {
+        for (Event event : domainObjects) {
             if (event.airsOnDates(from, to)) {
                 result.add(event);
             }
@@ -31,5 +28,14 @@ public class EventDAO {
     public @Nonnull
     Set<Event> getNextEvents(@Nonnull LocalDateTime to) {
         return getForDateRange(LocalDate.now(), to.toLocalDate());
+    }
+
+    public Event getByName(String name) {
+        for (Event event : domainObjects) {
+            if (event.getName().equals(name)) {
+                return event;
+            }
+        }
+        return null;
     }
 }

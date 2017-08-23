@@ -37,7 +37,8 @@ public class UserCommand {
     }
 
     public Set<Event> viewEvents(@Nonnull LocalDate from, @Nonnull LocalDate to) {
-        return eventService.getForDateRange(from, to);
+//        return eventService.getForDateRange(from, to);
+        return (Set<Event>) eventService.getAll();
     }
 
     @Nonnull
@@ -52,5 +53,14 @@ public class UserCommand {
 
     public void buyTickets(@Nonnull Set<Ticket> tickets) {
         bookingService.bookTickets(tickets);
+    }
+
+    public Ticket buyTicket(User user, Event event, LocalDateTime dateTime, long seat) {
+        Ticket ticket = new Ticket(user, event, dateTime, seat);
+        if (bookingService.bookTicket(ticket)) {
+            return ticket;
+        }
+
+        return null;
     }
 }
