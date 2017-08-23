@@ -10,6 +10,12 @@
         http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
+    <bean id="userDAO" class="ua.epam.spring.hometask.dao.UserDAO"/>
+
+    <bean id="userServiceImpl" class="ua.epam.spring.hometask.service.impl.UserServiceImpl">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+
     <bean id="bookingServiceImpl" class="ua.epam.spring.hometask.service.impl.BookingServiceImpl">
 
     </bean>

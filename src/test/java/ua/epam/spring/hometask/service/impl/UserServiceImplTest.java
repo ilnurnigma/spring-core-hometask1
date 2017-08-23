@@ -2,7 +2,12 @@ package ua.epam.spring.hometask.service.impl;
 
 import org.junit.Before;
 import org.junit.Test;
-import ua.epam.spring.hometask.dao.Users;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ua.epam.spring.hometask.dao.UserDAO;
 import ua.epam.spring.hometask.domain.User;
 
 import java.util.Collection;
@@ -10,14 +15,19 @@ import java.util.TreeSet;
 
 import static org.junit.Assert.*;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:spring.xml"})
 public class UserServiceImplTest {
+    @Autowired
+    private ApplicationContext ctx;
 
-    private UserServiceImpl userService;
+    private UserServiceImpl service;
     private User user;
+    private User user2;
 
     @Before
     public void setUp() throws Exception {
-        userService = new UserServiceImpl();
+        service = ctx.getBean("userServiceImpl", UserServiceImpl.class);
 
         user = new User();
         user.setFirstName("John");
@@ -25,70 +35,53 @@ public class UserServiceImplTest {
         user.setEmail("john_snow@epam.com");
         user.setId(1L);
         user.setTickets(new TreeSet<>());
+
+        user2 = new User();
+        user.setFirstName("Daenerys");
+        user.setLastName("Targaryen");
+        user.setEmail("daenerys_targaryen@epam.com");
+        user.setId(1L);
+        user.setTickets(new TreeSet<>());
+    }
+
+    @Test
+    public void givenApplicationContextReturnBeanImplementation() {
+        assertTrue(ctx.getBean("userServiceImpl") instanceof UserServiceImpl);
     }
 
     @Test
     public void givenEmailReturnUser() throws Exception {
-        User expectedUser = new User();
-        expectedUser.setEmail("emailname@epam.com");
-        Users.getUsers().add(expectedUser);
-
-        User actualUser = userService.getUserByEmail("emailname@epam.com");
-
-        assertEquals(expectedUser, actualUser);
-    }
-
-    @Test
-    public void givenEmail2ReturnUser() throws Exception {
-        User expectedUser = new User();
-        expectedUser.setEmail("emailname2@epam.com");
-        Users.getUsers().add(expectedUser);
-
-        User actualUser = userService.getUserByEmail("emailname2@epam.com");
-
-        assertEquals(expectedUser, actualUser);
-    }
-
-    @Test
-    public void givenUserJohnShouldSave() throws Exception {
-        userService.save(user);
-
-        assertTrue(Users.getUsers().contains(user));
-    }
-
-    @Test
-    public void givenUserShouldRemove() throws Exception {
-        Users.getUsers().add(user);
-
-        userService.remove(user);
-
-        assertFalse(Users.getUsers().contains(user));
-    }
-
-    @Test
-    public void givenUserReturnById() throws Exception {
-        Users.getUsers().add(user);
-
-        User actualUser = userService.getById(1L);
-
+        service.save(user);
+        User actualUser = service.getUserByEmail(user.getEmail());
         assertEquals(user, actualUser);
     }
 
     @Test
-    public void getAll() throws Exception {
-        User user2 = new User();
-        user2.setFirstName("Daenerys");
-        user2.setLastName("Targaryen");
-        user2.setEmail("enerys_targaryen@epam.com");
-        user2.setId(2L);
-        user2.setTickets(new TreeSet<>());
+    public void givenTwoUsersReturnUserByEmail() throws Exception {
+        service.save(user);
+        service.save(user2);
 
-        Users.getUsers().add(user);
-        Users.getUsers().add(user2);
-
-        Collection<User> users = userService.getAll();
-
-        assertEquals(Users.getUsers(), users);
+        User actualUser = service.getUserByEmail(user.getEmail());
+        assertEquals(user, actualUser);
     }
 
+    @Test
+    public void givenUserJohnShouldSave() throws Exception {
+        service.save(user);
+        assertTrue(service.getAll().contains(user));
+    }
+
+    @Test
+    public void givenUserShouldRemove() throws Exception {
+        service.save(user);
+        service.remove(user);
+        assertFalse(service.getAll().contains(user));
+    }
+
+    @Test
+    public void givenUserReturnById() throws Exception {
+        service.save(user);
+        User actualUser = service.getById(1L);
+        assertEquals(user, actualUser);
+    }
 }

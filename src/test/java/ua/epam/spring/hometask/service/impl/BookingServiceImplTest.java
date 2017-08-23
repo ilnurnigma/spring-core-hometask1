@@ -51,6 +51,11 @@ public class BookingServiceImplTest {
     }
 
     @Test
+    public void givenApplicationContextReturnBeanImplementation() {
+        assertTrue(ctx.getBean("bookingServiceImpl") instanceof BookingServiceImpl);
+    }
+
+    @Test
     public void givenBasePriceReturnBasePrice() throws Exception {
         HashSet<Long> seats = new HashSet<>();
         seats.add(1L);
