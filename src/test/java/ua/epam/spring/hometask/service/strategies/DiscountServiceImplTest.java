@@ -28,7 +28,7 @@ public class DiscountServiceImplTest {
 
     @Before
     public void setUp() throws Exception {
-        discountService = ctx.getBean("discountServiceImpl", DiscountService.class);
+        discountService = ctx.getBean("discountService", DiscountService.class);
     }
 
     @Test

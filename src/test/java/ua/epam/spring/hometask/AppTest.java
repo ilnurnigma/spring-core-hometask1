@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ua.epam.spring.hometask.config.AppConfig;
 import ua.epam.spring.hometask.domain.*;
 
 import java.time.LocalDate;
@@ -23,7 +24,7 @@ import static org.junit.Assert.assertTrue;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-@ContextConfiguration(locations = {"classpath:spring.xml"})
+@ContextConfiguration(classes = AppConfig.class)
 public class AppTest {
     @Autowired
     private ApplicationContext ctx;
