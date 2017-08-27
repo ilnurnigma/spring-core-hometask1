@@ -25,11 +25,7 @@ public class AdminCommand {
         this.auditoriumService = auditoriumService;
     }
 
-    public Event enterEvent(String name, EventRating rating, double price) {
-        Event event = new Event();
-        event.setName(name);
-        event.setRating(rating);
-        event.setBasePrice(price);
+    public Event enterEvent(Event event) {
         return eventService.save(event);
     }
 

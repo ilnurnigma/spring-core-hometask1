@@ -40,7 +40,8 @@ public class AppTest {
 
     @Test
     public void givenEventWhenBoughtShouldBeInPurchasedTickets() {
-        Event event = adminCommand.enterEvent("Game of Thrones 7", EventRating.HIGH, 100);
+        Event event = getEvent("Game of Thrones 7", EventRating.HIGH, 100);
+        event = adminCommand.enterEvent(event);
         adminCommand.addAirDateTime(event, LocalDateTime.now().plusDays(5), "Red");
 
         User user = userCommand.register("John", "Snow", "john_snow@epam.com");
@@ -52,9 +53,18 @@ public class AppTest {
         assertTrue(purchasedTickets.contains(ticket));
     }
 
+    private Event getEvent(String name, EventRating rating, double price) {
+        Event event = ctx.getBean("event", Event.class);
+        event.setName(name);
+        event.setRating(rating);
+        event.setBasePrice(price);
+        return event;
+    }
+
     @Test
     public void givenEventWhenBoughtTwoTicketsShouldBeInPurchasedTickets() {
-        Event event = adminCommand.enterEvent("Game of Thrones 7", EventRating.HIGH, 100);
+        Event event = getEvent("Game of Thrones 7", EventRating.HIGH, 100);
+        event = adminCommand.enterEvent(event);
         adminCommand.addAirDateTime(event, LocalDateTime.now().plusDays(5), "Red");
 
         User user = userCommand.register("John", "Snow", "john_snow@epam.com");
@@ -72,7 +82,8 @@ public class AppTest {
 
     @Test
     public void givenEventUserShouldBeAbleToViewEvents() {
-        Event event = adminCommand.enterEvent("Game of Thrones 7", EventRating.HIGH, 100);
+        Event event = getEvent("Game of Thrones 7", EventRating.HIGH, 100);
+        event = adminCommand.enterEvent(event);
         adminCommand.addAirDateTime(event, LocalDateTime.now().plusDays(5), "Red");
 
         userCommand.register("John", "Snow", "john_snow@epam.com");

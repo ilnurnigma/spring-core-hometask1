@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ua.epam.spring.hometask.config.AppConfig;
 import ua.epam.spring.hometask.dao.UserDAO;
 import ua.epam.spring.hometask.domain.User;
 
@@ -17,8 +18,8 @@ import java.util.TreeSet;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring.xml"})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@ContextConfiguration(classes = AppConfig.class)
 public class UserServiceImplTest {
     @Autowired
     private ApplicationContext ctx;

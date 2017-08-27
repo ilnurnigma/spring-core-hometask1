@@ -1,6 +1,7 @@
 package ua.epam.spring.hometask.service.impl;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +9,16 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ua.epam.spring.hometask.config.AppConfig;
 import ua.epam.spring.hometask.domain.Auditorium;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.EventRating;
 import ua.epam.spring.hometask.domain.Ticket;
-import ua.epam.spring.hometask.service.AuditoriumService;
+import ua.epam.spring.hometask.service.BookingService;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeMap;
 
 import static org.junit.Assert.*;
 
@@ -25,8 +26,8 @@ import static org.junit.Assert.*;
  * Created on 8/21/2017.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring.xml"})
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@ContextConfiguration(classes = AppConfig.class)
 public class BookingServiceImplTest {
 
     @Autowired
@@ -34,11 +35,11 @@ public class BookingServiceImplTest {
 
     private Event event;
     private LocalDateTime dateTime;
-    private BookingServiceImpl service;
+    private BookingService service;
 
     @Before
     public void setUp() throws Exception {
-        service = ctx.getBean("bookingServiceImpl", BookingServiceImpl.class);
+        service = ctx.getBean("bookingServiceImpl", BookingService.class);
 
         event = new Event();
         event.setBasePrice(100);
@@ -53,7 +54,7 @@ public class BookingServiceImplTest {
 
     @Test
     public void givenApplicationContextReturnBeanImplementation() {
-        assertTrue(ctx.getBean("bookingServiceImpl") instanceof BookingServiceImpl);
+        assertTrue(ctx.getBean("bookingServiceImpl") instanceof BookingService);
     }
 
     @Test
