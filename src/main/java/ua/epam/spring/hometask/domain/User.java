@@ -1,9 +1,9 @@
 package ua.epam.spring.hometask.domain;
 
+import sun.reflect.generics.scope.Scope;
+
 import java.time.LocalDate;
-import java.util.NavigableSet;
-import java.util.Objects;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * @author Yuriy_Tkach
@@ -17,6 +17,8 @@ public class User extends DomainObject {
     private String email;
 
     private LocalDate dateOfBirth;
+
+    private List<String> sysMsgs = new ArrayList<>();
 
     private NavigableSet<Ticket> tickets = new TreeSet<>();
 
@@ -109,5 +111,13 @@ public class User extends DomainObject {
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
+    }
+
+    public void addSystemMessage(String msg) {
+        sysMsgs.add(msg);
+    }
+
+    public List<String> getSystemMessages() {
+        return Collections.unmodifiableList(sysMsgs);
     }
 }

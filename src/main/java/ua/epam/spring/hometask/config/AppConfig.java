@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import ua.epam.spring.hometask.AdminCommand;
 import ua.epam.spring.hometask.UserCommand;
-import ua.epam.spring.hometask.aspects.CounterAspect;
-import ua.epam.spring.hometask.aspects.DiscountAspect;
+import ua.epam.spring.hometask.aspects.*;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.service.AuditoriumService;
 import ua.epam.spring.hometask.service.BookingService;
@@ -46,6 +45,18 @@ public class AppConfig {
     @Bean
     public DiscountAspect discountAspect() {
         return new DiscountAspect();
+    }
+
+    @Bean
+    public LuckyWinnerAspect luckyWinnerAspect() {
+        LuckyWinnerAspect luckyWinnerAspect = new LuckyWinnerAspect();
+        luckyWinnerAspect.setLuckChecker(luckChecker());
+        return luckyWinnerAspect;
+    }
+
+    @Bean
+    public LuckChecker luckChecker() {
+        return new DefaultLuckChecker();
     }
 
     @Bean
