@@ -5,9 +5,7 @@ import org.springframework.context.annotation.*;
 import ua.epam.spring.hometask.AdminCommand;
 import ua.epam.spring.hometask.UserCommand;
 import ua.epam.spring.hometask.aspects.CounterAspect;
-import ua.epam.spring.hometask.dao.EventDAO;
-import ua.epam.spring.hometask.dao.TicketDAO;
-import ua.epam.spring.hometask.dao.UserDAO;
+import ua.epam.spring.hometask.aspects.DiscountAspect;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.service.AuditoriumService;
 import ua.epam.spring.hometask.service.BookingService;
@@ -43,6 +41,11 @@ public class AppConfig {
     @Bean
     public CounterAspect counterAspect() {
         return new CounterAspect();
+    }
+
+    @Bean
+    public DiscountAspect discountAspect() {
+        return new DiscountAspect();
     }
 
     @Bean
