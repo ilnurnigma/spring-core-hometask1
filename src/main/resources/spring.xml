@@ -11,9 +11,20 @@
     <import resource="service-beans.xml"/>
     <import resource="discount-service-beans.xml"/>
 
-    <bean id="userDAO" class="ua.epam.spring.hometask.dao.UserDAO"/>
-    <bean id="ticketDAO" class="ua.epam.spring.hometask.dao.TicketDAO"/>
-    <bean id="eventDAO" class="ua.epam.spring.hometask.dao.EventDAO"/>
+    <bean id="userDAO" class="ua.epam.spring.hometask.dao.UserDAO" init-method="init">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+        <property name="tableName" value="t_user"/>
+    </bean>
+
+    <bean id="ticketDAO" class="ua.epam.spring.hometask.dao.TicketDAO" init-method="init">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+        <property name="tableName" value="t_ticket"/>
+    </bean>
+
+    <bean id="eventDAO" class="ua.epam.spring.hometask.dao.EventDAO" init-method="init">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+        <property name="tableName" value="t_event"/>
+    </bean>
 
     <bean id="userCommand" class="ua.epam.spring.hometask.UserCommand">
         <constructor-arg ref="userServiceImpl"/>
@@ -31,6 +42,7 @@
         <property name="locations">
             <list>
                 <value>classpath:auditorium.properties</value>
+                <value>classpath:db.properties</value>
             </list>
         </property>
         <property name="ignoreResourceNotFound" value="true"/>
@@ -38,6 +50,17 @@
             <util:constant
                     static-field="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer.SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
         </property>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
     </bean>
 
 </beans>
