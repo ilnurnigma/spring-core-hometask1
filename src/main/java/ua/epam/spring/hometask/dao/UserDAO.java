@@ -1,14 +1,14 @@
 package ua.epam.spring.hometask.dao;
 
-import org.springframework.jdbc.core.RowMapper;
-import ua.epam.spring.hometask.domain.DomainObject;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import ua.epam.spring.hometask.domain.User;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 public class UserDAO extends DomainObjectDAO<User> {
     public @Nullable
@@ -29,12 +29,15 @@ public class UserDAO extends DomainObjectDAO<User> {
 
         jdbcTemplate.update(sql, object.getId(), "some message",
                 object.getFirstName(), object.getLastName(), object.getEmail());
-        return domainObjects.add(object);
+
+        return true;
     }
 
     @Override
     public boolean remove(User object) {
-        return super.remove(object);
+        String sql = "delete from " + tableName + " where id=?";
+        jdbcTemplate.update(sql, object.getId());
+        return true;
     }
 
     @Override
@@ -54,7 +57,12 @@ public class UserDAO extends DomainObjectDAO<User> {
     @Nonnull
     @Override
     public Collection<User> getAll() {
-        return super.getAll();
+        String sql = "select id, firstName, lastName, email from " + tableName;
+
+        List<User> users = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
+        System.out.println(users);
+
+        return users;
     }
 
     @Override
