@@ -3,6 +3,7 @@ package ua.epam.spring.hometask.dao;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import ua.epam.spring.hometask.domain.DomainObject;
+import ua.epam.spring.hometask.domain.User;
 
 import javax.annotation.Nonnull;
 import java.sql.DatabaseMetaData;
@@ -16,9 +17,10 @@ public abstract class DomainObjectDAO<T extends DomainObject> {
     protected JdbcTemplate jdbcTemplate;
     protected String tableName;
 
-    public boolean save(T object) {
+    public DomainObject save(T object) {
         jdbcTemplate.update("insert into " + tableName + " (id, msg) values (?, ?)", object.getId(), "some message");
-        return domainObjects.add(object);
+        domainObjects.add(object);
+        return object;
     }
 
     public boolean remove(T object) {
@@ -57,17 +59,6 @@ public abstract class DomainObjectDAO<T extends DomainObject> {
         objects.addAll(domainObjects);
 
         return objects;
-    }
-
-    public void init() throws SQLException {
-        if (!isTableExist(tableName)) {
-            jdbcTemplate.execute("create table " + tableName + " (id integer, msg varchar(255))");
-        }
-    }
-
-    protected boolean isTableExist(String tableName) throws SQLException {
-        DatabaseMetaData metaData = jdbcTemplate.getDataSource().getConnection().getMetaData();
-        return metaData.getTables(null, null, tableName.toUpperCase(), null).next();
     }
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {

@@ -25,6 +25,12 @@ public class AuditoriumServiceImpl implements AuditoriumService {
     @Nullable
     @Override
     public Auditorium getByName(@Nonnull String name) {
-        return new Auditorium();
+        for (Auditorium auditorium : auditoriums) {
+            if (name.equals(auditorium.getName())) {
+                return auditorium;
+            }
+        }
+
+        return null;
     }
 }

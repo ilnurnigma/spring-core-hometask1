@@ -1,14 +1,15 @@
 package ua.epam.spring.hometask.dao;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import ua.epam.spring.hometask.domain.User;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Collection;
 
 public class UserDAO extends DomainObjectDAO<User> {
@@ -19,15 +20,26 @@ public class UserDAO extends DomainObjectDAO<User> {
     }
 
     @Override
-    public boolean save(User object) {
+    public User save(User object) {
         String sql = "insert into " + tableName + " " +
                 "(firstName, lastName, email, dateOfBirth) values (?, ?, ?, ?)";
 
         Date dateOfBirth = object.getDateOfBirth() != null ? Date.valueOf(object.getDateOfBirth()) : null;
-        jdbcTemplate.update(sql, object.getFirstName(), object.getLastName(),
-                object.getEmail(), dateOfBirth);
+/*        jdbcTemplate.update(sql, object.getFirstName(), object.getLastName(),
+                object.getEmail(), dateOfBirth);*/
 
-        return true;
+        GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
+        jdbcTemplate.update(connection -> {
+            PreparedStatement statement = connection.prepareStatement(sql, new String[]{"ID"});
+            statement.setString(1, object.getFirstName());
+            statement.setString(2, object.getLastName());
+            statement.setString(3, object.getEmail());
+            statement.setDate(4, dateOfBirth);
+            return statement;
+        }, keyHolder);
+
+        object.setId(keyHolder.getKey().longValue());
+        return object;
     }
 
     @Override

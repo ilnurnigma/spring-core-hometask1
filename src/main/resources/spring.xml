@@ -16,14 +16,19 @@
         <property name="tableName" value="t_user"/>
     </bean>
 
-    <bean id="ticketDAO" class="ua.epam.spring.hometask.dao.TicketDAO" init-method="init">
+    <bean id="ticketDAO" class="ua.epam.spring.hometask.dao.TicketDAO">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
         <property name="tableName" value="t_ticket"/>
+        <property name="userDAO" ref="userDAO"/>
+        <property name="eventDAO" ref="eventDAO"/>
     </bean>
 
-    <bean id="eventDAO" class="ua.epam.spring.hometask.dao.EventDAO" init-method="init">
+    <bean id="eventDAO" class="ua.epam.spring.hometask.dao.EventDAO">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
         <property name="tableName" value="t_event"/>
+        <property name="airdatesTableName" value="t_airdate"/>
+        <property name="auditoriumsTableName" value="t_auditorium"/>
+        <property name="auditoriumService" ref="auditoriumServiceImpl"/>
     </bean>
 
     <bean id="userCommand" class="ua.epam.spring.hometask.UserCommand">

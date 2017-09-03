@@ -41,7 +41,11 @@ public class AppTest {
         userCommand = ctx.getBean("userCommand", UserCommand.class);
 
         JdbcTemplate jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
+        DBTestHelper.createEventDB(jdbcTemplate);
         DBTestHelper.createUserDB(jdbcTemplate);
+        DBTestHelper.createTicketDB(jdbcTemplate);
+        DBTestHelper.createAuditoriumDB(jdbcTemplate);
+        DBTestHelper.createAirdateDB(jdbcTemplate);
 
     }
 
@@ -89,7 +93,8 @@ public class AppTest {
 
         userCommand.register("John", "Snow", "john_snow@epam.com");
         Set<Event> events = userCommand.viewEvents(LocalDate.now(), LocalDate.now().plusDays(10));
-
+        System.out.println(event);
+        System.out.println(events);
         assertTrue(events.contains(event));
     }
 

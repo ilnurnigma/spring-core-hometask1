@@ -98,24 +98,4 @@ public class BookingServiceImplTest {
         assertEquals(120, actualPrice, 0);
     }
 
-    @Test
-    public void bookTickets() throws Exception {
-        HashSet<Ticket> tickets = new HashSet<>();
-        tickets.add(new Ticket(null, event, dateTime, 1L));
-        service.bookTickets(tickets);
-    }
-
-    @Test
-    public void getPurchasedTicketsForEvent() throws Exception {
-        HashSet<Ticket> tickets = new HashSet<>();
-        Ticket ticket = new Ticket(null, event, dateTime, 1L);
-        tickets.add(ticket);
-
-        service.bookTickets(tickets);
-
-        Set<Ticket> purchasedTickets = service.getPurchasedTicketsForEvent(event, dateTime);
-
-        assertTrue(purchasedTickets.contains(ticket));
-    }
-
 }

@@ -34,7 +34,9 @@ public class AdminCommand {
     }
 
     public boolean addAirDateTime(Event event, LocalDateTime dateTime, String auditoriumName) {
-        return event.addAirDateTime(dateTime, auditoriumService.getByName(auditoriumName));
+        event.addAirDateTime(dateTime, auditoriumService.getByName(auditoriumName));
+        eventService.save(event);
+        return true;
     }
 
     public Set<Ticket> viewPurchasedTickets(@Nonnull Event event, @Nonnull LocalDateTime dateTime) {
