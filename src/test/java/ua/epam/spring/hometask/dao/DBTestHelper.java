@@ -13,7 +13,8 @@ public class DBTestHelper {
                 "msg varchar(255), " +
                 "firstName varchar(50), " +
                 "lastName varchar(50), " +
-                "email varchar(50))";
+                "email varchar(50), "+
+                "dateOfBirth date)";
 
         jdbcTemplate.execute(sql);
     }

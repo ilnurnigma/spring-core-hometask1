@@ -5,30 +5,27 @@ import ua.epam.spring.hometask.domain.User;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Collection;
-import java.util.List;
 
 public class UserDAO extends DomainObjectDAO<User> {
     public @Nullable
     User getUserByEmail(@Nonnull String email) {
-        String sql = "select id, firstName, lastName, email from " + tableName + " where email=?";
-
-        return jdbcTemplate.queryForObject(sql, (resultSet, rowNumber) -> {
-            User user = new User();
-            user.setId(resultSet.getLong("id"));
-            user.setFirstName(resultSet.getString("firstName"));
-            user.setLastName(resultSet.getString("lastName"));
-            user.setEmail(resultSet.getString("email"));
-            return user;
-        }, email);
+        String sql = "select id, firstName, lastName, email, dateOfBirth from " + tableName + " where email=?";
+        return jdbcTemplate.queryForObject(sql, (resultSet, rowNumber) -> getUser(resultSet), email);
     }
 
     @Override
     public boolean save(User object) {
         String sql = "insert into " + tableName + " " +
-                "(firstName, lastName, email) values (?, ?, ?)";
+                "(firstName, lastName, email, dateOfBirth) values (?, ?, ?, ?)";
 
-        jdbcTemplate.update(sql, object.getFirstName(), object.getLastName(), object.getEmail());
+        Date dateOfBirth = object.getDateOfBirth() != null ? Date.valueOf(object.getDateOfBirth()) : null;
+        jdbcTemplate.update(sql, object.getFirstName(), object.getLastName(),
+                object.getEmail(), dateOfBirth);
 
         return true;
     }
@@ -42,22 +39,25 @@ public class UserDAO extends DomainObjectDAO<User> {
 
     @Override
     public User getById(@Nonnull Long id) {
-        String sql = "select id, firstName, lastName, email from " + tableName + " where id=?";
+        String sql = "select id, firstName, lastName, email, dateOfBirth from " + tableName + " where id=?";
+        return jdbcTemplate.queryForObject(sql, (resultSet, rowNumber) -> getUser(resultSet), id);
+    }
 
-        return jdbcTemplate.queryForObject(sql, (resultSet, rowNumber) -> {
-            User user = new User();
-            user.setId(resultSet.getLong("id"));
-            user.setFirstName(resultSet.getString("firstName"));
-            user.setLastName(resultSet.getString("lastName"));
-            user.setEmail(resultSet.getString("email"));
-            return user;
-        }, id);
+    private User getUser(ResultSet resultSet) throws SQLException {
+        User user = new User();
+        user.setId(resultSet.getLong("id"));
+        user.setFirstName(resultSet.getString("firstName"));
+        user.setLastName(resultSet.getString("lastName"));
+        user.setEmail(resultSet.getString("email"));
+        Date dateOfBirth = resultSet.getDate("dateOfBirth");
+        user.setDateOfBirth(dateOfBirth != null ? dateOfBirth.toLocalDate() : null);
+        return user;
     }
 
     @Nonnull
     @Override
     public Collection<User> getAll() {
-        String sql = "select id, firstName, lastName, email from " + tableName;
+        String sql = "select id, firstName, lastName, email, dateOfBirth from " + tableName;
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
     }
 

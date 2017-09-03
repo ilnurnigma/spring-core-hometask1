@@ -10,6 +10,7 @@ import ua.epam.spring.hometask.domain.User;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -84,6 +85,19 @@ public class UserDAOTest {
         User userByEmail = userDAO.getUserByEmail(email);
 
         assertEquals(expectedUser, userByEmail);
+    }
+
+    @Test
+    public void saveUserBirthday() {
+        assumeTrue("Table should be empty before each test", userDAO.getAll().isEmpty());
+
+        User savedUser = new User();
+        LocalDate date = LocalDate.now();
+        savedUser.setDateOfBirth(date);
+        userDAO.save(savedUser);
+        savedUser = userDAO.getAll().iterator().next();
+
+        assertEquals(savedUser.getDateOfBirth(), savedUser.getDateOfBirth());
     }
 
 }
