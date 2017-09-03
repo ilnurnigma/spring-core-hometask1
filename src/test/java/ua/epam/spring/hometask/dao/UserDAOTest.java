@@ -11,6 +11,7 @@ import ua.epam.spring.hometask.domain.User;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.*;
 
@@ -27,27 +28,12 @@ public class UserDAOTest {
         userDAO.setJdbcTemplate(new JdbcTemplate(dataSource));
         userDAO.setTableName("t_user");
 
-        if (!userDAO.isTableExist(userDAO.tableName)) {
-            String sql = "create table " + userDAO.tableName + " " +
-                    "(id integer, " +
-                    "msg varchar(255), " +
-                    "firstName varchar(50), " +
-                    "lastName varchar(50), " +
-                    "email varchar(50))";
-
-            userDAO.jdbcTemplate.execute(sql);
-        }
+        DBTestHelper.createUserDB(userDAO.jdbcTemplate);
     }
 
     @After
     public void tearDown() throws Exception {
-        try {
-            DriverManager.getConnection("jdbc:derby:memory:db;drop=true");
-        } catch (SQLException e) {
-            if (!"08006".equals(e.getSQLState())) {
-                throw e;
-            }
-        }
+        DBTestHelper.dropDB();
     }
 
 
@@ -61,17 +47,43 @@ public class UserDAOTest {
     }
 
     @Test
-    public void remove() throws Exception {
+    public void remove() {
         assumeTrue("Table should be empty before each test", userDAO.getAll().isEmpty());
 
         User user = new User();
-        user.setId(1L);
         userDAO.save(user);
+        user = userDAO.getAll().iterator().next();
 
         userDAO.remove(user);
 
         assertTrue("Table should not contain removed user", !userDAO.getAll().contains(user));
     }
 
+    @Test
+    public void getById() {
+        assumeTrue("Table should be empty before each test", userDAO.getAll().isEmpty());
+
+        User user = new User();
+        userDAO.save(user);
+        user = userDAO.getAll().iterator().next();
+
+        User userById = userDAO.getById(1L);
+
+        assertEquals(user, userById);
+    }
+
+    @Test
+    public void getUserByEmail() {
+        assumeTrue("Table should be empty before each test", userDAO.getAll().isEmpty());
+
+        User expectedUser = new User();
+        String email = "john_snow@epam.com";
+        expectedUser.setEmail(email);
+        userDAO.save(expectedUser);
+
+        User userByEmail = userDAO.getUserByEmail(email);
+
+        assertEquals(expectedUser, userByEmail);
+    }
 
 }

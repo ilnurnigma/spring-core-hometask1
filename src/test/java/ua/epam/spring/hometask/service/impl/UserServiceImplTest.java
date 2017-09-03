@@ -1,17 +1,20 @@
 package ua.epam.spring.hometask.service.impl;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import ua.epam.spring.hometask.dao.UserDAO;
+import ua.epam.spring.hometask.dao.DBTestHelper;
 import ua.epam.spring.hometask.domain.User;
 
-import java.util.Collection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.TreeSet;
 
 import static org.junit.Assert.*;
@@ -44,6 +47,14 @@ public class UserServiceImplTest {
         user.setEmail("daenerys_targaryen@epam.com");
         user.setId(1L);
         user.setTickets(new TreeSet<>());
+
+        JdbcTemplate jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
+        DBTestHelper.createUserDB(jdbcTemplate);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+       DBTestHelper.dropDB();
     }
 
     @Test

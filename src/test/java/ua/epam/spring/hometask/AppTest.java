@@ -1,15 +1,19 @@
 package ua.epam.spring.hometask;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ua.epam.spring.hometask.dao.DBTestHelper;
 import ua.epam.spring.hometask.domain.*;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -32,9 +36,18 @@ public class AppTest {
     private AdminCommand adminCommand;
 
     @Before
-    public void setUp() {
+    public void setUp() throws SQLException {
         adminCommand = ctx.getBean("adminCommand", AdminCommand.class);
         userCommand = ctx.getBean("userCommand", UserCommand.class);
+
+        JdbcTemplate jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
+        DBTestHelper.createUserDB(jdbcTemplate);
+
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        DBTestHelper.dropDB();
     }
 
     @Test

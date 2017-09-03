@@ -11,7 +11,7 @@
     <import resource="service-beans.xml"/>
     <import resource="discount-service-beans.xml"/>
 
-    <bean id="userDAO" class="ua.epam.spring.hometask.dao.UserDAO" init-method="init">
+    <bean id="userDAO" class="ua.epam.spring.hometask.dao.UserDAO">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
         <property name="tableName" value="t_user"/>
     </bean>
