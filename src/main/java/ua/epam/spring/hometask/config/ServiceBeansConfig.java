@@ -88,6 +88,7 @@ public class ServiceBeansConfig {
     public EventCounterDAO eventCounterDAO() {
         EventCounterDAO eventCounterDAO = new EventCounterDAO();
         eventCounterDAO.setJdbcTemplate(jdbcTemplate());
+        eventCounterDAO.setTableName("t_event_counter");
         return eventCounterDAO;
     }
 

@@ -71,12 +71,12 @@ public class DBTestHelper {
                 "(id int not null primary key generated always as identity (start with 1, increment by 1)";
         StringBuilder sb = new StringBuilder(sql);
         sb.append(", nameAccessCounter int");
+        sb.append(", priceAccessCounter int");
+        sb.append(", bookTicketCounter int");
+        sb.append(", eventId int");
         sb.append(")");
 
         jdbcTemplate.execute(sb.toString());
-
-        jdbcTemplate.update("insert into t_event_counter (nameAccessCounter) values (?)", 0);
-
     }
 
     public static void dropDB() throws SQLException {

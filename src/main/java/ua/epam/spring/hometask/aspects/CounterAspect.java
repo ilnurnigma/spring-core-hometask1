@@ -4,6 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
+import ua.epam.spring.hometask.dao.EventCounterDAO;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.Ticket;
 
@@ -13,31 +14,18 @@ import java.util.Set;
 
 @Aspect
 public class CounterAspect {
-    private Map<Event, EventCounter> counters = new HashMap<>();
+    private EventCounterDAO eventCounterDAO;
 
     @AfterReturning(pointcut = "execution(* ua.epam.spring.hometask.dao.EventDAO.getByName(..))",
             returning = "event")
     private void afterEventDAOGetByName(Event event) {
-        EventCounter counter = counters.get(event);
-        if (counter == null) {
-            counter = new EventCounter();
-        }
-
-        counter.addNameAccessCounter();
-        counters.put(event, counter);
+        eventCounterDAO.addNameAccessCounter(event);
     }
 
     @After("execution(* ua.epam.spring.hometask.domain.Event.getBasePrice())")
     private void afterEventGetBasePrice(JoinPoint joinPoint) {
         Event event = (Event) joinPoint.getTarget();
-
-        EventCounter counter = counters.get(event);
-        if (counter == null) {
-            counter = new EventCounter();
-        }
-
-        counter.addPriceAccessCounter();
-        counters.put(event, counter);
+        eventCounterDAO.addPriceAccesCounter(event);
     }
 
     @After("execution(* ua.epam.spring.hometask.service.impl.BookingServiceImpl.bookTickets(..)) && args(tickets)")
@@ -54,24 +42,22 @@ public class CounterAspect {
 
     private void addBookTicketCounter(Ticket ticket) {
         Event event = ticket.getEvent();
-        EventCounter counter = counters.get(event);
-        if (counter == null) {
-            counter = new EventCounter();
-        }
-
-        counter.addBookTicketCounter();
-        counters.put(event, counter);
+        eventCounterDAO.addBookTicketCounter(event);
     }
 
     public long getNameAccessCounter(Event event) {
-        return counters.get(event).getNameAccessCounter();
+        return eventCounterDAO.getNameAccessCounter(event);
     }
 
     public long getPriceAccessCounter(Event event) {
-        return counters.get(event).getPriceAccesCounter();
+        return eventCounterDAO.getPriceAccesCounter(event);
     }
 
     public long getBookTicketCounter(Event event) {
-        return counters.get(event).getBookTicketCounter();
+        return eventCounterDAO.getBookTicketCounter(event);
+    }
+
+    public void setEventCounterDAO(EventCounterDAO eventCounterDAO) {
+        this.eventCounterDAO = eventCounterDAO;
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ua.epam.spring.hometask.AdminCommand;
 import ua.epam.spring.hometask.UserCommand;
 import ua.epam.spring.hometask.aspects.*;
+import ua.epam.spring.hometask.dao.EventCounterDAO;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.service.AuditoriumService;
 import ua.epam.spring.hometask.service.BookingService;
@@ -30,6 +31,8 @@ public class AppConfig {
     @Autowired
     private AuditoriumService auditoriumService;
 
+    @Autowired
+    private EventCounterDAO eventCounterDAO;
 
 
     @Bean
@@ -44,7 +47,9 @@ public class AppConfig {
 
     @Bean
     public CounterAspect counterAspect() {
-        return new CounterAspect();
+        CounterAspect aspect = new CounterAspect();
+        aspect.setEventCounterDAO(eventCounterDAO);
+        return aspect;
     }
 
     @Bean
