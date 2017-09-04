@@ -9,10 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import ua.epam.spring.hometask.dao.EventCounterDAO;
-import ua.epam.spring.hometask.dao.EventDAO;
-import ua.epam.spring.hometask.dao.TicketDAO;
-import ua.epam.spring.hometask.dao.UserDAO;
+import ua.epam.spring.hometask.dao.*;
 import ua.epam.spring.hometask.domain.Auditorium;
 import ua.epam.spring.hometask.service.*;
 import ua.epam.spring.hometask.service.impl.AuditoriumServiceImpl;
@@ -90,6 +87,14 @@ public class ServiceBeansConfig {
         eventCounterDAO.setJdbcTemplate(jdbcTemplate());
         eventCounterDAO.setTableName("t_event_counter");
         return eventCounterDAO;
+    }
+
+    @Bean
+    public DiscountCounterDAO discountCounterDAO() {
+        DiscountCounterDAO discountCounterDAO = new DiscountCounterDAO();
+        discountCounterDAO.setJdbcTemplate(jdbcTemplate());
+        discountCounterDAO.setTableName("t_discount_counter");
+        return discountCounterDAO;
     }
 
     @Bean

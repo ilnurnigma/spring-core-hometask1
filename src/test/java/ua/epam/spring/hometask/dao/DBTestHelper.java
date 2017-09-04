@@ -79,6 +79,18 @@ public class DBTestHelper {
         jdbcTemplate.execute(sb.toString());
     }
 
+    public static void createDiscountCounterDB(JdbcTemplate jdbcTemplate) throws SQLException {
+        String sql = "create table t_discount_counter " +
+                "(id int not null primary key generated always as identity (start with 1, increment by 1)";
+        StringBuilder sb = new StringBuilder(sql);
+        sb.append(", discountCounter int");
+        sb.append(", userId varchar(100)");
+        sb.append(", strategy varchar(255)");
+        sb.append(")");
+
+        jdbcTemplate.execute(sb.toString());
+    }
+
     public static void dropDB() throws SQLException {
         try {
             DriverManager.getConnection("jdbc:derby:memory:db;drop=true");

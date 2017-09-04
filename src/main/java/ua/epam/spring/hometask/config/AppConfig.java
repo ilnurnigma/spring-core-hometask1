@@ -8,6 +8,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ua.epam.spring.hometask.AdminCommand;
 import ua.epam.spring.hometask.UserCommand;
 import ua.epam.spring.hometask.aspects.*;
+import ua.epam.spring.hometask.dao.DiscountCounterDAO;
 import ua.epam.spring.hometask.dao.EventCounterDAO;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.service.AuditoriumService;
@@ -34,6 +35,9 @@ public class AppConfig {
     @Autowired
     private EventCounterDAO eventCounterDAO;
 
+    @Autowired
+    private DiscountCounterDAO discountCounterDAO;
+
 
     @Bean
     public UserCommand userCommand() {
@@ -54,7 +58,9 @@ public class AppConfig {
 
     @Bean
     public DiscountAspect discountAspect() {
-        return new DiscountAspect();
+        DiscountAspect aspect = new DiscountAspect();
+        aspect.setDiscountCounterDAO(discountCounterDAO);
+        return aspect;
     }
 
     @Bean
