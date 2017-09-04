@@ -68,7 +68,7 @@ public class DiscountAspectTest {
     public void givenEvery10thTicketDiscountStrategyWithOneTicketShouldReturnZero() {
         every10thDiscountStrategy.getDiscount(null, new Event(), LocalDateTime.now(), 1);
 
-        assertEquals(0, discountAspect.getTotalDiscountCounter(Every10thTicketDiscountStrategy.class));
+        assertEquals(1, discountAspect.getTotalDiscountCounter(Every10thTicketDiscountStrategy.class));
     }
 
     @Test
