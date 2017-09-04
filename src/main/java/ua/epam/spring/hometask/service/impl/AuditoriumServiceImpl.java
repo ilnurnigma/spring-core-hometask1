@@ -5,7 +5,6 @@ import ua.epam.spring.hometask.service.AuditoriumService;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.HashSet;
 import java.util.Set;
 
 public class AuditoriumServiceImpl implements AuditoriumService {
@@ -25,6 +24,12 @@ public class AuditoriumServiceImpl implements AuditoriumService {
     @Nullable
     @Override
     public Auditorium getByName(@Nonnull String name) {
-        return new Auditorium();
+        for (Auditorium auditorium : auditoriums) {
+            if (name.equals(auditorium.getName())) {
+                return auditorium;
+            }
+        }
+
+        return null;
     }
 }

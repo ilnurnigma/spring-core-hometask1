@@ -68,17 +68,31 @@ public class ServiceBeansConfig {
 
     @Bean
     public UserDAO userDAO() {
-        return new UserDAO();
+        UserDAO dao = new UserDAO();
+        dao.setJdbcTemplate(jdbcTemplate());
+        dao.setTableName("t_user");
+        return dao;
     }
 
     @Bean
     public TicketDAO ticketDAO() {
-        return new TicketDAO();
+        TicketDAO dao = new TicketDAO();
+        dao.setJdbcTemplate(jdbcTemplate());
+        dao.setTableName("t_ticket");
+        dao.setEventDAO(eventDAO());
+        dao.setUserDAO(userDAO());
+        return dao;
     }
 
     @Bean
     public EventDAO eventDAO() {
-        return new EventDAO();
+        EventDAO dao = new EventDAO();
+        dao.setJdbcTemplate(jdbcTemplate());
+        dao.setTableName("t_event");
+        dao.setAirdatesTableName("t_airdate");
+        dao.setAuditoriumsTableName("t_auditorium");
+        dao.setAuditoriumService(auditoriumServiceImpl());
+        return dao;
     }
 
     @Bean
@@ -130,15 +144,15 @@ public class ServiceBeansConfig {
         auditoriums.add(auditorium1);
 
         Auditorium auditorium2 = new Auditorium();
-        auditorium1.setName(auditorium2Name);
-        auditorium1.setNumberOfSeats(auditorium2NumberOfSeats);
-        auditorium1.setVipSeats(auditorium2VipSeats);
+        auditorium2.setName(auditorium2Name);
+        auditorium2.setNumberOfSeats(auditorium2NumberOfSeats);
+        auditorium2.setVipSeats(auditorium2VipSeats);
         auditoriums.add(auditorium2);
 
         Auditorium auditorium3 = new Auditorium();
-        auditorium1.setName(auditorium3Name);
-        auditorium1.setNumberOfSeats(auditorium3NumberOfSeats);
-        auditorium1.setVipSeats(auditorium3VipSeats);
+        auditorium3.setName(auditorium3Name);
+        auditorium3.setNumberOfSeats(auditorium3NumberOfSeats);
+        auditorium3.setVipSeats(auditorium3VipSeats);
         auditoriums.add(auditorium3);
 
         return new AuditoriumServiceImpl(auditoriums);

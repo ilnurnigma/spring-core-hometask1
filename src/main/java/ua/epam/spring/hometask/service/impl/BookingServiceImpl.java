@@ -61,7 +61,8 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public boolean bookTicket(@Nonnull Ticket ticket) {
-        return ticketDAO.save(ticket);
+        ticketDAO.save(ticket);
+        return true;
     }
 
     @Nonnull

@@ -19,11 +19,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(@Nonnull User object) {
-        if (userDAO.save(object)) {
-            return object;
-        }
-
-        return null;
+        return userDAO.save(object);
     }
 
     @Override

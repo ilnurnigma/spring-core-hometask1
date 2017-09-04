@@ -100,4 +100,14 @@ public class DBTestHelper {
             }
         }
     }
+
+    public static void createDB(JdbcTemplate jdbcTemplate) throws SQLException {
+        createEventDB(jdbcTemplate);
+        createUserDB(jdbcTemplate);
+        createTicketDB(jdbcTemplate);
+        createAirdateDB(jdbcTemplate);
+        createEventCounterDB(jdbcTemplate);
+        createAuditoriumDB(jdbcTemplate);
+        createDiscountCounterDB(jdbcTemplate);
+    }
 }

@@ -44,8 +44,8 @@ public class CounterAspectTest {
         dataSource.setDriverClassName(EmbeddedDriver.class.getName());
         dataSource.setUrl("jdbc:derby:memory:db;create=true");
 
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        DBTestHelper.createEventCounterDB(jdbcTemplate);
+        JdbcTemplate jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
+        DBTestHelper.createDB(jdbcTemplate);
 
         EventCounterDAO eventCounterDAO = new EventCounterDAO();
         eventCounterDAO.setJdbcTemplate(jdbcTemplate);
@@ -62,7 +62,6 @@ public class CounterAspectTest {
     @Test
     public void givenOneAccessToEventNameReturnOne() {
         Event event = new Event();
-        event.setId(1L);
         event.setName("event1");
         eventDAO.save(event);
 
@@ -74,7 +73,6 @@ public class CounterAspectTest {
     @Test
     public void givenTwoTimesAccessToEventNameReturnTwo() {
         Event event = new Event();
-        event.setId(1L);
         event.setName("event1");
         eventDAO.save(event);
 
@@ -87,17 +85,14 @@ public class CounterAspectTest {
     @Test
     public void givenTwoTimesAccessToTwoEventNamesReturnTwoEach() {
         Event event = new Event();
-
-        event.setId(1L);
         event.setName("event1");
-        eventDAO.save(event);
+        event = eventDAO.save(event);
         eventDAO.getByName("event1");
         eventDAO.getByName("event1");
 
         Event event2 = new Event();
-        event2.setId(2L);
         event2.setName("event2");
-        eventDAO.save(event2);
+        event2 = eventDAO.save(event2);
         eventDAO.getByName("event2");
         eventDAO.getByName("event2");
 
@@ -141,7 +136,7 @@ public class CounterAspectTest {
 
         Event event1 = new Event();
         event1.setName("event1");
-        event1.setId(1L);
+        eventDAO.save(event1);
 
         HashSet<Ticket> tickets = new HashSet<>();
         tickets.add(new Ticket(null, event1, LocalDateTime.now(), 1));
@@ -157,7 +152,7 @@ public class CounterAspectTest {
 
         Event event1 = new Event();
         event1.setName("event1");
-        event1.setId(1L);
+        eventDAO.save(event1);
 
         HashSet<Ticket> tickets = new HashSet<>();
         tickets.add(new Ticket(null, event1, LocalDateTime.now(), 1));
@@ -174,7 +169,7 @@ public class CounterAspectTest {
 
         Event event1 = new Event();
         event1.setName("event1");
-        event1.setId(1L);
+        eventDAO.save(event1);
 
         Ticket ticket = new Ticket(null, event1, LocalDateTime.now(), 1);
 
@@ -189,7 +184,7 @@ public class CounterAspectTest {
 
         Event event1 = new Event();
         event1.setName("event1");
-        event1.setId(1L);
+        eventDAO.save(event1);
 
         Ticket ticket = new Ticket(null, event1, LocalDateTime.now(), 1);
         Ticket ticket2 = new Ticket(null, event1, LocalDateTime.now(), 2);
