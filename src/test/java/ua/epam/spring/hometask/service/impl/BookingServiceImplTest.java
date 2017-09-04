@@ -1,19 +1,24 @@
 package ua.epam.spring.hometask.service.impl;
 
+import org.apache.derby.jdbc.EmbeddedDriver;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.epam.spring.hometask.config.AppConfig;
-import ua.epam.spring.hometask.domain.Auditorium;
-import ua.epam.spring.hometask.domain.Event;
-import ua.epam.spring.hometask.domain.EventRating;
-import ua.epam.spring.hometask.domain.Ticket;
+import ua.epam.spring.hometask.dao.DBTestHelper;
+import ua.epam.spring.hometask.dao.EventDAO;
+import ua.epam.spring.hometask.dao.UserDAO;
+import ua.epam.spring.hometask.domain.*;
+import ua.epam.spring.hometask.service.AuditoriumService;
 import ua.epam.spring.hometask.service.BookingService;
 
 import java.time.LocalDateTime;
@@ -36,10 +41,16 @@ public class BookingServiceImplTest {
     private Event event;
     private LocalDateTime dateTime;
     private BookingService service;
+    private EventDAO eventDAO;
+    private UserDAO userDAO;
+    private AuditoriumService auditoriumService;
 
     @Before
     public void setUp() throws Exception {
         service = ctx.getBean("bookingServiceImpl", BookingService.class);
+        eventDAO = ctx.getBean("eventDAO", EventDAO.class);
+        userDAO = ctx.getBean("userDAO", UserDAO.class);
+        auditoriumService = ctx.getBean("auditoriumServiceImpl", AuditoriumService.class);
 
         event = new Event();
         event.setBasePrice(100);
@@ -50,6 +61,18 @@ public class BookingServiceImplTest {
         vipSeats.add(5L);
         auditorium.setVipSeats(vipSeats);
         event.addAirDateTime(dateTime, auditorium);
+
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(EmbeddedDriver.class.getName());
+        dataSource.setUrl("jdbc:derby:memory:db;create=true");
+
+        JdbcTemplate jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
+        DBTestHelper.createDB(jdbcTemplate);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        DBTestHelper.dropDB();
     }
 
     @Test
@@ -72,8 +95,10 @@ public class BookingServiceImplTest {
         HashSet<Long> seats = new HashSet<>();
         seats.add(1L);
         seats.add(2L);
+        event.assignAuditorium(dateTime, auditoriumService.getByName("Red"));
+        event = eventDAO.save(event);
 
-        double actualPrice = service.getTicketsPrice(event, LocalDateTime.now(), null, seats);
+        double actualPrice = service.getTicketsPrice(event, dateTime, null, seats);
 
         assertEquals(200, actualPrice, 0);
     }
@@ -102,6 +127,7 @@ public class BookingServiceImplTest {
     @Test
     public void bookTickets() throws Exception {
         HashSet<Ticket> tickets = new HashSet<>();
+        eventDAO.save(event);
         tickets.add(new Ticket(null, event, dateTime, 1L));
         service.bookTickets(tickets);
     }
@@ -109,7 +135,11 @@ public class BookingServiceImplTest {
     @Test
     public void getPurchasedTicketsForEvent() throws Exception {
         HashSet<Ticket> tickets = new HashSet<>();
-        Ticket ticket = new Ticket(null, event, dateTime, 1L);
+        event.assignAuditorium(dateTime, auditoriumService.getByName("Red"));
+        event = eventDAO.save(event);
+        User user = new User();
+        user = userDAO.save(user);
+        Ticket ticket = new Ticket(user, event, dateTime, 1L);
         tickets.add(ticket);
 
         service.bookTickets(tickets);

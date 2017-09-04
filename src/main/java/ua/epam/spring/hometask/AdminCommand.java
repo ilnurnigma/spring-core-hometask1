@@ -25,12 +25,18 @@ public class AdminCommand {
         this.auditoriumService = auditoriumService;
     }
 
-    public Event enterEvent(Event event) {
+    public Event enterEvent(String name, EventRating rating, double price) {
+        Event event = new Event();
+        event.setName(name);
+        event.setRating(rating);
+        event.setBasePrice(price);
         return eventService.save(event);
     }
 
     public boolean addAirDateTime(Event event, LocalDateTime dateTime, String auditoriumName) {
-        return event.addAirDateTime(dateTime, auditoriumService.getByName(auditoriumName));
+        event.addAirDateTime(dateTime, auditoriumService.getByName(auditoriumName));
+        eventService.save(event);
+        return true;
     }
 
     public Set<Ticket> viewPurchasedTickets(@Nonnull Event event, @Nonnull LocalDateTime dateTime) {

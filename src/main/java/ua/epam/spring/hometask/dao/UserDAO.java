@@ -25,8 +25,6 @@ public class UserDAO extends DomainObjectDAO<User> {
                 "(firstName, lastName, email, dateOfBirth) values (?, ?, ?, ?)";
 
         Date dateOfBirth = object.getDateOfBirth() != null ? Date.valueOf(object.getDateOfBirth()) : null;
-/*        jdbcTemplate.update(sql, object.getFirstName(), object.getLastName(),
-                object.getEmail(), dateOfBirth);*/
 
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {

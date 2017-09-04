@@ -120,4 +120,8 @@ public class User extends DomainObject {
     public List<String> getSystemMessages() {
         return Collections.unmodifiableList(sysMsgs);
     }
+
+    public void setSysMsgs(List<String> sysMsgs) {
+        this.sysMsgs = sysMsgs;
+    }
 }

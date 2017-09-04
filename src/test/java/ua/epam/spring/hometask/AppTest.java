@@ -1,22 +1,28 @@
 package ua.epam.spring.hometask;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.epam.spring.hometask.config.AppConfig;
-import ua.epam.spring.hometask.domain.*;
+import ua.epam.spring.hometask.dao.DBTestHelper;
+import ua.epam.spring.hometask.domain.Event;
+import ua.epam.spring.hometask.domain.EventRating;
+import ua.epam.spring.hometask.domain.Ticket;
+import ua.epam.spring.hometask.domain.User;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -33,15 +39,22 @@ public class AppTest {
     private AdminCommand adminCommand;
 
     @Before
-    public void setUp() {
+    public void setUp() throws SQLException {
         adminCommand = ctx.getBean("adminCommand", AdminCommand.class);
         userCommand = ctx.getBean("userCommand", UserCommand.class);
+
+        JdbcTemplate jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
+        DBTestHelper.createDB(jdbcTemplate);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        DBTestHelper.dropDB();
     }
 
     @Test
     public void givenEventWhenBoughtShouldBeInPurchasedTickets() {
-        Event event = getEvent("Game of Thrones 7", EventRating.HIGH, 100);
-        event = adminCommand.enterEvent(event);
+        Event event = adminCommand.enterEvent("Game of Thrones 7", EventRating.HIGH, 100);
         adminCommand.addAirDateTime(event, LocalDateTime.now().plusDays(5), "Red");
 
         User user = userCommand.register("John", "Snow", "john_snow@epam.com");
@@ -53,18 +66,9 @@ public class AppTest {
         assertTrue(purchasedTickets.contains(ticket));
     }
 
-    private Event getEvent(String name, EventRating rating, double price) {
-        Event event = ctx.getBean("event", Event.class);
-        event.setName(name);
-        event.setRating(rating);
-        event.setBasePrice(price);
-        return event;
-    }
-
     @Test
     public void givenEventWhenBoughtTwoTicketsShouldBeInPurchasedTickets() {
-        Event event = getEvent("Game of Thrones 7", EventRating.HIGH, 100);
-        event = adminCommand.enterEvent(event);
+        Event event = adminCommand.enterEvent("Game of Thrones 7", EventRating.HIGH, 100);
         adminCommand.addAirDateTime(event, LocalDateTime.now().plusDays(5), "Red");
 
         User user = userCommand.register("John", "Snow", "john_snow@epam.com");
@@ -82,13 +86,13 @@ public class AppTest {
 
     @Test
     public void givenEventUserShouldBeAbleToViewEvents() {
-        Event event = getEvent("Game of Thrones 7", EventRating.HIGH, 100);
-        event = adminCommand.enterEvent(event);
+        Event event = adminCommand.enterEvent("Game of Thrones 7", EventRating.HIGH, 100);
         adminCommand.addAirDateTime(event, LocalDateTime.now().plusDays(5), "Red");
 
         userCommand.register("John", "Snow", "john_snow@epam.com");
         Set<Event> events = userCommand.viewEvents(LocalDate.now(), LocalDate.now().plusDays(10));
-
+        System.out.println(event);
+        System.out.println(events);
         assertTrue(events.contains(event));
     }
 
