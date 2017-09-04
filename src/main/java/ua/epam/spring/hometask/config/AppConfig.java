@@ -1,7 +1,10 @@
 package ua.epam.spring.hometask.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ua.epam.spring.hometask.AdminCommand;
 import ua.epam.spring.hometask.UserCommand;
 import ua.epam.spring.hometask.aspects.*;
@@ -26,6 +29,8 @@ public class AppConfig {
 
     @Autowired
     private AuditoriumService auditoriumService;
+
+
 
     @Bean
     public UserCommand userCommand() {
@@ -64,4 +69,6 @@ public class AppConfig {
     public Event event() {
         return new Event();
     }
+
+
 }

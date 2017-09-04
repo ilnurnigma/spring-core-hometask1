@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import ua.epam.spring.hometask.dao.EventCounterDAO;
 import ua.epam.spring.hometask.dao.EventDAO;
 import ua.epam.spring.hometask.dao.TicketDAO;
 import ua.epam.spring.hometask.dao.UserDAO;
@@ -18,12 +21,11 @@ import ua.epam.spring.hometask.service.impl.EventServiceImpl;
 import ua.epam.spring.hometask.service.impl.UserServiceImpl;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Configuration
 @Import(DiscountServiceBeansConfig.class)
-@PropertySource("classpath:auditorium.properties")
+@PropertySource({"classpath:auditorium.properties", "classpath:db.properties"})
 public class ServiceBeansConfig {
     @Autowired
     DiscountService discountService;
@@ -55,6 +57,18 @@ public class ServiceBeansConfig {
     @Value("#{'${a3.vipSeats}'.split(',')}")
     private Set<Long> auditorium3VipSeats;
 
+    @Value("${jdbc.driverClassName}")
+    private String driverClassName;
+
+    @Value("${jdbc.url}")
+    private String url;
+
+    @Value("${jdbc.username}")
+    private String username;
+
+    @Value("${jdbc.password}")
+    private String password;
+
     @Bean
     public UserDAO userDAO() {
         return new UserDAO();
@@ -68,6 +82,13 @@ public class ServiceBeansConfig {
     @Bean
     public EventDAO eventDAO() {
         return new EventDAO();
+    }
+
+    @Bean
+    public EventCounterDAO eventCounterDAO() {
+        EventCounterDAO eventCounterDAO = new EventCounterDAO();
+        eventCounterDAO.setJdbcTemplate(jdbcTemplate());
+        return eventCounterDAO;
     }
 
     @Bean
@@ -120,5 +141,20 @@ public class ServiceBeansConfig {
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
         return new PropertySourcesPlaceholderConfigurer();
+    }
+
+    @Bean
+    public JdbcTemplate jdbcTemplate() {
+        return new JdbcTemplate(dataSource());
+    }
+
+    @Bean
+    public DriverManagerDataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(driverClassName);
+        dataSource.setUrl(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+        return dataSource;
     }
 }
