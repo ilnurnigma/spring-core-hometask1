@@ -17,6 +17,7 @@ import ua.epam.spring.hometask.domain.Auditorium;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.EventRating;
 import ua.epam.spring.hometask.service.AuditoriumService;
+import ua.epam.spring.hometask.util.DBCreator;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -49,14 +50,14 @@ public class EventDAOTest {
         eventDAO.setAuditoriumsTableName("t_auditorium");
         eventDAO.setAuditoriumService(ctx.getBean("auditoriumServiceImpl", AuditoriumService.class));
 
-        DBTestHelper.createEventDB(eventDAO.jdbcTemplate);
-        DBTestHelper.createAirdateDB(eventDAO.jdbcTemplate);
-        DBTestHelper.createAuditoriumDB(eventDAO.jdbcTemplate);
+        DBCreator.createEventDB(eventDAO.jdbcTemplate);
+        DBCreator.createAirdateDB(eventDAO.jdbcTemplate);
+        DBCreator.createAuditoriumDB(eventDAO.jdbcTemplate);
     }
 
     @After
     public void tearDown() throws Exception {
-        DBTestHelper.dropDB();
+        DBCreator.dropDB();
     }
 
     @Test

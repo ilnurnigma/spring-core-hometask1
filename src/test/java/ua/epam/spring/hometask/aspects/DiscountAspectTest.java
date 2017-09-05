@@ -13,9 +13,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.epam.spring.hometask.config.AppConfig;
-import ua.epam.spring.hometask.dao.DBTestHelper;
+import ua.epam.spring.hometask.util.DBCreator;
 import ua.epam.spring.hometask.dao.DiscountCounterDAO;
-import ua.epam.spring.hometask.dao.EventCounterDAO;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.User;
 import ua.epam.spring.hometask.service.strategies.BirthdayDiscountStrategy;
@@ -24,7 +23,6 @@ import ua.epam.spring.hometask.service.strategies.Every10thTicketDiscountStrateg
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -50,7 +48,7 @@ public class DiscountAspectTest {
         dataSource.setUrl("jdbc:derby:memory:db;create=true");
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        DBTestHelper.createDiscountCounterDB(jdbcTemplate);
+        DBCreator.createDiscountCounterDB(jdbcTemplate);
 
         DiscountCounterDAO discountCounterDAO = new DiscountCounterDAO();
         discountCounterDAO.setJdbcTemplate(jdbcTemplate);
@@ -61,7 +59,7 @@ public class DiscountAspectTest {
 
     @After
     public void tearDown() throws Exception {
-        DBTestHelper.dropDB();
+        DBCreator.dropDB();
     }
 
     @Test

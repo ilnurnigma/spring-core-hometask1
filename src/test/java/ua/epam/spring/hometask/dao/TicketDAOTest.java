@@ -17,6 +17,7 @@ import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.Ticket;
 import ua.epam.spring.hometask.domain.User;
 import ua.epam.spring.hometask.service.AuditoriumService;
+import ua.epam.spring.hometask.util.DBCreator;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -60,16 +61,16 @@ public class TicketDAOTest {
         ticketDAO.setUserDAO(userDAO);
         ticketDAO.setEventDAO(eventDAO);
 
-        DBTestHelper.createEventDB(eventDAO.jdbcTemplate);
-        DBTestHelper.createUserDB(ticketDAO.jdbcTemplate);
-        DBTestHelper.createTicketDB(ticketDAO.jdbcTemplate);
-        DBTestHelper.createAirdateDB(eventDAO.jdbcTemplate);
-        DBTestHelper.createAuditoriumDB(eventDAO.jdbcTemplate);
+        DBCreator.createEventDB(eventDAO.jdbcTemplate);
+        DBCreator.createUserDB(ticketDAO.jdbcTemplate);
+        DBCreator.createTicketDB(ticketDAO.jdbcTemplate);
+        DBCreator.createAirdateDB(eventDAO.jdbcTemplate);
+        DBCreator.createAuditoriumDB(eventDAO.jdbcTemplate);
     }
 
     @After
     public void tearDown() throws Exception {
-        DBTestHelper.dropDB();
+        DBCreator.dropDB();
     }
 
     @Test

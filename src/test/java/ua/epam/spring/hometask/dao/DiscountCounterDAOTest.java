@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ua.epam.spring.hometask.domain.User;
 import ua.epam.spring.hometask.service.strategies.Every10thTicketDiscountStrategy;
+import ua.epam.spring.hometask.util.DBCreator;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,7 +26,7 @@ public class DiscountCounterDAOTest {
         dataSource.setUrl("jdbc:derby:memory:db;create=true");
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        DBTestHelper.createDiscountCounterDB(jdbcTemplate);
+        DBCreator.createDiscountCounterDB(jdbcTemplate);
 
         discountCounterDAO = new DiscountCounterDAO();
         discountCounterDAO.setJdbcTemplate(jdbcTemplate);
@@ -34,7 +35,7 @@ public class DiscountCounterDAOTest {
 
     @After
     public void tearDown() throws Exception {
-        DBTestHelper.dropDB();
+        DBCreator.dropDB();
     }
 
     @Test

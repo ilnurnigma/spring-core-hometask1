@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ua.epam.spring.hometask.domain.User;
+import ua.epam.spring.hometask.util.DBCreator;
 
 import java.time.LocalDate;
 
@@ -27,12 +28,12 @@ public class UserDAOTest {
         userDAO.setJdbcTemplate(new JdbcTemplate(dataSource));
         userDAO.setTableName("t_user");
 
-        DBTestHelper.createUserDB(userDAO.jdbcTemplate);
+        DBCreator.createUserDB(userDAO.jdbcTemplate);
     }
 
     @After
     public void tearDown() throws Exception {
-        DBTestHelper.dropDB();
+        DBCreator.dropDB();
     }
 
 

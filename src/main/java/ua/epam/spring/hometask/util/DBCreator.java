@@ -1,11 +1,21 @@
-package ua.epam.spring.hometask.dao;
+package ua.epam.spring.hometask.util;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBTestHelper {
+public class DBCreator {
+    private JdbcTemplate jdbcTemplate;
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public void init() throws SQLException {
+//        jdbcTemplate.getDataSource().getConnection().getMetaData().getTables(null,)
+        createDB(jdbcTemplate);
+    }
 
     public static void createUserDB(JdbcTemplate jdbcTemplate) throws SQLException {
         String sql = "create table t_user " +

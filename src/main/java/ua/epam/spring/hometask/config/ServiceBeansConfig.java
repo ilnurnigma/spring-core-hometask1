@@ -2,10 +2,7 @@ package ua.epam.spring.hometask.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -16,6 +13,7 @@ import ua.epam.spring.hometask.service.impl.AuditoriumServiceImpl;
 import ua.epam.spring.hometask.service.impl.BookingServiceImpl;
 import ua.epam.spring.hometask.service.impl.EventServiceImpl;
 import ua.epam.spring.hometask.service.impl.UserServiceImpl;
+import ua.epam.spring.hometask.util.DBCreator;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -176,5 +174,13 @@ public class ServiceBeansConfig {
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         return dataSource;
+    }
+
+    @Bean(initMethod = "init")
+    @Scope("singleton")
+    public DBCreator dbCreator() {
+        DBCreator creator = new DBCreator();
+        creator.setJdbcTemplate(jdbcTemplate());
+        return creator;
     }
 }

@@ -13,7 +13,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.epam.spring.hometask.config.AppConfig;
-import ua.epam.spring.hometask.dao.DBTestHelper;
+import ua.epam.spring.hometask.util.DBCreator;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.User;
 import ua.epam.spring.hometask.service.DiscountService;
@@ -40,13 +40,13 @@ public class DiscountServiceImplTest {
         dataSource.setUrl("jdbc:derby:memory:db;create=true");
 
         JdbcTemplate jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
-        DBTestHelper.createDB(jdbcTemplate);
+        DBCreator.createDB(jdbcTemplate);
 
     }
 
     @After
     public void tearDown() throws Exception {
-        DBTestHelper.dropDB();
+        DBCreator.dropDB();
     }
 
     @Test
