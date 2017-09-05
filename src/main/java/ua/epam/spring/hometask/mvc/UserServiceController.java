@@ -38,10 +38,14 @@ public class UserServiceController {
     public ModelAndView add(HttpServletRequest request) {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
 
         ModelAndView mav = new ModelAndView("saveUserForm");
-        mav.addObject("firstName",firstName);
-        mav.addObject("lastName",lastName);
+        mav.addObject("firstName", firstName);
+        mav.addObject("lastName", lastName);
+        mav.addObject("user", user);
         return mav;
     }
 

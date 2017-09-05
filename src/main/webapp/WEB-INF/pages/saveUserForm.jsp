@@ -9,5 +9,7 @@
   	<input type="submit" value="   Save   " />
 </form>
 <c:if test="${not empty firstName}">${firstName} ${lastName} saved</c:if>
+<br/>
+${user.firstName}
 </body>
 </html>
