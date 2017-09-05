@@ -21,12 +21,12 @@
     <!--Map based on class name -->
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+   <!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass"
                   value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".html"/>
-    </bean>
+    </bean>-->
 
 <!--    <bean id="velocityConfig"
           class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
@@ -38,4 +38,16 @@
         <property name="prefix" value=""/>
         <property name="suffix" value=".vm"/>
     </bean>-->
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".ftl"/>
+    </bean>
+
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath">
+            <value>/WEB-INF/freemarker/</value>
+        </property>
+    </bean>
 </beans>
