@@ -21,6 +21,8 @@
     <!--Map based on class name -->
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
+    <bean class="ua.epam.spring.hometask.config.AppConfig"/>
+
    <!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass"
                   value="org.springframework.web.servlet.view.JstlView"/>
