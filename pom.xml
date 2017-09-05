@@ -4,6 +4,7 @@
     <groupId>com.epam.spring.core</groupId>
     <artifactId>hometask-skeleton</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
     <name>Spring Core Hometask Skeleton</name>
     <description>A skeleton project for the students of Spring Core MOOC course that can be used to do the hometask
         assignment
@@ -16,6 +17,7 @@
         <spring.version>4.3.10.RELEASE</spring.version>
         <findbugs.version>3.0.1</findbugs.version>
         <junit.version>4.12</junit.version>
+        <jettyVersion>7.2.0.v20101020</jettyVersion>
     </properties>
 
     <build>
@@ -77,6 +79,13 @@
                 <artifactId>findbugs-maven-plugin</artifactId>
                 <version>3.0.3</version>
             </plugin>
+
+            <plugin>
+                <!-- This plugin is needed for the servlet example -->
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jettyVersion}</version>
+            </plugin>
         </plugins>
     </build>
 
@@ -119,12 +128,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
-            <version>10.11.1.1</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
@@ -132,9 +135,33 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.11.1.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>1.8.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.23</version>
         </dependency>
 
         <dependency>
@@ -149,13 +176,32 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
-    <organization>
-        <name>EPAM Systems</name>
-        <url>http://epam.com</url>
-    </organization>
-    <issueManagement>
-        <system>GIT</system>
-        <url>https://git.epam.com/yuriy_tkach/spring-core-hometask-skeleton/issues</url>
-    </issueManagement>
 </project>
