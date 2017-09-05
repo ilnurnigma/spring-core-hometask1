@@ -19,16 +19,6 @@ import ua.epam.spring.hometask.App;
 @ComponentScan("ua.epam.spring.hometask.mvc")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-/*    @Bean
-    public InternalResourceViewResolver setupViewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/pages/");
-        resolver.setSuffix(".jsp");
-        resolver.setViewClass(JstlView.class);
-
-        return resolver;
-    }*/
-
     @Bean
     public ControllerClassNameHandlerMapping controllerClassNameHandlerMapping() {
         return new ControllerClassNameHandlerMapping();
@@ -48,5 +38,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
         configurer.setTemplateLoaderPath("/WEB-INF/freemarker/");
         return configurer;
+    }
+
+    @Bean
+    public InternalResourceViewResolver setupViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/pages/");
+        resolver.setSuffix(".jsp");
+        resolver.setViewClass(JstlView.class);
+
+        return resolver;
     }
 }

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created on 9/5/2017.
  */
 @Controller
+@RequestMapping("/user")
 public class UserServiceController {
     @Autowired
     BookingService bookingService;
@@ -33,17 +34,15 @@ public class UserServiceController {
         return mav;
     }
 
-    @RequestMapping("/calculate2")
-    public ModelAndView calculate2(HttpServletRequest request) {
-        String email = request.getParameter("email");
-        User user = userService.getUserByEmail(email);
-        String first = request.getParameter("first");
-        String second = request.getParameter("second");
-        int firstInt = Integer.parseInt(first);
-        int secondInt = Integer.parseInt(second);
-        ModelAndView mav = new ModelAndView("displaySum2");
-        mav.addObject("sum", Integer.toString(firstInt + secondInt));
-        mav.addObject("user", user);
+    @RequestMapping("/save")
+    public ModelAndView add(HttpServletRequest request) {
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+
+        ModelAndView mav = new ModelAndView("saveUserForm");
+        mav.addObject("firstName",firstName);
+        mav.addObject("lastName",lastName);
         return mav;
     }
+
 }
