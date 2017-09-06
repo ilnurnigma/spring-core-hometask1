@@ -13,7 +13,6 @@ public class DBCreator {
     }
 
     public void init() throws SQLException {
-//        jdbcTemplate.getDataSource().getConnection().getMetaData().getTables(null,)
         createDB(jdbcTemplate);
     }
 

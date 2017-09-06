@@ -32,7 +32,6 @@ public class BatchLoadingController {
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public String uploadFile(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
-        modelMap.addAttribute("file", file);
 
         if (!file.getOriginalFilename().isEmpty()) {
             xmlHelper.unmarshal(file.getInputStream());
@@ -44,9 +43,12 @@ public class BatchLoadingController {
             for (Event event : xmlHelper.getEvents()) {
                 eventService.save(event);
             }
+
+            String msg = "File " + file.getOriginalFilename() + " was uploaded.";
+            modelMap.addAttribute("msg", msg);
         }
 
-        return "uploadResult";
+        return "result";
     }
 
     @RequestMapping(value = "/uploadForm")
