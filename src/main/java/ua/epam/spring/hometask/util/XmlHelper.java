@@ -25,9 +25,4 @@ public class XmlHelper {
     public User getUser(MultipartFile file) throws IOException {
         return (User) marshaller.unmarshal(new StreamSource(file.getInputStream()));
     }
-
-    @XmlRootElement
-    class Users {
-        private List<User> users;
-    }
 }

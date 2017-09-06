@@ -126,4 +126,13 @@ public class User extends DomainObject {
     public void setSysMsgs(List<String> sysMsgs) {
         this.sysMsgs = sysMsgs;
     }
+
+    public User() {
+    }
+
+    public User(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 }

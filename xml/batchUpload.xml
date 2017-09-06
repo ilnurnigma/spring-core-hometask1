@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<batchUpload>
+    <events>
+        <event>
+            <auditoriums/>
+            <basePrice>90.0</basePrice>
+            <name>Black sails</name>
+            <rating>MID</rating>
+        </event>
+        <event>
+            <auditoriums/>
+            <basePrice>100.0</basePrice>
+            <name>Game of thrones</name>
+            <rating>HIGH</rating>
+        </event>
+    </events>
+    <users>
+        <user>
+            <email>daenerys_targaryen@mail.com</email>
+            <firstName>Daenerys</firstName>
+            <lastName>Targaryen</lastName>
+        </user>
+        <user>
+            <email>john.snow@mail.com</email>
+            <firstName>John</firstName>
+            <lastName>Snow</lastName>
+        </user>
+    </users>
+</batchUpload>

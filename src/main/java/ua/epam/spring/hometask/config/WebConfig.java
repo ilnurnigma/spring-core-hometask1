@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+import ua.epam.spring.hometask.util.BatchUpload;
 import ua.epam.spring.hometask.util.XmlHelper;
 
 import java.util.HashMap;
@@ -57,7 +58,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public Jaxb2Marshaller jaxb2Marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setClassesToBeBound(new Class[]{ua.epam.spring.hometask.domain.User.class});
+        marshaller.setClassesToBeBound(BatchUpload.class);
         marshaller.setMarshallerProperties(new HashMap<String, Object>() {{
             put(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, true);
         }});
