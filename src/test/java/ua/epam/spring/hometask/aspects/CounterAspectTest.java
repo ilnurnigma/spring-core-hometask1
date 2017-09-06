@@ -45,7 +45,7 @@ public class CounterAspectTest {
         dataSource.setUrl("jdbc:derby:memory:db;create=true");
 
         JdbcTemplate jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
-        DBCreator.createDB(jdbcTemplate);
+//        DBCreator.createDB(jdbcTemplate);
 
         EventCounterDAO eventCounterDAO = new EventCounterDAO();
         eventCounterDAO.setJdbcTemplate(jdbcTemplate);

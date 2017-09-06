@@ -5,21 +5,21 @@
 
 <h2>Save event</h2>
 <form method="post" action="saveEvent">
-    Firstname: <input type="text" name="name" />	<br/>
-  	Lastname:  <input type="number" name="basePrice" />	<br/>
-  	E-mail:    <input type="text" name="rating" />	<br/>
+    Name: <input type="text" name="name" />	<br/>
+  	Base price:  <input type="number" name="basePrice" />	<br/>
+  	Rating:    <input type="text" name="rating" />	<br/>
   	<input type="submit" value="Save" />
 </form>
 
 <h2>Get event by name</h2>
 <form method="post" action="getEventByName">
-    E-mail: <input type="text" name="name" />	<br/>
+    Name: <input type="text" name="name" />	<br/>
   	<input type="submit" value="Find" />
 </form>
 
 <h2>Delete event by name</h2>
 <form method="post" action="deleteEventByName">
-    E-mail: <input type="text" name="name" />	<br/>
+    Name: <input type="text" name="name" />	<br/>
   	<input type="submit" value="Delete" />
 </form>
 
@@ -32,7 +32,7 @@
 
 <h2>Get next events</h2>
 <form method="post" action="getNextEvents">
-    E-mail: <input type="date" name="to"/>	<br/>
+    E-mail: <input type="datetime-local" name="to"/>	<br/>
   	<input type="submit" value="Find" />
 </form>
 

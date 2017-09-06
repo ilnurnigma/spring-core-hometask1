@@ -33,7 +33,7 @@ public class EventServiceImplTest {
         dataSource.setUrl("jdbc:derby:memory:db;create=true");
 
         JdbcTemplate jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
-        DBCreator.createDB(jdbcTemplate);
+//        DBCreator.createDB(jdbcTemplate);
     }
 
     @After

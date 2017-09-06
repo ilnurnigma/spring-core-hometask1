@@ -1,5 +1,7 @@
 package ua.epam.spring.hometask.dao;
 
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -47,7 +49,11 @@ public class EventDAO extends DomainObjectDAO<Event> {
 
     public Event getByName(String name) {
         String sql = "select id, name, basePrice, rating from " + tableName + " where name=?";
-        return jdbcTemplate.queryForObject(sql, (resultSet, rowNumber) -> getEvent(resultSet), name);
+        try {
+            return jdbcTemplate.queryForObject(sql, (resultSet, rowNumber) -> getEvent(resultSet), name);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     public Event save(Event object) {

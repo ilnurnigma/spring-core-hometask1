@@ -2,15 +2,24 @@ package ua.epam.spring.hometask.util;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ua.epam.spring.hometask.config.AppConfig;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.EventRating;
 import ua.epam.spring.hometask.domain.User;
+import ua.epam.spring.hometask.service.AuditoriumService;
 
 import javax.xml.transform.stream.StreamResult;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +29,13 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created on 9/6/2017.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@ContextConfiguration(classes = AppConfig.class)
 public class XmlHelperTest {
+    @Autowired
+    private ApplicationContext ctx;
+
     private Jaxb2Marshaller marshaller;
     private XmlHelper xmlHelper;
 
@@ -69,7 +84,10 @@ public class XmlHelperTest {
 
     private Set<Event> getEvents() {
         Event event1 = new Event("Game of thrones", 100, EventRating.HIGH);
+        AuditoriumService auditoriumService = ctx.getBean("auditoriumServiceImpl", AuditoriumService.class);
+        event1.assignAuditorium(LocalDateTime.now().plusDays(2), auditoriumService.getByName("Red"));
         Event event2 = new Event("Black sails", 90, EventRating.MID);
+        event2.assignAuditorium(LocalDateTime.now().plusDays(4), auditoriumService.getByName("Yellow"));
 
         Set<Event> events = new HashSet<>();
         events.add(event1);

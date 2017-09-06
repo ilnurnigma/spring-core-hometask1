@@ -11,6 +11,7 @@ import ua.epam.spring.hometask.domain.EventRating;
 import ua.epam.spring.hometask.service.EventService;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Controller
@@ -64,7 +65,7 @@ public class EventServiceController {
 
     @RequestMapping(path = "/getNextEvents", method = RequestMethod.POST)
     public ModelAndView getNextEvents(@RequestParam("to") String to) {
-        Set<Event> events = eventService.getNextEvents(LocalDate.parse(to).atStartOfDay());
+        Set<Event> events = eventService.getNextEvents(LocalDateTime.parse(to));
 
         ModelAndView mav = new ModelAndView("events");
         mav.addObject("events", events);

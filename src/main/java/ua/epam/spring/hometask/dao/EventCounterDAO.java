@@ -45,6 +45,10 @@ public class EventCounterDAO {
     }
 
     private boolean isExist(Event event) {
+        if (event == null) {
+            return false;
+        }
+
         String sql = "select count(*) from " + tableName + " where eventId = ?";
         return jdbcTemplate.queryForObject(sql, Integer.class, event.getId()) != 0;
     }
