@@ -16,6 +16,7 @@ import ua.epam.spring.hometask.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created on 9/5/2017.
@@ -76,5 +77,17 @@ public class UserServiceController {
     @RequestMapping(value = "/upload")
     public String upload() {
         return "upload";
+    }
+
+    @RequestMapping(value = "/pdf")
+    public ModelAndView pdf() {
+        ModelAndView mav = new ModelAndView("pdfView");
+        ArrayList<User> users = new ArrayList<>();
+        User user = new User();
+        user.setFirstName("John");
+        users.add(user);
+        mav.addObject("users", users);
+        mav.setView(new PdfView());
+        return mav;
     }
 }

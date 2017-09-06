@@ -24,7 +24,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public ControllerClassNameHandlerMapping controllerClassNameHandlerMapping() {
-        return new ControllerClassNameHandlerMapping();
+        ControllerClassNameHandlerMapping mapping = new ControllerClassNameHandlerMapping();
+        mapping.setBasePackage("ua.epam.spring.hometask.mvc");
+        return mapping;
     }
 
     @Bean
