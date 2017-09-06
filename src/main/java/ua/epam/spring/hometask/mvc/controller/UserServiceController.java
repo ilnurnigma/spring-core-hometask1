@@ -30,20 +30,6 @@ public class UserServiceController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private Jaxb2Marshaller marshaller;
-
-    @RequestMapping("/calculate")
-    public ModelAndView calculate(HttpServletRequest request) {
-        String first = request.getParameter("first");
-        String second = request.getParameter("second");
-        int firstInt = Integer.parseInt(first);
-        int secondInt = Integer.parseInt(second);
-        ModelAndView mav = new ModelAndView("displaySum");
-        mav.addObject("sum", Integer.toString(firstInt + secondInt));
-        return mav;
-    }
-
     @RequestMapping("/save")
     public ModelAndView add(HttpServletRequest request) {
         String firstName = request.getParameter("firstName");
@@ -58,22 +44,6 @@ public class UserServiceController {
         mav.addObject("user", user);
         return mav;
     }
-
-    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-    public String uploadFile(@RequestParam("files") MultipartFile[] files, ModelMap modelMap) throws IOException {
-        modelMap.addAttribute("files", files);
-        for (int i = 0; i < files.length; i++) {
-            MultipartFile file = files[i];
-            if (!file.getOriginalFilename().isEmpty()) {
-                User user = (User) marshaller.unmarshal(new StreamSource(file.getInputStream()));
-                userService.save(user);
-            }
-
-        }
-        return "uploadResult";
-    }
-
-
 
     @RequestMapping(value = "/pdf",headers = "Accept=application/pdf")
     public ModelAndView pdf() {

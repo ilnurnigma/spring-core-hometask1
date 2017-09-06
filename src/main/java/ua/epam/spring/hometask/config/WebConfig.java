@@ -25,12 +25,12 @@ import java.util.HashMap;
 @ComponentScan("ua.epam.spring.hometask.mvc")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-    @Bean
+/*    @Bean
     public ControllerClassNameHandlerMapping controllerClassNameHandlerMapping() {
         ControllerClassNameHandlerMapping mapping = new ControllerClassNameHandlerMapping();
         mapping.setBasePackage("ua.epam.spring.hometask.mvc");
         return mapping;
-    }
+    }*/
 
     @Bean
     public FreeMarkerViewResolver freeMarkerViewResolver() {
@@ -78,7 +78,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         resolver.setPrefix("/WEB-INF/pages/");
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
-
         return resolver;
     }
 
