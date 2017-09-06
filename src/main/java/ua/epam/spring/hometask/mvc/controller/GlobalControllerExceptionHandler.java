@@ -20,7 +20,6 @@ public class GlobalControllerExceptionHandler {
         ModelAndView mav = new ModelAndView("error");
         mav.addObject("exception", e);
         mav.addObject("url", req.getRequestURL());
-        throw e;
-//        return mav;
+        return mav;
     }
 }
