@@ -1,4 +1,4 @@
-package ua.epam.spring.hometask.mvc;
+package ua.epam.spring.hometask.mvc.view;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.Paragraph;

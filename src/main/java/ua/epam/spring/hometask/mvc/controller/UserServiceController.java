@@ -1,4 +1,4 @@
-package ua.epam.spring.hometask.mvc;
+package ua.epam.spring.hometask.mvc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -33,7 +33,6 @@ public class UserServiceController {
     @Autowired
     private Jaxb2Marshaller marshaller;
 
-    // [GET] http://host.com/example/calculate?first=123&second=456
     @RequestMapping("/calculate")
     public ModelAndView calculate(HttpServletRequest request) {
         String first = request.getParameter("first");

@@ -1,4 +1,4 @@
-package ua.epam.spring.hometask.mvc;
+package ua.epam.spring.hometask.mvc.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

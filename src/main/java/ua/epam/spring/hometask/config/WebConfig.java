@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+import ua.epam.spring.hometask.util.XmlHelper;
 
 import java.util.HashMap;
 
@@ -78,5 +79,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         resolver.setViewClass(JstlView.class);
 
         return resolver;
+    }
+
+    @Bean
+    public XmlHelper xmlHelper() {
+        XmlHelper helper = new XmlHelper();
+        helper.setMarshaller(jaxb2Marshaller());
+        return helper;
     }
 }

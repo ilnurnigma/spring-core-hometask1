@@ -104,20 +104,4 @@ public class AppTest {
         assertTrue(events.contains(event));
     }
 
-    @Test
-    public void marshall() throws FileNotFoundException {
-        FileOutputStream outputStream = new FileOutputStream("users.xml");
-        User user1 = new User();
-        user1.setFirstName("John");
-
-        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setClassesToBeBound(new Class[]{ua.epam.spring.hometask.domain.User.class});
-        marshaller.setMarshallerProperties(new HashMap<String, Object>() {{
-            put(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        }});
-        marshaller.marshal(user1, new StreamResult(outputStream));
-
-        Object user = marshaller.unmarshal(new StreamSource(new FileInputStream("users.xml")));
-        System.out.println(user);
-    }
 }

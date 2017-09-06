@@ -2,6 +2,7 @@ package ua.epam.spring.hometask.domain;
 
 import sun.reflect.generics.scope.Scope;
 
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDate;
 import java.util.*;
@@ -9,7 +10,6 @@ import java.util.*;
 /**
  * @author Yuriy_Tkach
  */
-@XmlRootElement
 public class User extends DomainObject {
 
     private String firstName;
