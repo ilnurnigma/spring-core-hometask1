@@ -79,7 +79,7 @@ public class UserServiceController {
         return "upload";
     }
 
-    @RequestMapping(value = "/pdf")
+    @RequestMapping(value = "/pdf",headers = "Accept=application/pdf")
     public ModelAndView pdf() {
         ModelAndView mav = new ModelAndView("pdfView");
         ArrayList<User> users = new ArrayList<>();
@@ -87,7 +87,7 @@ public class UserServiceController {
         user.setFirstName("John");
         users.add(user);
         mav.addObject("users", users);
-        mav.setView(new PdfView());
+//        mav.setView(new PdfView());
         return mav;
     }
 }

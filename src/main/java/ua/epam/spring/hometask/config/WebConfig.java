@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
@@ -45,16 +46,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return configurer;
     }
 
-    @Bean
-    public InternalResourceViewResolver setupViewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/pages/");
-        resolver.setSuffix(".jsp");
-        resolver.setViewClass(JstlView.class);
-
-        return resolver;
-    }
-
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
@@ -70,5 +61,22 @@ public class WebConfig extends WebMvcConfigurerAdapter {
             put(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, true);
         }});
         return marshaller;
+    }
+
+    @Bean
+    public ResourceBundleViewResolver resourceBundleViewResolver() {
+        ResourceBundleViewResolver resolver = new ResourceBundleViewResolver();
+        resolver.setBasename("views");
+        return resolver;
+    }
+
+    @Bean
+    public InternalResourceViewResolver setupViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/pages/");
+        resolver.setSuffix(".jsp");
+        resolver.setViewClass(JstlView.class);
+
+        return resolver;
     }
 }
