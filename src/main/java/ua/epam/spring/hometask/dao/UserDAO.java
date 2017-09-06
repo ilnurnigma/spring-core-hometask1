@@ -1,5 +1,6 @@
 package ua.epam.spring.hometask.dao;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import ua.epam.spring.hometask.domain.User;
@@ -16,11 +17,20 @@ public class UserDAO extends DomainObjectDAO<User> {
     public @Nullable
     User getUserByEmail(@Nonnull String email) {
         String sql = "select id, firstName, lastName, email, dateOfBirth from " + tableName + " where email=?";
-        return jdbcTemplate.queryForObject(sql, (resultSet, rowNumber) -> getUser(resultSet), email);
+        try {
+            return jdbcTemplate.queryForObject(sql, (resultSet, rowNumber) -> getUser(resultSet), email);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     @Override
     public User save(User object) {
+        User userByEmail = getUserByEmail(object.getEmail());
+        if (userByEmail != null) {
+            return userByEmail;
+        }
+
         String sql = "insert into " + tableName + " " +
                 "(firstName, lastName, email, dateOfBirth) values (?, ?, ?, ?)";
 
