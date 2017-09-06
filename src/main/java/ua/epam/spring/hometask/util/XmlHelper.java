@@ -2,18 +2,19 @@ package ua.epam.spring.hometask.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
-import org.springframework.web.multipart.MultipartFile;
+import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.User;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
-import java.util.List;
+import java.io.InputStream;
+import java.util.Set;
 
 /**
  * Created on 9/6/2017.
  */
 public class XmlHelper {
+    private BatchUpload upload;
 
     @Autowired
     private Jaxb2Marshaller marshaller;
@@ -22,7 +23,15 @@ public class XmlHelper {
         this.marshaller = marshaller;
     }
 
-    public User getUser(MultipartFile file) throws IOException {
-        return (User) marshaller.unmarshal(new StreamSource(file.getInputStream()));
+    public void unmarshal(InputStream inputStream) {
+        upload = (BatchUpload) marshaller.unmarshal(new StreamSource(inputStream));
+    }
+
+    public Set<User> getUsers() {
+        return upload.getUsers();
+    }
+
+    public Set<Event> getEvents() {
+        return upload.getEvents();
     }
 }

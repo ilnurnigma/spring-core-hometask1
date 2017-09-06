@@ -73,10 +73,7 @@ public class UserServiceController {
         return "uploadResult";
     }
 
-    @RequestMapping(value = "/upload")
-    public String upload() {
-        return "upload";
-    }
+
 
     @RequestMapping(value = "/pdf",headers = "Accept=application/pdf")
     public ModelAndView pdf() {

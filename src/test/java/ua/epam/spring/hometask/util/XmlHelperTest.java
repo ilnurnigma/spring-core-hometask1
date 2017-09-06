@@ -8,7 +8,6 @@ import ua.epam.spring.hometask.domain.EventRating;
 import ua.epam.spring.hometask.domain.User;
 
 import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -23,6 +22,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class XmlHelperTest {
     private Jaxb2Marshaller marshaller;
+    private XmlHelper xmlHelper;
 
     @Before
     public void setUp() throws Exception {
@@ -31,10 +31,13 @@ public class XmlHelperTest {
         marshaller.setMarshallerProperties(new HashMap<String, Object>() {{
             put(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, true);
         }});
+
+        xmlHelper = new XmlHelper();
+        xmlHelper.setMarshaller(marshaller);
     }
 
     @Test
-    public void marshallUsers() throws FileNotFoundException {
+    public void unmarshal() throws FileNotFoundException {
         Set<User> users = getUsers();
         Set<Event> events = getEvents();
 
@@ -46,10 +49,10 @@ public class XmlHelperTest {
         marshaller.marshal(upload, new StreamResult(outputStream));
 
         FileInputStream inputStream = new FileInputStream("xml/batchUpload.xml");
-        BatchUpload uploaded = (BatchUpload) marshaller.unmarshal(new StreamSource(inputStream));
+        xmlHelper.unmarshal(inputStream);
 
-        assertEquals(users, uploaded.getUsers());
-        assertEquals(events, uploaded.getEvents());
+        assertEquals(users, xmlHelper.getUsers());
+        assertEquals(events, xmlHelper.getEvents());
     }
 
 

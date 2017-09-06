@@ -25,22 +25,24 @@ public class BatchLoadingController {
     private UserService userService;
 
     @Autowired
-    private Jaxb2Marshaller marshaller;
-
-    @Autowired
     public XmlHelper xmlHelper;
 
-    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-    public String uploadFile(@RequestParam("files") MultipartFile[] files, ModelMap modelMap) throws IOException {
-        modelMap.addAttribute("files", files);
-        for (int i = 0; i < files.length; i++) {
-            MultipartFile file = files[i];
-            if (!file.getOriginalFilename().isEmpty()) {
-                User user = xmlHelper.getUser(file);
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public String uploadFile(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
+        modelMap.addAttribute("file", file);
+
+        if (!file.getOriginalFilename().isEmpty()) {
+            xmlHelper.unmarshal(file.getInputStream());
+            for (User user:xmlHelper.getUsers()) {
                 userService.save(user);
             }
-
         }
+
         return "uploadResult";
+    }
+
+    @RequestMapping(value = "/uploadForm")
+    public String uploadForm() {
+        return "uploadForm";
     }
 }

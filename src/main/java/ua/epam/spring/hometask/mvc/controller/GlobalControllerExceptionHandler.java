@@ -16,10 +16,11 @@ public class GlobalControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
-    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) {
+    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
         ModelAndView mav = new ModelAndView("error");
         mav.addObject("exception", e);
         mav.addObject("url", req.getRequestURL());
-        return mav;
+        throw e;
+//        return mav;
     }
 }
