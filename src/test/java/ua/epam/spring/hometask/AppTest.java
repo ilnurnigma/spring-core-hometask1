@@ -7,19 +7,27 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.epam.spring.hometask.config.AppConfig;
-import ua.epam.spring.hometask.util.DBCreator;
+import ua.epam.spring.hometask.config.WebConfig;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.EventRating;
 import ua.epam.spring.hometask.domain.Ticket;
 import ua.epam.spring.hometask.domain.User;
+import ua.epam.spring.hometask.util.DBCreator;
 
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,7 +52,7 @@ public class AppTest {
         userCommand = ctx.getBean("userCommand", UserCommand.class);
 
         JdbcTemplate jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
-        DBCreator.createDB(jdbcTemplate);
+//        DBCreator.createDB(jdbcTemplate);
     }
 
     @After
@@ -96,4 +104,20 @@ public class AppTest {
         assertTrue(events.contains(event));
     }
 
+    @Test
+    public void marshall() throws FileNotFoundException {
+        FileOutputStream outputStream = new FileOutputStream("users.xml");
+        User user1 = new User();
+        user1.setFirstName("John");
+
+        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+        marshaller.setClassesToBeBound(new Class[]{ua.epam.spring.hometask.domain.User.class});
+        marshaller.setMarshallerProperties(new HashMap<String, Object>() {{
+            put(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        }});
+        marshaller.marshal(user1, new StreamResult(outputStream));
+
+        Object user = marshaller.unmarshal(new StreamSource(new FileInputStream("users.xml")));
+        System.out.println(user);
+    }
 }

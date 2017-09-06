@@ -2,6 +2,6 @@
 <head>Upload result</head>
 
 <body>
-<P>${file.originalFilename} uploaded</P>
+<P>${files[0].originalFilename} uploaded</P>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package ua.epam.spring.hometask.mvc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,8 @@ import ua.epam.spring.hometask.service.BookingService;
 import ua.epam.spring.hometask.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.transform.stream.StreamSource;
+import java.io.IOException;
 
 /**
  * Created on 9/5/2017.
@@ -21,10 +24,13 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/user")
 public class UserServiceController {
     @Autowired
-    BookingService bookingService;
+    private BookingService bookingService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
+
+    @Autowired
+    private Jaxb2Marshaller marshaller;
 
     // [GET] http://host.com/example/calculate?first=123&second=456
     @RequestMapping("/calculate")
@@ -54,8 +60,16 @@ public class UserServiceController {
     }
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-    public String uploadFile(@RequestParam("file") MultipartFile file, ModelMap modelMap) {
-        modelMap.addAttribute("file", file);
+    public String uploadFile(@RequestParam("files") MultipartFile[] files, ModelMap modelMap) throws IOException {
+        modelMap.addAttribute("files", files);
+        for (int i = 0; i < files.length; i++) {
+            MultipartFile file = files[i];
+            if (!file.getOriginalFilename().isEmpty()) {
+                User user = (User) marshaller.unmarshal(new StreamSource(file.getInputStream()));
+                userService.save(user);
+            }
+
+        }
         return "uploadResult";
     }
 
