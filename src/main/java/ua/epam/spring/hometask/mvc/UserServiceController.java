@@ -2,7 +2,11 @@ package ua.epam.spring.hometask.mvc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import ua.epam.spring.hometask.domain.User;
 import ua.epam.spring.hometask.service.BookingService;
@@ -49,4 +53,14 @@ public class UserServiceController {
         return mav;
     }
 
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    public String uploadFile(@RequestParam("file") MultipartFile file, ModelMap modelMap) {
+        modelMap.addAttribute("file", file);
+        return "uploadResult";
+    }
+
+    @RequestMapping(value = "/upload")
+    public String upload() {
+        return "upload";
+    }
 }
