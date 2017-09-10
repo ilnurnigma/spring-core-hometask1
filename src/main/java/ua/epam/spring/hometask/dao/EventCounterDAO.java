@@ -1,11 +1,12 @@
 package ua.epam.spring.hometask.dao;
 
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.epam.spring.hometask.domain.Event;
 
 public class EventCounterDAO {
     private String tableName;
-    private JdbcTemplate jdbcTemplate;
+    private JdbcOperations jdbcTemplate;
 
     public synchronized void addNameAccessCounter(Event event) {
         if (!isExist(event)) {
@@ -53,7 +54,7 @@ public class EventCounterDAO {
         return jdbcTemplate.queryForObject(sql, Integer.class, event.getId()) != 0;
     }
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+    public void setJdbcTemplate(JdbcOperations jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

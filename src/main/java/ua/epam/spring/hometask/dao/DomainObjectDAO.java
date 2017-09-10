@@ -1,5 +1,6 @@
 package ua.epam.spring.hometask.dao;
 
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import ua.epam.spring.hometask.domain.DomainObject;
@@ -12,7 +13,7 @@ import java.util.HashSet;
 
 public abstract class DomainObjectDAO<T extends DomainObject> {
     protected Collection<T> domainObjects = new HashSet<>();
-    protected JdbcTemplate jdbcTemplate;
+    protected JdbcOperations jdbcTemplate;
     protected String tableName;
 
     public DomainObject save(T object) {
@@ -59,7 +60,7 @@ public abstract class DomainObjectDAO<T extends DomainObject> {
         return objects;
     }
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+    public void setJdbcTemplate(JdbcOperations jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

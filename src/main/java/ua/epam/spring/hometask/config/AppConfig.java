@@ -16,6 +16,8 @@ import ua.epam.spring.hometask.service.BookingService;
 import ua.epam.spring.hometask.service.EventService;
 import ua.epam.spring.hometask.service.UserService;
 
+import javax.annotation.Resource;
+
 @Configuration
 @Import(ServiceBeansConfig.class)
 @EnableAspectJAutoProxy

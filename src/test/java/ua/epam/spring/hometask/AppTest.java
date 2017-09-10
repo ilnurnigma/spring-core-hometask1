@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.test.annotation.DirtiesContext;
@@ -51,7 +52,7 @@ public class AppTest {
         adminCommand = ctx.getBean("adminCommand", AdminCommand.class);
         userCommand = ctx.getBean("userCommand", UserCommand.class);
 
-        JdbcTemplate jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
+        JdbcOperations jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcOperations.class);
 //        DBCreator.createDB(jdbcTemplate);
     }
 

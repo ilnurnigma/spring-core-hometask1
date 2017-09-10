@@ -1,9 +1,11 @@
 package ua.epam.spring.hometask.config;
 
+import com.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ua.epam.spring.hometask.dao.*;
@@ -15,6 +17,7 @@ import ua.epam.spring.hometask.service.impl.EventServiceImpl;
 import ua.epam.spring.hometask.service.impl.UserServiceImpl;
 import ua.epam.spring.hometask.util.DBCreator;
 
+import javax.sql.DataSource;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -162,12 +165,12 @@ public class ServiceBeansConfig {
     }
 
     @Bean
-    public JdbcTemplate jdbcTemplate() {
+    public JdbcOperations jdbcTemplate() {
         return new JdbcTemplate(dataSource());
     }
 
     @Bean
-    public DriverManagerDataSource dataSource() {
+    public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driverClassName);
         dataSource.setUrl(url);

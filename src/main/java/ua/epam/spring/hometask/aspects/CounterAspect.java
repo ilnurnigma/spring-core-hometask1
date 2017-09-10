@@ -8,8 +8,6 @@ import ua.epam.spring.hometask.dao.EventCounterDAO;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.Ticket;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 @Aspect

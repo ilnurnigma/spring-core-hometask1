@@ -1,14 +1,15 @@
 package ua.epam.spring.hometask.util;
 
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBCreator {
-    private JdbcTemplate jdbcTemplate;
+    private JdbcOperations jdbcTemplate;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+    public void setJdbcTemplate(JdbcOperations jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -16,7 +17,7 @@ public class DBCreator {
         createDB(jdbcTemplate);
     }
 
-    public static void createUserDB(JdbcTemplate jdbcTemplate) throws SQLException {
+    public static void createUserDB(JdbcOperations jdbcTemplate) throws SQLException {
         String sql = "create table t_user " +
                 "(id int not null primary key generated always as identity (start with 1, increment by 1), " +
                 "firstName varchar(50), " +
@@ -27,7 +28,7 @@ public class DBCreator {
         jdbcTemplate.execute(sql);
     }
 
-    public static void createTicketDB(JdbcTemplate jdbcTemplate) throws SQLException {
+    public static void createTicketDB(JdbcOperations jdbcTemplate) throws SQLException {
         String sql = "create table t_ticket " +
                 "(id int not null primary key generated always as identity (start with 1, increment by 1)";
         StringBuilder sb = new StringBuilder(sql);
@@ -40,7 +41,7 @@ public class DBCreator {
         jdbcTemplate.execute(sb.toString());
     }
 
-    public static void createEventDB(JdbcTemplate jdbcTemplate) throws SQLException {
+    public static void createEventDB(JdbcOperations jdbcTemplate) throws SQLException {
         String sql = "create table t_event " +
                 "(id int not null primary key generated always as identity (start with 1, increment by 1)";
         StringBuilder sb = new StringBuilder(sql);
@@ -52,7 +53,7 @@ public class DBCreator {
         jdbcTemplate.execute(sb.toString());
     }
 
-    public static void createAirdateDB(JdbcTemplate jdbcTemplate) throws SQLException {
+    public static void createAirdateDB(JdbcOperations jdbcTemplate) throws SQLException {
         String sql = "create table t_airdate " +
                 "(id int not null primary key generated always as identity (start with 1, increment by 1)";
         StringBuilder sb = new StringBuilder(sql);
@@ -63,7 +64,7 @@ public class DBCreator {
         jdbcTemplate.execute(sb.toString());
     }
 
-    public static void createAuditoriumDB(JdbcTemplate jdbcTemplate) throws SQLException {
+    public static void createAuditoriumDB(JdbcOperations jdbcTemplate) throws SQLException {
         String sql = "create table t_auditorium " +
                 "(id int not null primary key generated always as identity (start with 1, increment by 1)";
         StringBuilder sb = new StringBuilder(sql);
@@ -75,7 +76,7 @@ public class DBCreator {
         jdbcTemplate.execute(sb.toString());
     }
 
-    public static void createEventCounterDB(JdbcTemplate jdbcTemplate) throws SQLException {
+    public static void createEventCounterDB(JdbcOperations jdbcTemplate) throws SQLException {
         String sql = "create table t_event_counter " +
                 "(id int not null primary key generated always as identity (start with 1, increment by 1)";
         StringBuilder sb = new StringBuilder(sql);
@@ -88,7 +89,7 @@ public class DBCreator {
         jdbcTemplate.execute(sb.toString());
     }
 
-    public static void createDiscountCounterDB(JdbcTemplate jdbcTemplate) throws SQLException {
+    public static void createDiscountCounterDB(JdbcOperations jdbcTemplate) throws SQLException {
         String sql = "create table t_discount_counter " +
                 "(id int not null primary key generated always as identity (start with 1, increment by 1)";
         StringBuilder sb = new StringBuilder(sql);
@@ -110,7 +111,7 @@ public class DBCreator {
         }
     }
 
-    public static void createDB(JdbcTemplate jdbcTemplate) throws SQLException {
+    public static void createDB(JdbcOperations jdbcTemplate) throws SQLException {
         createEventDB(jdbcTemplate);
         createUserDB(jdbcTemplate);
         createTicketDB(jdbcTemplate);

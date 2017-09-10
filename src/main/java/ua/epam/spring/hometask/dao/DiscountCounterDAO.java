@@ -1,5 +1,6 @@
 package ua.epam.spring.hometask.dao;
 
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.epam.spring.hometask.domain.User;
 
@@ -8,7 +9,7 @@ import ua.epam.spring.hometask.domain.User;
  */
 public class DiscountCounterDAO {
     private String tableName;
-    private JdbcTemplate jdbcTemplate;
+    private JdbcOperations jdbcTemplate;
 
     public synchronized void addDiscountCounter(User user, String strategy) {
         if (user == null) {
@@ -39,7 +40,7 @@ public class DiscountCounterDAO {
         this.tableName = tableName;
     }
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+    public void setJdbcTemplate(JdbcOperations jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

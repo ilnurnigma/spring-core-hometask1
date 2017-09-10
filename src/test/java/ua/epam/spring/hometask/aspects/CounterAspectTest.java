@@ -1,5 +1,7 @@
 package ua.epam.spring.hometask.aspects;
 
+import com.service.Service;
+import com.service.SomeBean;
 import org.apache.derby.jdbc.EmbeddedDriver;
 import org.junit.After;
 import org.junit.Before;
@@ -7,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -44,7 +46,7 @@ public class CounterAspectTest {
         dataSource.setDriverClassName(EmbeddedDriver.class.getName());
         dataSource.setUrl("jdbc:derby:memory:db;create=true");
 
-        JdbcTemplate jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
+        JdbcOperations jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcOperations.class);
 //        DBCreator.createDB(jdbcTemplate);
 
         EventCounterDAO eventCounterDAO = new EventCounterDAO();
