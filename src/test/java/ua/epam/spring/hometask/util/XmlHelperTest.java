@@ -33,6 +33,9 @@ import static org.junit.Assert.assertEquals;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @ContextConfiguration(classes = AppConfig.class)
 public class XmlHelperTest {
+    public static final String REGISTERED_USER_BOOKING_MANAGER = "ROLE_REGISTERED_USER,ROLE_BOOKING_MANAGER";
+    public static final String REGISTERED_USER = "ROLE_REGISTERED_USER";
+
     @Autowired
     private ApplicationContext ctx;
 
@@ -73,11 +76,41 @@ public class XmlHelperTest {
 
     private Set<User> getUsers() {
         User user1 = new User("John", "Snow", "john.snow@mail.com");
+        user1.setRoles(REGISTERED_USER_BOOKING_MANAGER);
+        user1.setPassword("12345");
+
         User user2 = new User("Daenerys", "Targaryen", "daenerys_targaryen@mail.com");
+        user2.setRoles(REGISTERED_USER_BOOKING_MANAGER);
+        user2.setPassword("12345");
+
+        User user3 = new User("Tyrion", "Lannister", "tyrion_lannister@mail.com");
+        user3.setRoles(REGISTERED_USER);
+        user3.setPassword("12345");
+
+        User user4 = new User("Arya", "Stark", "arya_stark@mail.com");
+        user4.setRoles(REGISTERED_USER);
+        user4.setPassword("12345");
+
+        User user5 = new User("Sansa", "Stark", "sansa_stark@mail.com");
+        user5.setRoles(REGISTERED_USER);
+        user5.setPassword("12345");
+
+        User user6 = new User("Cersei", "Lannister", "cersei_lannister@mail.com");
+        user6.setRoles(REGISTERED_USER_BOOKING_MANAGER);
+        user6.setPassword("12345");
+
+        User user7 = new User("Jaime", "Lannister", "jaime_lannister@mail.com");
+        user7.setRoles(REGISTERED_USER);
+        user7.setPassword("12345");
 
         Set<User> users = new HashSet<>();
         users.add(user1);
         users.add(user2);
+        users.add(user3);
+        users.add(user4);
+        users.add(user5);
+        users.add(user6);
+        users.add(user7);
 
         return users;
     }

@@ -1,7 +1,5 @@
 package ua.epam.spring.hometask.aspects;
 
-import com.service.Service;
-import com.service.SomeBean;
 import org.apache.derby.jdbc.EmbeddedDriver;
 import org.junit.After;
 import org.junit.Before;
@@ -15,12 +13,12 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.epam.spring.hometask.config.AppConfig;
-import ua.epam.spring.hometask.util.DBCreator;
 import ua.epam.spring.hometask.dao.EventCounterDAO;
 import ua.epam.spring.hometask.dao.EventDAO;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.Ticket;
 import ua.epam.spring.hometask.service.BookingService;
+import ua.epam.spring.hometask.util.DBCreator;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;

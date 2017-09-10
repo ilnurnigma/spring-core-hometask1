@@ -1,6 +1,5 @@
 package ua.epam.spring.hometask.config;
 
-import com.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;

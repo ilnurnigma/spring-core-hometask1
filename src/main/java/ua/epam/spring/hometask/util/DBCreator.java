@@ -23,6 +23,8 @@ public class DBCreator {
                 "firstName varchar(50), " +
                 "lastName varchar(50), " +
                 "email varchar(50), " +
+                "password varchar(50), " +
+                "roles varchar(255), " +
                 "dateOfBirth date)";
 
         jdbcTemplate.execute(sql);

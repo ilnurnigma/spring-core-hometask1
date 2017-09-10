@@ -10,6 +10,6 @@
 </br>
 <a href="/uploadForm">Batch upload form</a>
 </br>
-<a href="/logout">Logout</a>
+<a href="/login?logout">Logout</a>
 </body>
 </html>

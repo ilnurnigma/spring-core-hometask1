@@ -4,11 +4,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.Ordered;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.ResourceBundleViewResolver;
@@ -25,12 +26,17 @@ import java.util.HashMap;
 @ComponentScan("ua.epam.spring.hometask.mvc")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-/*    @Bean
-    public ControllerClassNameHandlerMapping controllerClassNameHandlerMapping() {
-        ControllerClassNameHandlerMapping mapping = new ControllerClassNameHandlerMapping();
-        mapping.setBasePackage("ua.epam.spring.hometask.mvc");
-        return mapping;
-    }*/
+    /*    @Bean
+        public ControllerClassNameHandlerMapping controllerClassNameHandlerMapping() {
+            ControllerClassNameHandlerMapping mapping = new ControllerClassNameHandlerMapping();
+            mapping.setBasePackage("ua.epam.spring.hometask.mvc");
+            return mapping;
+        }*/
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
+        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+    }
 
     @Bean
     public FreeMarkerViewResolver freeMarkerViewResolver() {

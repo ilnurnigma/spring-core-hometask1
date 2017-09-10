@@ -16,7 +16,7 @@ import java.util.Collection;
 public class UserDAO extends DomainObjectDAO<User> {
     public @Nullable
     User getUserByEmail(@Nonnull String email) {
-        String sql = "select id, firstName, lastName, email, dateOfBirth from " + tableName + " where email=?";
+        String sql = "select id, firstName, lastName, email, dateOfBirth, password, roles from " + tableName + " where email=?";
         try {
             return jdbcTemplate.queryForObject(sql, (resultSet, rowNumber) -> getUser(resultSet), email);
         } catch (EmptyResultDataAccessException e) {
@@ -32,7 +32,7 @@ public class UserDAO extends DomainObjectDAO<User> {
         }
 
         String sql = "insert into " + tableName + " " +
-                "(firstName, lastName, email, dateOfBirth) values (?, ?, ?, ?)";
+                "(firstName, lastName, email, dateOfBirth, password, roles) values (?, ?, ?, ?, ?, ?)";
 
         Date dateOfBirth = object.getDateOfBirth() != null ? Date.valueOf(object.getDateOfBirth()) : null;
 
@@ -43,6 +43,8 @@ public class UserDAO extends DomainObjectDAO<User> {
             statement.setString(2, object.getLastName());
             statement.setString(3, object.getEmail());
             statement.setDate(4, dateOfBirth);
+            statement.setString(5, object.getPassword());
+            statement.setString(6, object.getRoles());
             return statement;
         }, keyHolder);
 
@@ -59,7 +61,7 @@ public class UserDAO extends DomainObjectDAO<User> {
 
     @Override
     public User getById(@Nonnull Long id) {
-        String sql = "select id, firstName, lastName, email, dateOfBirth from " + tableName + " where id=?";
+        String sql = "select id, firstName, lastName, email, dateOfBirth, password, roles from " + tableName + " where id=?";
         return jdbcTemplate.queryForObject(sql, (resultSet, rowNumber) -> getUser(resultSet), id);
     }
 
@@ -71,13 +73,15 @@ public class UserDAO extends DomainObjectDAO<User> {
         user.setEmail(resultSet.getString("email"));
         Date dateOfBirth = resultSet.getDate("dateOfBirth");
         user.setDateOfBirth(dateOfBirth != null ? dateOfBirth.toLocalDate() : null);
+        user.setPassword(resultSet.getString("password"));
+        user.setRoles(resultSet.getString("roles"));
         return user;
     }
 
     @Nonnull
     @Override
     public Collection<User> getAll() {
-        String sql = "select id, firstName, lastName, email, dateOfBirth from " + tableName;
+        String sql = "select id, firstName, lastName, email, dateOfBirth, password, roles from " + tableName;
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
     }
 

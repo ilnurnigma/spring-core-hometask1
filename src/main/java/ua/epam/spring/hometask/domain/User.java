@@ -13,16 +13,13 @@ import java.util.*;
 public class User extends DomainObject {
 
     private String firstName;
-
     private String lastName;
-
     private String email;
-
     private LocalDate dateOfBirth;
-
     private List<String> sysMsgs = new ArrayList<>();
-
     private NavigableSet<Ticket> tickets = new TreeSet<>();
+    private String password;
+    private String roles;
 
     public String getFirstName() {
         return firstName;
@@ -134,5 +131,21 @@ public class User extends DomainObject {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 }
