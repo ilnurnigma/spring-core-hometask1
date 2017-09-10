@@ -21,6 +21,9 @@
   	<input type="submit" value="Find out" />
 </form>
 
+<a href="/getBookedTickets">Get booked tickets</a>
+
+</br>
 <a href=/>Main page</a>
 
 </body>

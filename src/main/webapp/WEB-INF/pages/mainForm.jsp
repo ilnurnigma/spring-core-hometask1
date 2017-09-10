@@ -9,5 +9,7 @@
 <a href="/bookingServiceForm">Booking service form</a>
 </br>
 <a href="/uploadForm">Batch upload form</a>
+</br>
+<a href="/logout">Logout</a>
 </body>
 </html>

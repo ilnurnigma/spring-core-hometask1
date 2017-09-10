@@ -4,5 +4,9 @@
     Select a file to upload: <input type="file" name="file" />	<br/>
   	<input type="submit" value="Submit" />
 </form>
+
+</br>
+<a href=/>Main page</a>
+
 </body>
 </html>

@@ -80,4 +80,11 @@ public class BookingServiceController {
 
         return seatNumbers;
     }
+
+    @RequestMapping("/getBookedTickets")
+    public ModelAndView getBookedTickets() {
+        ModelAndView mav = new ModelAndView("result");
+        mav.addObject("msg", "Booked tickets for event...");
+        return mav;
+    }
 }
