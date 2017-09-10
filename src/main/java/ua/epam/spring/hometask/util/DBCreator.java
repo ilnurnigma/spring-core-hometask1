@@ -103,6 +103,16 @@ public class DBCreator {
         jdbcTemplate.execute(sb.toString());
     }
 
+    public static void createPersistentLoginsTable(JdbcOperations jdbcTemplate) throws SQLException {
+        String sql = "create table persistent_logins (username varchar(64) not null";
+        StringBuilder sb = new StringBuilder(sql);
+        sb.append(", series varchar(64) primary key");
+        sb.append(", token varchar(64) not null");
+        sb.append(", last_used timestamp not null)");
+
+        jdbcTemplate.execute(sb.toString());
+    }
+
     public static void dropDB() throws SQLException {
         try {
             DriverManager.getConnection("jdbc:derby:memory:db;drop=true");
@@ -121,5 +131,6 @@ public class DBCreator {
         createEventCounterDB(jdbcTemplate);
         createAuditoriumDB(jdbcTemplate);
         createDiscountCounterDB(jdbcTemplate);
+        createPersistentLoginsTable(jdbcTemplate);
     }
 }
