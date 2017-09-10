@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -35,6 +36,7 @@ import static org.junit.Assert.assertEquals;
 public class XmlHelperTest {
     public static final String REGISTERED_USER_BOOKING_MANAGER = "ROLE_REGISTERED_USER,ROLE_BOOKING_MANAGER";
     public static final String REGISTERED_USER = "ROLE_REGISTERED_USER";
+    public static final String PASSWORD = new BCryptPasswordEncoder(11).encode("12345");
 
     @Autowired
     private ApplicationContext ctx;
@@ -77,31 +79,31 @@ public class XmlHelperTest {
     private Set<User> getUsers() {
         User user1 = new User("John", "Snow", "john.snow@mail.com");
         user1.setRoles(REGISTERED_USER_BOOKING_MANAGER);
-        user1.setPassword("12345");
+        user1.setPassword(PASSWORD);
 
         User user2 = new User("Daenerys", "Targaryen", "daenerys_targaryen@mail.com");
         user2.setRoles(REGISTERED_USER_BOOKING_MANAGER);
-        user2.setPassword("12345");
+        user2.setPassword(PASSWORD);
 
         User user3 = new User("Tyrion", "Lannister", "tyrion_lannister@mail.com");
         user3.setRoles(REGISTERED_USER);
-        user3.setPassword("12345");
+        user3.setPassword(PASSWORD);
 
         User user4 = new User("Arya", "Stark", "arya_stark@mail.com");
         user4.setRoles(REGISTERED_USER);
-        user4.setPassword("12345");
+        user4.setPassword(PASSWORD);
 
         User user5 = new User("Sansa", "Stark", "sansa_stark@mail.com");
         user5.setRoles(REGISTERED_USER);
-        user5.setPassword("12345");
+        user5.setPassword(PASSWORD);
 
         User user6 = new User("Cersei", "Lannister", "cersei_lannister@mail.com");
         user6.setRoles(REGISTERED_USER_BOOKING_MANAGER);
-        user6.setPassword("12345");
+        user6.setPassword(PASSWORD);
 
         User user7 = new User("Jaime", "Lannister", "jaime_lannister@mail.com");
         user7.setRoles(REGISTERED_USER);
-        user7.setPassword("12345");
+        user7.setPassword(PASSWORD);
 
         Set<User> users = new HashSet<>();
         users.add(user1);

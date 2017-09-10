@@ -19,11 +19,50 @@
             <email>daenerys_targaryen@mail.com</email>
             <firstName>Daenerys</firstName>
             <lastName>Targaryen</lastName>
+            <password>$2a$11$RkZu4nEoMYPSI9/z0eMst.HD9e5/4apA75ub.bK3APG43yXarDeMu</password>
+            <roles>ROLE_REGISTERED_USER,ROLE_BOOKING_MANAGER</roles>
+        </user>
+        <user>
+            <email>arya_stark@mail.com</email>
+            <firstName>Arya</firstName>
+            <lastName>Stark</lastName>
+            <password>$2a$11$RkZu4nEoMYPSI9/z0eMst.HD9e5/4apA75ub.bK3APG43yXarDeMu</password>
+            <roles>ROLE_REGISTERED_USER</roles>
+        </user>
+        <user>
+            <email>cersei_lannister@mail.com</email>
+            <firstName>Cersei</firstName>
+            <lastName>Lannister</lastName>
+            <password>$2a$11$RkZu4nEoMYPSI9/z0eMst.HD9e5/4apA75ub.bK3APG43yXarDeMu</password>
+            <roles>ROLE_REGISTERED_USER,ROLE_BOOKING_MANAGER</roles>
+        </user>
+        <user>
+            <email>tyrion_lannister@mail.com</email>
+            <firstName>Tyrion</firstName>
+            <lastName>Lannister</lastName>
+            <password>$2a$11$RkZu4nEoMYPSI9/z0eMst.HD9e5/4apA75ub.bK3APG43yXarDeMu</password>
+            <roles>ROLE_REGISTERED_USER</roles>
         </user>
         <user>
             <email>john.snow@mail.com</email>
             <firstName>John</firstName>
             <lastName>Snow</lastName>
+            <password>$2a$11$RkZu4nEoMYPSI9/z0eMst.HD9e5/4apA75ub.bK3APG43yXarDeMu</password>
+            <roles>ROLE_REGISTERED_USER,ROLE_BOOKING_MANAGER</roles>
+        </user>
+        <user>
+            <email>sansa_stark@mail.com</email>
+            <firstName>Sansa</firstName>
+            <lastName>Stark</lastName>
+            <password>$2a$11$RkZu4nEoMYPSI9/z0eMst.HD9e5/4apA75ub.bK3APG43yXarDeMu</password>
+            <roles>ROLE_REGISTERED_USER</roles>
+        </user>
+        <user>
+            <email>jaime_lannister@mail.com</email>
+            <firstName>Jaime</firstName>
+            <lastName>Lannister</lastName>
+            <password>$2a$11$RkZu4nEoMYPSI9/z0eMst.HD9e5/4apA75ub.bK3APG43yXarDeMu</password>
+            <roles>ROLE_REGISTERED_USER</roles>
         </user>
     </users>
 </batchUpload>
