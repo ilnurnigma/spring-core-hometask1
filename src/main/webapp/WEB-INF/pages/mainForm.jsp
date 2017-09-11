@@ -8,8 +8,8 @@
 </br>
 <a href="/bookingServiceForm">Booking service form</a>
 </br>
-<a href="/uploadForm">Batch upload form</a>
+<a href="/uploadForm">Batch upload form (Upload events and users from batchUpload.xml)</a>
 </br>
-<a href="/login?logout">Logout</a>
+<a href="/logout">Logout</a>
 </body>
 </html>

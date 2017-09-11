@@ -21,7 +21,7 @@
   	<input type="submit" value="Find out" />
 </form>
 
-<a href="/getBookedTickets">Get booked tickets</a>
+<a href="/getBookedTickets">Get booked tickets (Only for booking managers)</a>
 
 </br>
 <a href=/>Main page</a>

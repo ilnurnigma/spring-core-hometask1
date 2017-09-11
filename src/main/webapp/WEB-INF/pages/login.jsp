@@ -2,7 +2,7 @@
 
 <table>
 <tr>
-	<td>User:</td>
+	<td>Email:</td>
 	<td><input type='text' name='username'></td>
 </tr>
 <tr>
@@ -23,3 +23,5 @@
 
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
+default user: user@mail.com 12345</br>
+default manager: manager@mail.com 12345
