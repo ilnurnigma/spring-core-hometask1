@@ -1,7 +1,10 @@
 package ua.epam.spring.hometask.util;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -28,6 +31,17 @@ public class DBCreator {
                 "dateOfBirth date)";
 
         jdbcTemplate.execute(sql);
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(11);
+        jdbcTemplate.update("insert into t_user (email, password, roles) values (?, ?, ?)"
+                , "user@mail.com"
+                , encoder.encode("12345")
+                , "ROLE_REGISTERED_USER");
+
+        jdbcTemplate.update("insert into t_user (email, password, roles) values (?, ?, ?)"
+                , "manager@mail.com"
+                , encoder.encode("12345")
+                , "ROLE_REGISTERED_USER,ROLE_BOOKING_MANAGER");
     }
 
     public static void createTicketDB(JdbcOperations jdbcTemplate) throws SQLException {

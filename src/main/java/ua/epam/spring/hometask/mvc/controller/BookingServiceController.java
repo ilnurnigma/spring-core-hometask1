@@ -36,9 +36,15 @@ public class BookingServiceController {
                                    @RequestParam("eventName") String eventName,
                                    @RequestParam("dateTime") String dateTime,
                                    @RequestParam("seat") long seat) {
-        User user = userService.getUserByEmail(userEmail);
-        Event event = eventService.getByName(eventName);
 
+        User user = userService.getUserByEmail(userEmail);
+        if (user==null) {
+            ModelAndView result = new ModelAndView("result");
+            result.addObject("msg", "Could not find user by email " + userEmail);
+            return result;
+        }
+
+        Event event = eventService.getByName(eventName);
         if (event == null) {
             ModelAndView result = new ModelAndView("result");
             result.addObject("msg", "Could not find event " + eventName);
@@ -64,7 +70,6 @@ public class BookingServiceController {
 
         double ticketsPrice = bookingService.getTicketsPrice(event);
 
-
         ModelAndView mav = new ModelAndView("result");
         mav.addObject("msg", "Tickets price is " + ticketsPrice);
 
@@ -83,6 +88,7 @@ public class BookingServiceController {
 
     @RequestMapping("/getBookedTickets")
     public ModelAndView getBookedTickets() {
+//        bookingService.getPurchasedTicketsForEvent(null,null);
         ModelAndView mav = new ModelAndView("result");
         mav.addObject("msg", "Booked tickets for event...");
         return mav;
