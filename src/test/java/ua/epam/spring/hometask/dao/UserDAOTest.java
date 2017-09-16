@@ -39,8 +39,6 @@ public class UserDAOTest {
 
     @Test
     public void save() {
-        assumeTrue("Table should be empty before each test", userDAO.getAll().isEmpty());
-
         User user = new User();
         userDAO.save(user);
         assertTrue("Should contain user after save: " + user, userDAO.getAll().contains(user));
@@ -48,8 +46,6 @@ public class UserDAOTest {
 
     @Test
     public void remove() {
-        assumeTrue("Table should be empty before each test", userDAO.getAll().isEmpty());
-
         User user = new User();
         userDAO.save(user);
         user = userDAO.getAll().iterator().next();
@@ -61,8 +57,6 @@ public class UserDAOTest {
 
     @Test
     public void getById() {
-        assumeTrue("Table should be empty before each test", userDAO.getAll().isEmpty());
-
         User user = new User();
         userDAO.save(user);
         user = userDAO.getAll().iterator().next();
@@ -74,8 +68,6 @@ public class UserDAOTest {
 
     @Test
     public void getUserByEmail() {
-        assumeTrue("Table should be empty before each test", userDAO.getAll().isEmpty());
-
         User expectedUser = new User();
         String email = "john_snow@epam.com";
         expectedUser.setEmail(email);
@@ -88,8 +80,6 @@ public class UserDAOTest {
 
     @Test
     public void saveUserBirthday() {
-        assumeTrue("Table should be empty before each test", userDAO.getAll().isEmpty());
-
         User savedUser = new User();
         LocalDate date = LocalDate.now();
         savedUser.setDateOfBirth(date);

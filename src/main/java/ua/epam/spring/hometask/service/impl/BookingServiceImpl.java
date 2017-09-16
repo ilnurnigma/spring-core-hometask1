@@ -4,6 +4,8 @@ import ua.epam.spring.hometask.dao.TicketDAO;
 import ua.epam.spring.hometask.domain.*;
 import ua.epam.spring.hometask.service.BookingService;
 import ua.epam.spring.hometask.service.DiscountService;
+import ua.epam.spring.hometask.service.EventService;
+import ua.epam.spring.hometask.service.UserAccountService;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -15,6 +17,8 @@ import java.util.Set;
 public class BookingServiceImpl implements BookingService {
     private TicketDAO ticketDAO;
     private DiscountService discountService;
+    private UserAccountService userAccountService;
+    private EventService eventService;
 
     @Override
     public double getTicketsPrice(@Nonnull Event event, @Nonnull LocalDateTime dateTime, @Nullable User user, @Nonnull Set<Long> seats) {
@@ -65,14 +69,33 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public void bookTickets(@Nonnull Set<Ticket> tickets) {
-        ticketDAO.addAll(tickets);
-    }
-
-    @Override
     public boolean bookTicket(@Nonnull Ticket ticket) {
+        double basePrice = getBasePrice(ticket);
+
+        User user = ticket.getUser();
+        double amount = userAccountService.getAmount(user);
+        if (amount < basePrice) {
+            return false;
+        }
+
+        userAccountService.subtractAmount(user, basePrice);
+
         ticketDAO.save(ticket);
         return true;
+    }
+
+    private double getBasePrice(@Nonnull Ticket ticket) {
+        double basePrice = ticket.getEvent().getBasePrice();
+
+        if (basePrice <= 0) {
+            basePrice = eventService.getByName(ticket.getEvent().getName()).getBasePrice();
+        }
+
+        if (basePrice <= 0) {
+            String msg = "Base price for the event " + ticket.getEvent().getName() + " can not be less or equal to zero.";
+            throw new IllegalArgumentException(msg);
+        }
+        return basePrice;
     }
 
     @Nonnull
@@ -92,5 +115,13 @@ public class BookingServiceImpl implements BookingService {
 
     public void setDiscountService(DiscountService discountService) {
         this.discountService = discountService;
+    }
+
+    public void setUserAccountService(UserAccountService userAccountService) {
+        this.userAccountService = userAccountService;
+    }
+
+    public void setEventService(EventService eventService) {
+        this.eventService = eventService;
     }
 }

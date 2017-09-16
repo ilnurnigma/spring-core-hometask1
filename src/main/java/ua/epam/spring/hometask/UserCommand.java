@@ -5,6 +5,7 @@ import ua.epam.spring.hometask.domain.Ticket;
 import ua.epam.spring.hometask.domain.User;
 import ua.epam.spring.hometask.service.BookingService;
 import ua.epam.spring.hometask.service.EventService;
+import ua.epam.spring.hometask.service.UserAccountService;
 import ua.epam.spring.hometask.service.UserService;
 
 import javax.annotation.Nonnull;
@@ -48,10 +49,6 @@ public class UserCommand {
     public double getTicketsPrice(@Nonnull Event event, @Nonnull LocalDateTime dateTime, @Nullable User user,
                                   @Nonnull Set<Long> seats) {
         return bookingService.getTicketsPrice(event, dateTime, user, seats);
-    }
-
-    public void buyTickets(@Nonnull Set<Ticket> tickets) {
-        bookingService.bookTickets(tickets);
     }
 
     public Ticket buyTicket(User user, Event event, LocalDateTime dateTime, long seat) {

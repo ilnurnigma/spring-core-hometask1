@@ -98,8 +98,8 @@ public class UserServiceImplTest {
 
     @Test
     public void givenUserReturnById() throws Exception {
-        service.save(user);
-        User actualUser = service.getById(1L);
+        User savedUser = service.save(user);
+        User actualUser = service.getById(savedUser.getId());
         assertEquals(user, actualUser);
     }
 }

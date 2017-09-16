@@ -62,38 +62,6 @@ public class AppTest {
     }
 
     @Test
-    public void givenEventWhenBoughtShouldBeInPurchasedTickets() {
-        Event event = adminCommand.enterEvent("Game of Thrones 7", EventRating.HIGH, 100);
-        adminCommand.addAirDateTime(event, LocalDateTime.now().plusDays(5), "Red");
-
-        User user = userCommand.register("John", "Snow", "john_snow@epam.com");
-        LocalDateTime dateTime = event.getAirDates().first();
-        Ticket ticket = userCommand.buyTicket(user, event, dateTime, 1L);
-
-        Set<Ticket> purchasedTickets = adminCommand.viewPurchasedTickets(event, dateTime);
-
-        assertTrue(purchasedTickets.contains(ticket));
-    }
-
-    @Test
-    public void givenEventWhenBoughtTwoTicketsShouldBeInPurchasedTickets() {
-        Event event = adminCommand.enterEvent("Game of Thrones 7", EventRating.HIGH, 100);
-        adminCommand.addAirDateTime(event, LocalDateTime.now().plusDays(5), "Red");
-
-        User user = userCommand.register("John", "Snow", "john_snow@epam.com");
-
-        LocalDateTime dateTime = event.getAirDates().first();
-        HashSet<Ticket> tickets = new HashSet<>();
-        tickets.add(new Ticket(user, event, dateTime, 1L));
-        tickets.add(new Ticket(user, event, dateTime, 2L));
-        userCommand.buyTickets(tickets);
-
-        Set<Ticket> purchasedTickets = adminCommand.viewPurchasedTickets(event, dateTime);
-
-        assertTrue(purchasedTickets.containsAll(tickets));
-    }
-
-    @Test
     public void givenEventUserShouldBeAbleToViewEvents() {
         Event event = adminCommand.enterEvent("Game of Thrones 7", EventRating.HIGH, 100);
         adminCommand.addAirDateTime(event, LocalDateTime.now().plusDays(5), "Red");

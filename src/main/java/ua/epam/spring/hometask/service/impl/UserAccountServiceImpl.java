@@ -12,6 +12,15 @@ public class UserAccountServiceImpl implements UserAccountService {
         return accountDAO.add(user, amount);
     }
 
+    @Override
+    public double subtractAmount(User user, double amount) {
+        return accountDAO.subtractAmount(user, amount);
+    }
+
+    @Override
+    public double getAmount(User user) {
+        return accountDAO.getAmount(user);
+    }
 
     public void setAccountDAO(UserAccountDAO accountDAO) {
         this.accountDAO = accountDAO;

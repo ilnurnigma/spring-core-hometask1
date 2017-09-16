@@ -123,29 +123,4 @@ public class BookingServiceImplTest {
         assertEquals(120, actualPrice, 0);
     }
 
-    @Test
-    public void bookTickets() throws Exception {
-        HashSet<Ticket> tickets = new HashSet<>();
-        eventDAO.save(event);
-        tickets.add(new Ticket(null, event, dateTime, 1L));
-        service.bookTickets(tickets);
-    }
-
-    @Test
-    public void getPurchasedTicketsForEvent() throws Exception {
-        HashSet<Ticket> tickets = new HashSet<>();
-        event.assignAuditorium(dateTime, auditoriumService.getByName("Red"));
-        event = eventDAO.save(event);
-        User user = new User();
-        user = userDAO.save(user);
-        Ticket ticket = new Ticket(user, event, dateTime, 1L);
-        tickets.add(ticket);
-
-        service.bookTickets(tickets);
-
-        Set<Ticket> purchasedTickets = service.getPurchasedTicketsForEvent(event, dateTime);
-
-        assertTrue(purchasedTickets.contains(ticket));
-    }
-
 }

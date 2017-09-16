@@ -1,5 +1,6 @@
 package ua.epam.spring.hometask.dao;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcOperations;
 import ua.epam.spring.hometask.domain.User;
 
@@ -21,11 +22,9 @@ public class UserAccountDAO {
             return amount;
         }
 
-        String sql = "insert into " + tableName +
-                " (userId, amount)" +
-                " values (?, ?)";
+        String sql = "update " + tableName + " set amount = ? where userId = ?";
         double total = getAmount(user) + amount;
-        jdbcTemplate.update(sql, user.getId(), total);
+        jdbcTemplate.update(sql, total, user.getId());
 
         return total;
     }
@@ -42,9 +41,25 @@ public class UserAccountDAO {
         jdbcTemplate.update(sql, user.getId(), amount);
     }
 
-    private double getAmount(User user) {
+    public double getAmount(User user) {
         String sql = "select amount from " + tableName + " where userId = ?";
-        return jdbcTemplate.queryForObject(sql, Double.class, user.getId());
+        try {
+            return jdbcTemplate.queryForObject(sql, Double.class, user.getId());
+        } catch (EmptyResultDataAccessException e) {
+            return 0;
+        }
     }
 
+    public double subtractAmount(User user, double amount) {
+        double total = getAmount(user);
+        if (total < amount) {
+            return total;
+        }
+
+        String sql = "update " + tableName + " set amount = ? where userId = ?";
+        total = total - amount;
+        jdbcTemplate.update(sql, total, user.getId());
+
+        return total;
+    }
 }

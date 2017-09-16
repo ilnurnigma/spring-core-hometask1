@@ -57,7 +57,13 @@ public class BookingServiceController {
         }
 
         Ticket ticket = new Ticket(user, event, LocalDateTime.parse(dateTime), seat);
-        bookingService.bookTicket(ticket);
+        boolean isBooked = bookingService.bookTicket(ticket);
+        if (!isBooked) {
+            ModelAndView result = new ModelAndView("result");
+            result.addObject("msg", "Booking failed for event " + eventName
+                    + ". Check that there is enough money on user's account.");
+            return result;
+        }
 
         ModelAndView result = new ModelAndView("result");
         result.addObject("msg", "Booked ticket for " + eventName);

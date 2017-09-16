@@ -1,22 +1,14 @@
 package ua.epam.spring.hometask.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ua.epam.spring.hometask.AdminCommand;
 import ua.epam.spring.hometask.UserCommand;
 import ua.epam.spring.hometask.aspects.*;
 import ua.epam.spring.hometask.dao.DiscountCounterDAO;
 import ua.epam.spring.hometask.dao.EventCounterDAO;
 import ua.epam.spring.hometask.domain.Event;
-import ua.epam.spring.hometask.service.AuditoriumService;
-import ua.epam.spring.hometask.service.BookingService;
-import ua.epam.spring.hometask.service.EventService;
-import ua.epam.spring.hometask.service.UserService;
-
-import javax.annotation.Resource;
+import ua.epam.spring.hometask.service.*;
 
 @Configuration
 @Import(ServiceBeansConfig.class)

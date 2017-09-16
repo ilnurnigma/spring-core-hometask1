@@ -28,13 +28,6 @@ public class CounterAspect {
         eventCounterDAO.addPriceAccesCounter(event);
     }
 
-    @After("execution(* ua.epam.spring.hometask.service.impl.BookingServiceImpl.bookTickets(..)) && args(tickets)")
-    private void afterBookingServiceBookTickets(Set<Ticket> tickets) {
-        for (Ticket ticket : tickets) {
-            addBookTicketCounter(ticket);
-        }
-    }
-
     @After("execution(* ua.epam.spring.hometask.service.impl.BookingServiceImpl.bookTicket(..)) && args(ticket)")
     private void afterBookingServiceBookTicket(Ticket ticket) {
         addBookTicketCounter(ticket);

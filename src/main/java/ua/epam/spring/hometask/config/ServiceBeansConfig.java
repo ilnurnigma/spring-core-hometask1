@@ -132,6 +132,8 @@ public class ServiceBeansConfig {
         BookingServiceImpl bookingService = new BookingServiceImpl();
         bookingService.setTicketDAO(ticketDAO());
         bookingService.setDiscountService(discountService);
+        bookingService.setUserAccountService(userAccountService());
+        bookingService.setEventService(eventServiceImpl());
         return bookingService;
     }
 
