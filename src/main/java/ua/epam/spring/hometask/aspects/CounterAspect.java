@@ -17,7 +17,9 @@ public class CounterAspect {
     @AfterReturning(pointcut = "execution(* ua.epam.spring.hometask.dao.EventDAO.getByName(..))",
             returning = "event")
     private void afterEventDAOGetByName(Event event) {
-        eventCounterDAO.addNameAccessCounter(event);
+        if (event != null) {
+            eventCounterDAO.addNameAccessCounter(event);
+        }
     }
 
     @After("execution(* ua.epam.spring.hometask.domain.Event.getBasePrice())")

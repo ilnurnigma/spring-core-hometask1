@@ -14,10 +14,10 @@
 
 <h2>Find out tickets price</h2>
 <form method="post" action="getTicketsPrice">
-    User e-mail: <input type="text" name="userEmail" />	<br/>
+    <!--User e-mail: <input type="text" name="userEmail" />	<br/>-->
   	Event name:  <input type="text" name="eventName" />	<br/>
-  	Date and time:    <input type="datetime-local" name="dateTime" />	<br/>
-  	Seat:  <input type="text" name="seats" />	<br/>
+  	<!--Date and time:    <input type="datetime-local" name="dateTime" />	<br/>
+  	Seat:  <input type="text" name="seats" />	<br/>-->
   	<input type="submit" value="Find out" />
 </form>
 

@@ -17,11 +17,20 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public double getTicketsPrice(@Nonnull Event event, @Nonnull LocalDateTime dateTime, @Nullable User user, @Nonnull Set<Long> seats) {
+        return getTicketsPriceWithDiscounts(event, dateTime, user, seats);
+    }
+
+    @Override
+    public double getTicketsPrice(@Nonnull Event event) {
+        return event.getBasePrice();
+    }
+
+    private double getTicketsPriceWithDiscounts(@Nonnull Event event, @Nonnull LocalDateTime dateTime, @Nullable User user, @Nonnull Set<Long> seats) {
         Auditorium auditorium = getAuditorium(event, dateTime);
 
         double basePrice = event.getBasePrice();
         double totalPrice = 0;
-        double ticketPrice = 0;
+        double ticketPrice;
 
         for (Long seatNumber : seats) {
             ticketPrice = getTicketPrice(auditorium, basePrice, seatNumber);

@@ -33,6 +33,8 @@ public interface BookingService {
     public double getTicketsPrice(@Nonnull Event event, @Nonnull LocalDateTime dateTime, @Nullable User user,
                                   @Nonnull Set<Long> seats);
 
+    double getTicketsPrice(@Nonnull Event event);
+
     /**
      * Books tickets in internal system. If user is not
      * <code>null</code> in a ticket then booked tickets are saved with it

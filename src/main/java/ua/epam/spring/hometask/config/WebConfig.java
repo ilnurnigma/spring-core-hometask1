@@ -26,12 +26,6 @@ import java.util.HashMap;
 @ComponentScan("ua.epam.spring.hometask.mvc")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-    /*    @Bean
-        public ControllerClassNameHandlerMapping controllerClassNameHandlerMapping() {
-            ControllerClassNameHandlerMapping mapping = new ControllerClassNameHandlerMapping();
-            mapping.setBasePackage("ua.epam.spring.hometask.mvc");
-            return mapping;
-        }*/
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");

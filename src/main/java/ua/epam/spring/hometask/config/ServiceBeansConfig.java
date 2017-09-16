@@ -6,7 +6,10 @@ import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import ua.epam.spring.hometask.dao.*;
 import ua.epam.spring.hometask.domain.Auditorium;
 import ua.epam.spring.hometask.service.*;
@@ -21,6 +24,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Configuration
+@EnableTransactionManagement
 @Import(DiscountServiceBeansConfig.class)
 @PropertySource({"classpath:auditorium.properties", "classpath:db.properties"})
 public class ServiceBeansConfig {
@@ -184,5 +188,10 @@ public class ServiceBeansConfig {
         DBCreator creator = new DBCreator();
         creator.setJdbcTemplate(jdbcTemplate());
         return creator;
+    }
+
+    @Bean
+    public PlatformTransactionManager txManager() {
+        return new DataSourceTransactionManager(dataSource());
     }
 }

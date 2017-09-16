@@ -1,5 +1,8 @@
 package ua.epam.spring.hometask.domain;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlSchemaType;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.NavigableMap;
@@ -14,14 +17,11 @@ import java.util.TreeSet;
 public class Event extends DomainObject {
 
     private String name;
-
     private NavigableSet<LocalDateTime> airDates = new TreeSet<>();
-
     private double basePrice;
-
     private EventRating rating;
-
     private NavigableMap<LocalDateTime, Auditorium> auditoriums = new TreeMap<>();
+    private double ticketPrice;
 
     /**
      * Checks if event is aired on particular <code>dateTime</code> and assigns
@@ -212,5 +212,14 @@ public class Event extends DomainObject {
         this.name = name;
         this.basePrice = basePrice;
         this.rating = rating;
+        this.ticketPrice = basePrice;
+    }
+
+    public double getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(double ticketPrice) {
+        this.ticketPrice = ticketPrice;
     }
 }

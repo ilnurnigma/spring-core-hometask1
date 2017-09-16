@@ -1,5 +1,7 @@
 package ua.epam.spring.hometask.dao;
 
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.epam.spring.hometask.domain.Event;

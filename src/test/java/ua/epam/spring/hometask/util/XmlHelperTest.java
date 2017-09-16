@@ -119,10 +119,13 @@ public class XmlHelperTest {
 
     private Set<Event> getEvents() {
         Event event1 = new Event("Game of thrones", 100, EventRating.HIGH);
-        AuditoriumService auditoriumService = ctx.getBean("auditoriumServiceImpl", AuditoriumService.class);
-        event1.assignAuditorium(LocalDateTime.now().plusDays(2), auditoriumService.getByName("Red"));
+/*        AuditoriumService auditoriumService = ctx.getBean("auditoriumServiceImpl", AuditoriumService.class);
+        LocalDateTime dateTime1 = LocalDateTime.now().plusDays(2);
+        event1.addAirDateTime(dateTime1, auditoriumService.getByName("Red"));*/
+
         Event event2 = new Event("Black sails", 90, EventRating.MID);
-        event2.assignAuditorium(LocalDateTime.now().plusDays(4), auditoriumService.getByName("Yellow"));
+/*        LocalDateTime dateTime2 = LocalDateTime.now().plusDays(4);
+        event2.addAirDateTime(dateTime2, auditoriumService.getByName("Yellow"));*/
 
         Set<Event> events = new HashSet<>();
         events.add(event1);
