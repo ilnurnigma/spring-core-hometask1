@@ -10,6 +10,7 @@ import ua.epam.spring.hometask.domain.Ticket;
 import ua.epam.spring.hometask.domain.User;
 import ua.epam.spring.hometask.service.BookingService;
 import ua.epam.spring.hometask.service.EventService;
+import ua.epam.spring.hometask.service.UserAccountService;
 import ua.epam.spring.hometask.service.UserService;
 
 import java.time.LocalDateTime;
@@ -26,6 +27,9 @@ public class BookingServiceController {
 
     @Autowired
     private EventService eventService;
+
+    @Autowired
+    private UserAccountService userAccountService;
 
     @RequestMapping("/bookingServiceForm")
     public String bookingServiceForm() {
@@ -99,6 +103,22 @@ public class BookingServiceController {
 
         ModelAndView mav = new ModelAndView("tickets");
         mav.addObject("tickets", tickets);
+        return mav;
+    }
+
+    @RequestMapping("/addAmount")
+    public ModelAndView addAmount(@RequestParam("email") String email, @RequestParam("amount") double amount) {
+        User user = userService.getUserByEmail(email);
+        if (user == null) {
+            ModelAndView result = new ModelAndView("result");
+            result.addObject("msg", "Could not find user by email " + email);
+            return result;
+        }
+
+        double total = userAccountService.addAmount(user, amount);
+
+        ModelAndView mav = new ModelAndView("result");
+        mav.addObject("msg", "Money added. Total amount: " + total);
         return mav;
     }
 }

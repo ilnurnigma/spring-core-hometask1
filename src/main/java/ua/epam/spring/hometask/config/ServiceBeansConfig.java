@@ -13,10 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import ua.epam.spring.hometask.dao.*;
 import ua.epam.spring.hometask.domain.Auditorium;
 import ua.epam.spring.hometask.service.*;
-import ua.epam.spring.hometask.service.impl.AuditoriumServiceImpl;
-import ua.epam.spring.hometask.service.impl.BookingServiceImpl;
-import ua.epam.spring.hometask.service.impl.EventServiceImpl;
-import ua.epam.spring.hometask.service.impl.UserServiceImpl;
+import ua.epam.spring.hometask.service.impl.*;
 import ua.epam.spring.hometask.util.DBCreator;
 
 import javax.sql.DataSource;
@@ -116,6 +113,14 @@ public class ServiceBeansConfig {
     }
 
     @Bean
+    public UserAccountDAO userAccountDAO() {
+        UserAccountDAO userAccountDAO = new UserAccountDAO();
+        userAccountDAO.setJdbcTemplate(jdbcTemplate());
+        userAccountDAO.setTableName("t_user_account");
+        return userAccountDAO;
+    }
+
+    @Bean
     public UserService userServiceImpl() {
         UserServiceImpl userService = new UserServiceImpl();
         userService.setUserDAO(userDAO());
@@ -160,6 +165,13 @@ public class ServiceBeansConfig {
         auditoriums.add(auditorium3);
 
         return new AuditoriumServiceImpl(auditoriums);
+    }
+
+    @Bean
+    public UserAccountService userAccountService() {
+        UserAccountServiceImpl service = new UserAccountServiceImpl();
+        service.setAccountDAO(userAccountDAO());
+        return service;
     }
 
     @Bean

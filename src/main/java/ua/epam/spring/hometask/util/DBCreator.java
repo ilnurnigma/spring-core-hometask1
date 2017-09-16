@@ -1,10 +1,7 @@
 package ua.epam.spring.hometask.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -146,5 +143,15 @@ public class DBCreator {
         createAuditoriumDB(jdbcTemplate);
         createDiscountCounterDB(jdbcTemplate);
         createPersistentLoginsTable(jdbcTemplate);
+        createUserAccountTable(jdbcTemplate);
+    }
+
+    public static void createUserAccountTable(JdbcOperations jdbcTemplate) throws SQLException {
+        String sql = "create table t_user_account " +
+                "(id int not null primary key generated always as identity (start with 1, increment by 1) " +
+                ", userId int references t_user(id)" +
+                ", amount double)";
+
+        jdbcTemplate.execute(sql);
     }
 }
