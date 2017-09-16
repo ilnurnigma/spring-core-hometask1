@@ -1,6 +1,7 @@
 package ua.epam.spring.hometask.service;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
@@ -57,4 +58,5 @@ public interface BookingService {
      */
     public @Nonnull Set<Ticket> getPurchasedTicketsForEvent(@Nonnull Event event, @Nonnull LocalDateTime dateTime);
 
+    Collection<Ticket> getBookedTickets();
 }

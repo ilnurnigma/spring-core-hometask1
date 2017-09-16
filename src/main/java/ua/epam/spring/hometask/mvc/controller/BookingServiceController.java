@@ -13,6 +13,7 @@ import ua.epam.spring.hometask.service.EventService;
 import ua.epam.spring.hometask.service.UserService;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.HashSet;
 
 @Controller
@@ -38,7 +39,7 @@ public class BookingServiceController {
                                    @RequestParam("seat") long seat) {
 
         User user = userService.getUserByEmail(userEmail);
-        if (user==null) {
+        if (user == null) {
             ModelAndView result = new ModelAndView("result");
             result.addObject("msg", "Could not find user by email " + userEmail);
             return result;
@@ -88,9 +89,16 @@ public class BookingServiceController {
 
     @RequestMapping("/getBookedTickets")
     public ModelAndView getBookedTickets() {
-//        bookingService.getPurchasedTicketsForEvent(null,null);
-        ModelAndView mav = new ModelAndView("result");
-        mav.addObject("msg", "Booked tickets for event...");
+        Collection<Ticket> tickets = bookingService.getBookedTickets();
+
+        if (tickets.isEmpty()) {
+            ModelAndView mav = new ModelAndView("result");
+            mav.addObject("msg", "No tickets are booked.");
+            return mav;
+        }
+
+        ModelAndView mav = new ModelAndView("tickets");
+        mav.addObject("tickets", tickets);
         return mav;
     }
 }

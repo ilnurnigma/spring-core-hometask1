@@ -8,6 +8,7 @@ import ua.epam.spring.hometask.service.DiscountService;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.NavigableMap;
 import java.util.Set;
 
@@ -78,6 +79,11 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Set<Ticket> getPurchasedTicketsForEvent(@Nonnull Event event, @Nonnull LocalDateTime dateTime) {
         return ticketDAO.getPurchasedTicketsForEvent(event, dateTime);
+    }
+
+    @Override
+    public Collection<Ticket> getBookedTickets() {
+        return ticketDAO.getAll();
     }
 
     public void setTicketDAO(TicketDAO ticketDAO) {
