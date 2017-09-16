@@ -1,5 +1,6 @@
 package ua.epam.spring.hometask.service.impl;
 
+import org.springframework.transaction.annotation.Transactional;
 import ua.epam.spring.hometask.dao.TicketDAO;
 import ua.epam.spring.hometask.domain.*;
 import ua.epam.spring.hometask.service.BookingService;
@@ -69,6 +70,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    @Transactional
     public boolean bookTicket(@Nonnull Ticket ticket) {
         double basePrice = getBasePrice(ticket);
 
@@ -79,7 +81,9 @@ public class BookingServiceImpl implements BookingService {
         }
 
         userAccountService.subtractAmount(user, basePrice);
-
+        if (true) {
+            throw new RuntimeException("My Exception");
+        }
         ticketDAO.save(ticket);
         return true;
     }
