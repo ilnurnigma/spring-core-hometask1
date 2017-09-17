@@ -94,7 +94,8 @@ public class BookingServiceImpl implements BookingService {
         }
 
         if (basePrice <= 0) {
-            String msg = "Base price for the event " + ticket.getEvent().getName() + " can not be less or equal to zero.";
+            String msg = "Base price for the event " + ticket.getEvent().getName()
+                    + " cannot be less or equal to zero.";
             throw new IllegalArgumentException(msg);
         }
         return basePrice;
