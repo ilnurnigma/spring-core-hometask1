@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.User;
@@ -28,7 +29,7 @@ public class PdfController {
     private EventService eventService;
 
     @RequestMapping(value = "/getAllUsers", headers = "Accept=application/pdf")
-    public ModelAndView getAllUsers() {
+    public ModelAndView getAllUsersPdf() {
         Collection<User> users = userService.getAll();
 
         if (users.isEmpty()) {

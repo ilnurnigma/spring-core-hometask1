@@ -10,6 +10,9 @@ import ua.epam.spring.hometask.domain.User;
 import ua.epam.spring.hometask.service.BookingService;
 import ua.epam.spring.hometask.service.UserService;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 /**
  * Created on 9/5/2017.
  */
@@ -69,6 +72,21 @@ public class UserServiceController {
 
         ModelAndView mav = new ModelAndView("result");
         mav.addObject("msg", msg);
+        return mav;
+    }
+
+    @RequestMapping(value = "/getAllUsers")
+    public ModelAndView getAllUsers() {
+        Collection<User> users = userService.getAll();
+
+        if (users.isEmpty()) {
+            ModelAndView view = new ModelAndView("result");
+            view.addObject("msg", "There are no users in the DB.");
+            return view;
+        }
+
+        ModelAndView mav = new ModelAndView("users");
+        mav.addObject("users", users);
         return mav;
     }
 
