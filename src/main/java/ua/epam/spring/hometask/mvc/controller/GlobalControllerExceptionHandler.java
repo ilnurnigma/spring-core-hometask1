@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created on 9/6/2017.
  */
-//@ControllerAdvice
+@ControllerAdvice
 public class GlobalControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

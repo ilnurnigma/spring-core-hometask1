@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.Ticket;
 import ua.epam.spring.hometask.domain.User;
+import ua.epam.spring.hometask.domain.UserAccount;
 import ua.epam.spring.hometask.service.BookingService;
 import ua.epam.spring.hometask.service.EventService;
 import ua.epam.spring.hometask.service.UserAccountService;
@@ -121,10 +122,11 @@ public class BookingServiceController {
             return result;
         }
 
-        double total = userAccountService.addAmount(user, amount);
+        UserAccount account = userAccountService.getUserAccount(user);
+        account = userAccountService.refill(account, amount);
 
         ModelAndView mav = new ModelAndView("result");
-        mav.addObject("msg", "Money added. Total amount: " + total);
+        mav.addObject("msg", "Money added. Total amount: " + account.getAmount());
         return mav;
     }
 }

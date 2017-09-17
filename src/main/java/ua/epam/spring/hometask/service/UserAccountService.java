@@ -1,11 +1,12 @@
 package ua.epam.spring.hometask.service;
 
 import ua.epam.spring.hometask.domain.User;
+import ua.epam.spring.hometask.domain.UserAccount;
 
 public interface UserAccountService {
-    double addAmount(User user, double amount);
+    UserAccount refill(UserAccount account, double amount);
 
-    double subtractAmount(User user, double amount);
+    UserAccount subtract(UserAccount account, double amount);
 
-    double getAmount(User user);
+    UserAccount getUserAccount(User user);
 }

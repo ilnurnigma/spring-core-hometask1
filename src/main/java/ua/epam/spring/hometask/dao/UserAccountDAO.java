@@ -3,10 +3,11 @@ package ua.epam.spring.hometask.dao;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcOperations;
 import ua.epam.spring.hometask.domain.User;
+import ua.epam.spring.hometask.domain.UserAccount;
 
 public class UserAccountDAO {
-    protected JdbcOperations jdbcTemplate;
-    protected String tableName;
+    private JdbcOperations jdbcTemplate;
+    private String tableName;
 
     public void setJdbcTemplate(JdbcOperations jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -16,32 +17,34 @@ public class UserAccountDAO {
         this.tableName = tableName;
     }
 
-    public double add(User user, double amount) {
-        if (!isExist(user)) {
-            init(user, amount);
-            return amount;
+    public UserAccount refill(UserAccount account, double amount) {
+        if (!isExist(account)) {
+            init(account, amount);
+            account.setAmount(amount);
+            return account;
         }
 
         String sql = "update " + tableName + " set amount = ? where userId = ?";
-        double total = getAmount(user) + amount;
-        jdbcTemplate.update(sql, total, user.getId());
+        double total = getAmount(account.getUser()) + amount;
+        jdbcTemplate.update(sql, total, account.getUser().getId());
 
-        return total;
+        account.setAmount(total);
+        return account;
     }
 
-    private boolean isExist(User user) {
+    private boolean isExist(UserAccount account) {
         String sql = "select count(*) from " + tableName + " where userId = ?";
-        return jdbcTemplate.queryForObject(sql, Integer.class, user.getId()) != 0;
+        return jdbcTemplate.queryForObject(sql, Integer.class, account.getUser().getId()) != 0;
     }
 
-    private void init(User user, double amount) {
+    private void init(UserAccount account, double amount) {
         String sql = "insert into " + tableName +
                 " (userId, amount)" +
                 " values (?, ?)";
-        jdbcTemplate.update(sql, user.getId(), amount);
+        jdbcTemplate.update(sql, account.getUser().getId(), amount);
     }
 
-    public double getAmount(User user) {
+    private double getAmount(User user) {
         String sql = "select amount from " + tableName + " where userId = ?";
         try {
             return jdbcTemplate.queryForObject(sql, Double.class, user.getId());
@@ -50,16 +53,21 @@ public class UserAccountDAO {
         }
     }
 
-    public double subtractAmount(User user, double amount) {
-        double total = getAmount(user);
+    public UserAccount subtract(UserAccount account, double amount) {
+        double total = getAmount(account.getUser());
         if (total < amount) {
-            return total;
+            return account;
         }
 
         String sql = "update " + tableName + " set amount = ? where userId = ?";
         total = total - amount;
-        jdbcTemplate.update(sql, total, user.getId());
+        jdbcTemplate.update(sql, total, account.getUser().getId());
 
-        return total;
+        account.setAmount(total);
+        return account;
+    }
+
+    public UserAccount getAccount(User user) {
+        return new UserAccount(user, getAmount(user));
     }
 }

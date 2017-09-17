@@ -75,15 +75,13 @@ public class BookingServiceImpl implements BookingService {
         double basePrice = getBasePrice(ticket);
 
         User user = ticket.getUser();
-        double amount = userAccountService.getAmount(user);
+        UserAccount account = userAccountService.getUserAccount(user);
+        double amount = account.getAmount();
         if (amount < basePrice) {
             return false;
         }
 
-        userAccountService.subtractAmount(user, basePrice);
-        if (true) {
-            throw new RuntimeException("My Exception");
-        }
+        userAccountService.subtract(account, basePrice);
         ticketDAO.save(ticket);
         return true;
     }
