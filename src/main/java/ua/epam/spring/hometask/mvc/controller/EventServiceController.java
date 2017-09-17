@@ -12,6 +12,8 @@ import ua.epam.spring.hometask.service.EventService;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 
 @Controller
@@ -89,4 +91,23 @@ public class EventServiceController {
         return mav;
     }
 
+    @RequestMapping(value = "/getAllEvents")
+    public ModelAndView getAllEvents() {
+        Collection<Event> events = eventService.getAll();
+
+        if (events.isEmpty()) {
+            ModelAndView view = new ModelAndView("result");
+            view.addObject("msg", "There are no events in the DB.");
+            return view;
+        }
+
+        ArrayList<String> messages = new ArrayList<>();
+        for (Event event : events) {
+            messages.add(event.getName() + " " + event.getBasePrice() + " " + event.getRating());
+        }
+
+        ModelAndView mav = new ModelAndView("events");
+        mav.addObject("events", events);
+        return mav;
+    }
 }

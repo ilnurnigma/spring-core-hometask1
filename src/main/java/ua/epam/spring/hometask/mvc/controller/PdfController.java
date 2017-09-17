@@ -29,7 +29,7 @@ public class PdfController {
     private EventService eventService;
 
     @RequestMapping(value = "/getAllUsers", headers = "Accept=application/pdf")
-    public ModelAndView getAllUsersPdf() {
+    public ModelAndView getAllUsers() {
         Collection<User> users = userService.getAll();
 
         if (users.isEmpty()) {
