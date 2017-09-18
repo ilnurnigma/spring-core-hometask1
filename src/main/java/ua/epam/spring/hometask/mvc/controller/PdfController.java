@@ -28,7 +28,7 @@ public class PdfController {
     @Autowired
     private EventService eventService;
 
-    @RequestMapping(value = "/getAllUsers", headers = "Accept=application/pdf")
+    @RequestMapping(value = "/user/all", headers = "Accept=application/pdf")
     public ModelAndView getAllUsers() {
         Collection<User> users = userService.getAll();
 
@@ -48,7 +48,7 @@ public class PdfController {
         return mav;
     }
 
-    @RequestMapping(value = "/getAllEvents", headers = "Accept=application/pdf")
+    @RequestMapping(value = "/event/all", headers = "Accept=application/pdf")
     public ModelAndView getAllEvents() {
         Collection<Event> events = eventService.getAll();
 

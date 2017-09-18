@@ -17,6 +17,7 @@ import java.util.Collection;
  * Created on 9/5/2017.
  */
 @Controller
+@RequestMapping("/user")
 public class UserServiceController {
     @Autowired
     private BookingService bookingService;
@@ -24,12 +25,12 @@ public class UserServiceController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/userServiceForm")
+    @RequestMapping("/form")
     public String saveUserForm() {
         return "userServiceForm";
     }
 
-    @RequestMapping(path = "/saveUser", method = RequestMethod.POST)
+    @RequestMapping(path = "/save", method = RequestMethod.POST)
     public ModelAndView saveUser(@RequestParam("firstName") String firstName,
                                  @RequestParam("lastName") String lastName,
                                  @RequestParam("email") String email) {
@@ -42,7 +43,7 @@ public class UserServiceController {
         return mav;
     }
 
-    @RequestMapping(path = "/getUserByEmail", method = RequestMethod.POST)
+    @RequestMapping(path = "/email", method = RequestMethod.POST)
     public ModelAndView getUserByEmail(@RequestParam("email") String email) {
         User user = userService.getUserByEmail(email);
 
@@ -58,7 +59,7 @@ public class UserServiceController {
         return mav;
     }
 
-    @RequestMapping(path = "/deleteUserByEmail", method = RequestMethod.POST)
+    @RequestMapping(path = "/delete", method = RequestMethod.POST)
     public ModelAndView deleteUserByEmail(@RequestParam("email") String email) {
         User user = userService.getUserByEmail(email);
 
@@ -75,7 +76,7 @@ public class UserServiceController {
         return mav;
     }
 
-    @RequestMapping(value = "/getAllUsers")
+    @RequestMapping(value = "/all")
     public ModelAndView getAllUsers() {
         Collection<User> users = userService.getAll();
 

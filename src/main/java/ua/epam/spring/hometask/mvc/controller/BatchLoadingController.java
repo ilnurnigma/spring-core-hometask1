@@ -30,7 +30,7 @@ public class BatchLoadingController {
     @Autowired
     public XmlHelper xmlHelper;
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload/file", method = RequestMethod.POST)
     public String uploadFile(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
 
         if (!file.getOriginalFilename().isEmpty()) {
@@ -51,7 +51,7 @@ public class BatchLoadingController {
         return "result";
     }
 
-    @RequestMapping(value = "/uploadForm")
+    @RequestMapping(value = "/upload/form")
     public String uploadForm() {
         return "uploadForm";
     }

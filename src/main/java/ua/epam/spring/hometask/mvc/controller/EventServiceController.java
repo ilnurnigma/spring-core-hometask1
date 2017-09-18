@@ -17,21 +17,22 @@ import java.util.Collection;
 import java.util.Set;
 
 @Controller
+@RequestMapping("/event")
 public class EventServiceController {
     @Autowired
     EventService eventService;
 
-    @RequestMapping("/eventServiceForm")
+    @RequestMapping("/form")
     public String saveUserForm() {
         return "eventServiceForm";
     }
 
-    @RequestMapping(path = "/saveEvent", method = RequestMethod.POST)
+    @RequestMapping(path = "/save", method = RequestMethod.POST)
     public ModelAndView saveUser(@RequestParam("name") String name,
                                  @RequestParam("basePrice") double basePrice,
                                  @RequestParam("rating") String rating) {
 
-        Event event = new Event(name, basePrice, EventRating.valueOf(rating));
+        Event event = new Event(name, basePrice, EventRating.valueOf(rating.toUpperCase()));
         eventService.save(event);
 
         ModelAndView mav = new ModelAndView("result");
@@ -39,7 +40,7 @@ public class EventServiceController {
         return mav;
     }
 
-    @RequestMapping(path = "/getEventByName", method = RequestMethod.POST)
+    @RequestMapping(path = "/name", method = RequestMethod.POST)
     public ModelAndView getEventByName(@RequestParam("name") String name) {
         Event event = eventService.getByName(name);
 
@@ -55,7 +56,7 @@ public class EventServiceController {
         return mav;
     }
 
-    @RequestMapping(path = "/getEventForDate", method = RequestMethod.POST)
+    @RequestMapping(path = "/date", method = RequestMethod.POST)
     public ModelAndView getEventForDate(@RequestParam("from") String from,
                                         @RequestParam("to") String to) {
         Set<Event> events = eventService.getForDateRange(LocalDate.parse(from), LocalDate.parse(to));
@@ -65,7 +66,7 @@ public class EventServiceController {
         return mav;
     }
 
-    @RequestMapping(path = "/getNextEvents", method = RequestMethod.POST)
+    @RequestMapping(path = "/next", method = RequestMethod.POST)
     public ModelAndView getNextEvents(@RequestParam("to") String to) {
         Set<Event> events = eventService.getNextEvents(LocalDateTime.parse(to));
 
@@ -74,7 +75,7 @@ public class EventServiceController {
         return mav;
     }
 
-    @RequestMapping(path = "/deleteEventByName", method = RequestMethod.POST)
+    @RequestMapping(path = "/delete", method = RequestMethod.POST)
     public ModelAndView deleteEventByName(@RequestParam("name") String name) {
         Event event = eventService.getByName(name);
 
@@ -91,7 +92,7 @@ public class EventServiceController {
         return mav;
     }
 
-    @RequestMapping(value = "/getAllEvents")
+    @RequestMapping(value = "/all")
     public ModelAndView getAllEvents() {
         Collection<Event> events = eventService.getAll();
 

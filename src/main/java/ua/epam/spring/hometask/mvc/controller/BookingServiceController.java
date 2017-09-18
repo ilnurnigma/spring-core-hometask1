@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 @Controller
+@RequestMapping("/book")
 public class BookingServiceController {
     @Autowired
     private BookingService bookingService;
@@ -32,12 +33,12 @@ public class BookingServiceController {
     @Autowired
     private UserAccountService userAccountService;
 
-    @RequestMapping("/bookingServiceForm")
+    @RequestMapping("/form")
     public String bookingServiceForm() {
         return "bookingServiceForm";
     }
 
-    @RequestMapping("/bookTicket")
+    @RequestMapping("/ticket")
     public ModelAndView bookTicket(@RequestParam("userEmail") String userEmail,
                                    @RequestParam("eventName") String eventName,
                                    @RequestParam("dateTime") String dateTime,
@@ -71,7 +72,7 @@ public class BookingServiceController {
         return result;
     }
 
-    @RequestMapping("/getTicketsPrice")
+    @RequestMapping("/ticket/price")
     public ModelAndView getTicketsPrice(@RequestParam("eventName") String eventName) {
         Event event = eventService.getByName(eventName);
         if (event == null) {
@@ -88,17 +89,7 @@ public class BookingServiceController {
         return mav;
     }
 
-    private HashSet<Long> getSeats(String seatsAsString) {
-        String[] seatsArray = seatsAsString.split(",");
-        HashSet<Long> seatNumbers = new HashSet<>();
-        for (String seat : seatsArray) {
-            seatNumbers.add(Long.getLong(seat));
-        }
-
-        return seatNumbers;
-    }
-
-    @RequestMapping("/getBookedTickets")
+    @RequestMapping("/ticket/all")
     public ModelAndView getBookedTickets() {
         Collection<Ticket> tickets = bookingService.getBookedTickets();
 
@@ -113,8 +104,8 @@ public class BookingServiceController {
         return mav;
     }
 
-    @RequestMapping("/addAmount")
-    public ModelAndView addAmount(@RequestParam("email") String email, @RequestParam("amount") double amount) {
+    @RequestMapping("/account/refill")
+    public ModelAndView refillAccount(@RequestParam("email") String email, @RequestParam("amount") double amount) {
         User user = userService.getUserByEmail(email);
         if (user == null) {
             ModelAndView result = new ModelAndView("result");
