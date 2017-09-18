@@ -1,0 +1,17 @@
+ua\epam\spring\hometask\service\strategies\DiscountServiceImplTest.class
+ua\epam\spring\hometask\dao\DiscountCounterDAOTest.class
+ua\epam\spring\hometask\service\impl\BookingServiceImplTest.class
+ua\epam\spring\hometask\service\strategies\BirthdayDiscountStrategyTest.class
+ua\epam\spring\hometask\dao\TicketDAOTest.class
+ua\epam\spring\hometask\domain\TestAuditorium.class
+ua\epam\spring\hometask\util\XmlHelperTest$1.class
+ua\epam\spring\hometask\util\XmlHelperTest.class
+ua\epam\spring\hometask\aspects\DiscountAspectTest.class
+ua\epam\spring\hometask\dao\EventDAOTest.class
+ua\epam\spring\hometask\service\impl\EventServiceImplTest.class
+ua\epam\spring\hometask\service\strategies\Every10thTicketDiscountStrategyTest.class
+ua\epam\spring\hometask\AppTest.class
+ua\epam\spring\hometask\dao\UserDAOTest.class
+ua\epam\spring\hometask\dao\EventCounterDAOTest.class
+ua\epam\spring\hometask\service\impl\UserServiceImplTest.class
+ua\epam\spring\hometask\domain\TestEvent.class

@@ -1,0 +1,797 @@
+----------------------------------------------------------------
+Mon Sep 18 15:44:43 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:45 CEST 2017:
+Shutting down instance a816c00e-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:45 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 3f3e811c-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:46 CEST 2017:
+Shutting down instance 3f3e811c-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:47 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 10c40221-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:47 CEST 2017:
+Shutting down instance 10c40221-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:48 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 24cfc326-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:48 CEST 2017:
+Shutting down instance 24cfc326-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:49 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 9ee5c436-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:50 CEST 2017:
+Shutting down instance 9ee5c436-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:50 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 8acbc53b-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:51 CEST 2017:
+Shutting down instance 8acbc53b-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:51 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance b59b864d-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:51 CEST 2017:
+Shutting down instance b59b864d-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:52 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 65270708-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:52 CEST 2017:
+Shutting down instance 65270708-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:53 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance df1847bf-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:53 CEST 2017:
+Shutting down instance df1847bf-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:53 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 59bdc876-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:53 CEST 2017:
+Shutting down instance 59bdc876-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:54 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance ed2b8934-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:54 CEST 2017:
+Shutting down instance ed2b8934-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:54 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 63da49f2-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:54 CEST 2017:
+Shutting down instance 63da49f2-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:55 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 331d0aa9-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:55 CEST 2017:
+Shutting down instance 331d0aa9-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:56 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 1f014b67-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:56 CEST 2017:
+Shutting down instance 1f014b67-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:56 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 80eccc1e-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:57 CEST 2017:
+Shutting down instance 80eccc1e-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:57 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a6698d3d-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:58 CEST 2017:
+Shutting down instance a6698d3d-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:44:59 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance b9930e59-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:44:59 CEST 2017:
+Shutting down instance b9930e59-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:00 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 9f190f78-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:00 CEST 2017:
+Shutting down instance 9f190f78-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:01 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 91ce909c-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:01 CEST 2017:
+Shutting down instance 91ce909c-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:02 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 7ee8d1be-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:02 CEST 2017:
+Shutting down instance 7ee8d1be-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:03 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 179452e2-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:03 CEST 2017:
+Shutting down instance 179452e2-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:04 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 82801401-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:05 CEST 2017:
+Shutting down instance 82801401-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:05 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 586c5522-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:06 CEST 2017:
+Shutting down instance 586c5522-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:06 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 64c81641-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:07 CEST 2017:
+Shutting down instance 64c81641-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:08 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 6621579a-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:09 CEST 2017:
+Shutting down instance 6621579a-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:09 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 548698dc-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:10 CEST 2017:
+Shutting down instance 548698dc-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:11 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 880d1a29-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:12 CEST 2017:
+Shutting down instance 880d1a29-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:12 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 8a239b74-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:13 CEST 2017:
+Shutting down instance 8a239b74-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:14 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 618bdcc6-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:14 CEST 2017:
+Shutting down instance 618bdcc6-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:15 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance b3409d75-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:15 CEST 2017:
+Shutting down instance b3409d75-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:16 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance e1031e28-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:16 CEST 2017:
+Shutting down instance e1031e28-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:16 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 0fcc9ed5-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:17 CEST 2017:
+Shutting down instance 0fcc9ed5-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:17 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 1b355f87-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:18 CEST 2017:
+Shutting down instance 1b355f87-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:18 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 1565e036-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:19 CEST 2017:
+Shutting down instance 1565e036-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:19 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 1d7da124-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:20 CEST 2017:
+Shutting down instance 1d7da124-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:21 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance d90d2229-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:21 CEST 2017:
+Shutting down instance d90d2229-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:22 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 0fef2339-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:22 CEST 2017:
+Shutting down instance 0fef2339-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:23 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 5358e43e-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:23 CEST 2017:
+Shutting down instance 5358e43e-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:24 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 2948e543-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:24 CEST 2017:
+Shutting down instance 2948e543-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:25 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 917e6652-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:25 CEST 2017:
+Shutting down instance 917e6652-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:26 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 9ae8a74c-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:26 CEST 2017:
+Shutting down instance 9ae8a74c-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:27 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 089d683a-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:27 CEST 2017:
+Shutting down instance 089d683a-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:28 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance c6dee933-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:28 CEST 2017:
+Shutting down instance c6dee933-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:29 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance c94e6a2f-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:29 CEST 2017:
+Shutting down instance c94e6a2f-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:30 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 01632b28-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:30 CEST 2017:
+Shutting down instance 01632b28-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:31 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance aff46c1f-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:31 CEST 2017:
+Shutting down instance aff46c1f-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:32 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 87fdad24-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:32 CEST 2017:
+Shutting down instance 87fdad24-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:33 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance 528d2e29-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:33 CEST 2017:
+Shutting down instance 528d2e29-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:34 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance dfa2ef2e-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Sep 18 15:45:34 CEST 2017:
+Shutting down instance dfa2ef2e-015e-953b-e1e4-00000d521440 on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+----------------------------------------------------------------
+Mon Sep 18 15:45:35 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance cb02f02e-015e-953b-e1e4-00000d521440 
+on database directory memory:C:\Projects\spring-core-hometask-with-annotations\springCore\db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Ilnur_Nigmatzianov/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Projects\spring-core-hometask-with-annotations\springCore
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
