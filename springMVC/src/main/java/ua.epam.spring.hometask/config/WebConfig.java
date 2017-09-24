@@ -23,7 +23,7 @@ import java.util.HashMap;
 @Configuration
 @EnableWebMvc
 @Import({AppConfig.class, SecurityConfig.class})
-@ComponentScan("ua.epam.spring.hometask.mvc")
+@ComponentScan("ua.epam.spring.hometask")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
