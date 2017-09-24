@@ -34,7 +34,8 @@ public class BookingRESTController {
         return ticket;
     }
 
-    @RequestMapping(value = "/ticket/booked/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/ticket/booked/all", method = {RequestMethod.GET, RequestMethod.POST},
+            headers = "Accept=application/json,application/pdf")
     @ResponseBody
     public Collection<Ticket> getBookedTickets() {
         return bookingService.getBookedTickets();
@@ -42,11 +43,11 @@ public class BookingRESTController {
 
     @RequestMapping(value = "/ticket/{event}/price", method = RequestMethod.GET)
     @ResponseBody
-    public double getTicketsPrice(@PathVariable("event")String event) {
+    public double getTicketsPrice(@PathVariable("event") String event) {
         return bookingService.getTicketsPrice(eventService.getByName(event));
     }
 
-    @RequestMapping(value = "/account/{email}/refill/{amount}",method = RequestMethod.PUT)
+    @RequestMapping(value = "/account/{email}/refill/{amount}", method = RequestMethod.PUT)
     @ResponseBody
     public UserAccount refillAccount(@PathVariable("email") String email, @PathVariable("amount") double amount) {
         return userAccountService.refill(userAccountService.getUserAccount(userService.getUserByEmail(email)), amount);

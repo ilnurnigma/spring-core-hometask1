@@ -5,9 +5,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -18,11 +22,14 @@ import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
+import ua.epam.spring.hometask.converter.PdfHttpMessageConverter;
 import ua.epam.spring.hometask.util.BatchUpload;
 import ua.epam.spring.hometask.util.XmlHelper;
+import ua.epam.spring.hometask.view.PdfView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Configuration
 @EnableWebMvc
@@ -36,20 +43,38 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        converters.add(mappingJackson2HttpMessageConverter());
+        converters.add(pdfHttpMessageConverter());
+        super.configureMessageConverters(converters);
+    }
+
     @Bean
-    public ContentNegotiatingViewResolver contentNegotiatingViewResolver() {
+    public ContentNegotiatingViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager) {
         ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
         ArrayList<View> views = new ArrayList<>();
         views.add(mappingJackson2JsonView());
         resolver.setDefaultViews(views);
+        resolver.setContentNegotiationManager(manager);
         return resolver;
     }
 
     @Bean
     public MappingJackson2JsonView mappingJackson2JsonView() {
-        MappingJackson2JsonView view = new MappingJackson2JsonView();
-        view.setPrettyPrint(true);
-        return view;
+        return new MappingJackson2JsonView();
+    }
+
+    @Bean
+    public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
+        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+        converter.setPrettyPrint(true);
+        return converter;
+    }
+
+    @Bean
+    public PdfHttpMessageConverter pdfHttpMessageConverter() {
+        return new PdfHttpMessageConverter();
     }
 
     @Bean

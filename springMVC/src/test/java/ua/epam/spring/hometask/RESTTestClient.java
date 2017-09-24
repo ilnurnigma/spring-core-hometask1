@@ -3,13 +3,18 @@ package ua.epam.spring.hometask;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 import ua.epam.spring.hometask.domain.*;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 @Ignore("For localhost testing")
 public class RESTTestClient {
@@ -43,5 +48,17 @@ public class RESTTestClient {
 
         Ticket[] tickets = template.getForObject(PAGE_URI + "/ticket/booked/all", Ticket[].class);
         Assert.assertTrue(Arrays.asList(tickets).contains(ticket));
+    }
+
+    @Test
+    public void testContentNegotiation() throws IOException {
+        RestTemplate template = new RestTemplate();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_PDF));
+        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+
+        byte[] pdf = template.postForObject(PAGE_URI + "/ticket/booked/all", entity, byte[].class);
+        Files.write(Paths.get("bookedTickets.pdf"), pdf);
     }
 }
