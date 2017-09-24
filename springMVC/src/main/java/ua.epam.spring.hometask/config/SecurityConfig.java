@@ -59,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").access("hasRole('REGISTERED_USER')")
                 .antMatchers("/getBookedTickets").access("hasRole('BOOKING_MANAGER')")
                 .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")

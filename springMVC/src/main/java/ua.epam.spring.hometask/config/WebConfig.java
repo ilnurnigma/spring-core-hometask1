@@ -7,17 +7,21 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import ua.epam.spring.hometask.util.BatchUpload;
 import ua.epam.spring.hometask.util.XmlHelper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Configuration
@@ -30,6 +34,22 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+    }
+
+    @Bean
+    public ContentNegotiatingViewResolver contentNegotiatingViewResolver() {
+        ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
+        ArrayList<View> views = new ArrayList<>();
+        views.add(mappingJackson2JsonView());
+        resolver.setDefaultViews(views);
+        return resolver;
+    }
+
+    @Bean
+    public MappingJackson2JsonView mappingJackson2JsonView() {
+        MappingJackson2JsonView view = new MappingJackson2JsonView();
+        view.setPrettyPrint(true);
+        return view;
     }
 
     @Bean

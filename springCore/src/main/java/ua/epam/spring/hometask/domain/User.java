@@ -113,7 +113,7 @@ public class User extends DomainObject {
     }
 
     public List<String> getSystemMessages() {
-        return Collections.unmodifiableList(sysMsgs);
+        return sysMsgs;
     }
 
     public void setSysMsgs(List<String> sysMsgs) {

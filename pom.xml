@@ -23,6 +23,7 @@
         <junit.version>4.12</junit.version>
         <jettyVersion>7.2.0.v20101020</jettyVersion>
         <spring-security.version>4.2.3.RELEASE</spring-security.version>
+        <jackson.version>2.9.1</jackson.version>
     </properties>
 
     <dependencyManagement>
@@ -142,6 +143,24 @@
                 <artifactId>javax.servlet-api</artifactId>
                 <version>3.0.1</version>
                 <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

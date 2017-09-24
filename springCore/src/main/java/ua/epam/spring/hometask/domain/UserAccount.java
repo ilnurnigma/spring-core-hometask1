@@ -24,4 +24,7 @@ public class UserAccount {
         this.user = user;
         this.amount = amount;
     }
+
+    public UserAccount() {
+    }
 }
