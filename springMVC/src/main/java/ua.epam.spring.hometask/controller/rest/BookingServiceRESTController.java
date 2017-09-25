@@ -14,7 +14,7 @@ import ua.epam.spring.hometask.service.UserService;
 import java.util.Collection;
 
 @Controller
-public class BookingRESTController {
+public class BookingServiceRESTController {
     @Autowired
     private BookingService bookingService;
 
@@ -35,7 +35,7 @@ public class BookingRESTController {
     }
 
     @RequestMapping(value = "/ticket/booked/all", method = {RequestMethod.GET, RequestMethod.POST},
-            headers = "Accept=application/json,application/pdf")
+            headers = "Accept=application/json, application/pdf")
     @ResponseBody
     public Collection<Ticket> getBookedTickets() {
         return bookingService.getBookedTickets();

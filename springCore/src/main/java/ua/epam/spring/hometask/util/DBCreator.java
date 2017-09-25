@@ -20,9 +20,9 @@ public class DBCreator {
     public static void createUserDB(JdbcOperations jdbcTemplate) throws SQLException {
         String sql = "create table t_user " +
                 "(id int not null primary key generated always as identity (start with 1, increment by 1), " +
-                "firstName varchar(50), " +
-                "lastName varchar(50), " +
-                "email varchar(50), " +
+                "firstName varchar(255), " +
+                "lastName varchar(255), " +
+                "email varchar(255), " +
                 "password varchar(255), " +
                 "roles varchar(255), " +
                 "dateOfBirth date)";

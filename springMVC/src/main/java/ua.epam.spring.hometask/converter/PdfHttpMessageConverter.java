@@ -10,12 +10,16 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
+import ua.epam.spring.hometask.domain.Event;
+import ua.epam.spring.hometask.domain.Ticket;
+import ua.epam.spring.hometask.domain.User;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 
-public class PdfHttpMessageConverter<T> implements HttpMessageConverter<T> {
+public class PdfHttpMessageConverter implements HttpMessageConverter<List<Ticket>> {
     @Override
     public boolean canRead(Class aClass, MediaType mediaType) {
         return false;
@@ -23,11 +27,8 @@ public class PdfHttpMessageConverter<T> implements HttpMessageConverter<T> {
 
     @Override
     public boolean canWrite(Class aClass, MediaType mediaType) {
-        if (MediaType.APPLICATION_PDF.equals(mediaType)) {
-            return true;
-        }
+        return MediaType.APPLICATION_PDF.equals(mediaType);
 
-        return false;
     }
 
     @Override
@@ -36,12 +37,25 @@ public class PdfHttpMessageConverter<T> implements HttpMessageConverter<T> {
     }
 
     @Override
-    public void write(T t, MediaType mediaType, HttpOutputMessage httpOutputMessage) throws IOException, HttpMessageNotWritableException {
+    public void write(List<Ticket> tickets, MediaType mediaType, HttpOutputMessage httpOutputMessage) throws IOException, HttpMessageNotWritableException {
         try {
             Document document = new Document();
             PdfWriter.getInstance(document, httpOutputMessage.getBody());
             document.open();
-            document.add(new Paragraph("Hello world!"));
+            document.add(new Paragraph("Booked tickets"));
+            document.add(new Paragraph(" "));
+
+            for (Ticket ticket:tickets) {
+                User user = ticket.getUser();
+                document.add(new Paragraph("Ticket for: " + user.getFirstName() + " "
+                        + user.getLastName() + " " + user.getEmail()));
+                Event event = ticket.getEvent();
+                document.add(new Paragraph("Event: " + event.getName() + ", price: " + event.getBasePrice()));
+                String dateTime = ticket.getDateTime().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"));
+                document.add(new Paragraph("Date and time: " + dateTime + "    seat: " + ticket.getSeat()));
+                document.add(new Paragraph(" "));
+            }
+
             document.close();
         } catch (DocumentException e) {
             throw new IOException(e);
@@ -49,7 +63,7 @@ public class PdfHttpMessageConverter<T> implements HttpMessageConverter<T> {
     }
 
     @Override
-    public T read(Class aClass, HttpInputMessage httpInputMessage) throws IOException, HttpMessageNotReadableException {
+    public List<Ticket> read(Class aClass, HttpInputMessage httpInputMessage) throws IOException, HttpMessageNotReadableException {
         return null;
     }
 }

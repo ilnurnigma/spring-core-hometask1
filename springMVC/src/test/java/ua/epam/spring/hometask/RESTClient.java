@@ -17,12 +17,12 @@ import java.util.Arrays;
 import java.util.Collections;
 
 @Ignore("For localhost testing")
-public class RESTTestClient {
+public class RESTClient {
 
     public static final String PAGE_URI = "http://localhost:9090";
 
     @Test
-    public void test() throws IOException {
+    public void ticketBookingOperations() throws IOException {
         RestTemplate template = new RestTemplate();
 
         double basePrice = 100;
@@ -41,7 +41,7 @@ public class RESTTestClient {
         Double price = template.getForObject(PAGE_URI + "/ticket/{event}/price", Double.class, event.getName());
         Assert.assertEquals(basePrice, price, 0);
 
-        template.put(PAGE_URI + "/account/{email}/refill/{amount}", UserAccount.class, user.getEmail(), 101);
+        template.put(PAGE_URI + "/account/{email}/refill/{amount}", UserAccount.class, user.getEmail(), price);
 
         Ticket ticket = new Ticket(user, event, LocalDateTime.now(), 1);
         ticket = template.postForObject(PAGE_URI + "/ticket/book", ticket, Ticket.class);
@@ -51,7 +51,7 @@ public class RESTTestClient {
     }
 
     @Test
-    public void testContentNegotiation() throws IOException {
+    public void contentNegotiation() throws IOException {
         RestTemplate template = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
@@ -60,5 +60,51 @@ public class RESTTestClient {
 
         byte[] pdf = template.postForObject(PAGE_URI + "/ticket/booked/all", entity, byte[].class);
         Files.write(Paths.get("bookedTickets.pdf"), pdf);
+    }
+
+    @Test
+    public void eventCRUD() {
+        RestTemplate template = new RestTemplate();
+
+        Event event = new Event("crudEvent", (double) 100, EventRating.HIGH);
+
+        Event createdEvent = template.postForObject(PAGE_URI + "/event/add", event, Event.class);
+        Assert.assertEquals(event, createdEvent);
+
+        event.setBasePrice(200);
+        event.setRating(EventRating.LOW);
+        template.put(PAGE_URI + "/event/update", event);
+
+        Event updatedEvent = template.getForObject(PAGE_URI + "/event/{name}", Event.class, event.getName());
+        Assert.assertEquals(event, updatedEvent);
+        System.out.println(updatedEvent);
+
+        template.delete(PAGE_URI + "/event/delete/{name}", event.getName());
+
+        Event deletedEvent = template.getForObject(PAGE_URI + "/event/{name}", Event.class, event.getName());
+        Assert.assertNull(deletedEvent);
+    }
+
+    @Test
+    public void userCRUD() {
+        RestTemplate template = new RestTemplate();
+
+        User user = new User("crudUserName", "crudUserSurname", "crudUser@mail.com");
+
+        User createdUser = template.postForObject(PAGE_URI + "/user/add", user, User.class);
+        Assert.assertEquals(user, createdUser);
+
+        user.setFirstName("changedName");
+        user.setLastName("changedSurname");
+        template.put(PAGE_URI + "/user/update", user);
+
+        User updatedUser = template.getForObject(PAGE_URI + "/user/{email}/", User.class, user.getEmail());
+        Assert.assertEquals(user, updatedUser);
+        System.out.println(updatedUser);
+
+        template.delete(PAGE_URI + "/user/delete/{email}/", user.getEmail());
+
+        User deletedUser = template.getForObject(PAGE_URI + "/user/{email}/", User.class, user.getEmail());
+        Assert.assertNull(deletedUser);
     }
 }
